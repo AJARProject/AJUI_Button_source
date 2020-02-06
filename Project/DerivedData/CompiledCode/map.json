@@ -1,0 +1,309 @@
+﻿{
+	"map": [
+		{
+			"id": 2147483647,
+			"path": "Sources/Methods/AJUI_Btn_GetSetPicturePath.4dm"
+		},
+		{
+			"id": 2147483646,
+			"path": "Sources/Methods/AJUI_Btn_clearFabCollection.4dm"
+		},
+		{
+			"id": 2147483645,
+			"path": "Sources/Methods/AJUI_Btn_GetSetPictureScale.4dm"
+		},
+		{
+			"id": 2147483644,
+			"path": "Sources/Methods/AJUI_Btn_callbackFAB.4dm"
+		},
+		{
+			"id": 2147483643,
+			"path": "Sources/Methods/AJUI_Btn_showFABButtons.4dm"
+		},
+		{
+			"id": 2147483642,
+			"path": "Sources/Methods/AJUI_Btn_GetSetBorderColor.4dm"
+		},
+		{
+			"id": 2147483641,
+			"path": "Sources/Methods/AJUI_Btn_GetSetName.4dm"
+		},
+		{
+			"id": 2147483640,
+			"path": "Sources/Methods/AJUI_Btn_animationWorker.4dm"
+		},
+		{
+			"id": 2147483639,
+			"path": "Sources/Methods/AJUI_Btn_GetSetFontColor.4dm"
+		},
+		{
+			"id": 2147483638,
+			"path": "Sources/Methods/AJUI_Btn_GetSetMainFab.4dm"
+		},
+		{
+			"id": 2147483637,
+			"path": "Sources/Methods/AJUI_Btn_hide.4dm"
+		},
+		{
+			"id": 2147483636,
+			"path": "Sources/Methods/AJUI_Btn_addFab.4dm"
+		},
+		{
+			"id": 2147483635,
+			"path": "Sources/Methods/AJUI_Btn_GetSetColorToReplace.4dm"
+		},
+		{
+			"id": 2147483634,
+			"path": "Sources/Methods/AJUI_Btn_resizePicture.4dm"
+		},
+		{
+			"id": 2147483633,
+			"path": "Sources/Methods/AJUI_Btn_GetSetPictureWidth.4dm"
+		},
+		{
+			"id": 2147483632,
+			"path": "Sources/Methods/AJUI_Btn_GetSetActivateAnim.4dm"
+		},
+		{
+			"id": 2147483631,
+			"path": "Sources/Methods/AJUI_Btn_GetSetBGSecondColor.4dm"
+		},
+		{
+			"id": 2147483630,
+			"path": "Sources/Methods/AJUI_Btn_GetSetOnDoubleClickCB.4dm"
+		},
+		{
+			"id": 2147483629,
+			"path": "Sources/Methods/AJUI_Btn_hideFABButtons.4dm"
+		},
+		{
+			"id": 2147483628,
+			"path": "Sources/Methods/AJUI_Btn_GetSetFontSize.4dm"
+		},
+		{
+			"id": 2147483627,
+			"path": "Sources/Methods/AJUI_Btn_buildComponent.4dm"
+		},
+		{
+			"id": 2147483626,
+			"path": "Sources/Methods/AJUI_Btn_removePropException.4dm"
+		},
+		{
+			"id": 2147483625,
+			"path": "Sources/Methods/AJUI_Btn_GetSetCornerRadius.4dm"
+		},
+		{
+			"id": 2147483624,
+			"path": "Sources/Methods/AJUI_Btn_mergeObject.4dm"
+		},
+		{
+			"id": 2147483623,
+			"path": "Sources/Methods/AJUI_Btn_GetSetActiveSecColor.4dm"
+		},
+		{
+			"id": 2147483622,
+			"path": "Sources/Methods/AJUI_Btn_GetSetClockwiseFAB.4dm"
+		},
+		{
+			"id": 2147483621,
+			"path": "Sources/Methods/AJUI_Btn_GetSetPictSizeAlloc.4dm"
+		},
+		{
+			"id": 2147483620,
+			"path": "Sources/Methods/AJUI_Btn_animSetVisible.4dm"
+		},
+		{
+			"id": 2147483619,
+			"path": "Sources/Methods/AJUI_Btn_GetSetFontStyle.4dm"
+		},
+		{
+			"id": 2147483618,
+			"path": "Sources/Methods/AJUI_Btn_clipTextToFit.4dm"
+		},
+		{
+			"id": 2147483617,
+			"path": "Sources/Methods/AJUI_Btn_GetSetPicturePosition.4dm"
+		},
+		{
+			"id": 2147483616,
+			"path": "Sources/Methods/AJUI_Btn_GetSetResizeBox.4dm"
+		},
+		{
+			"id": 2147483615,
+			"path": "Sources/Methods/AJUI_Btn_animSetCoordinates.4dm"
+		},
+		{
+			"id": 2147483614,
+			"path": "Sources/Methods/AJUI_Btn_FABAnimation.4dm"
+		},
+		{
+			"id": 2147483613,
+			"path": "Sources/Methods/AJUI_Btn_GetSetLabel.4dm"
+		},
+		{
+			"id": 2147483612,
+			"path": "Sources/Methods/AJUI_Btn_enable.4dm"
+		},
+		{
+			"id": 2147483611,
+			"path": "Sources/Methods/AJUI_Btn_LoadTemplates.4dm"
+		},
+		{
+			"id": 2147483610,
+			"path": "Sources/Methods/AJUI_Btn_checkValidCallback.4dm"
+		},
+		{
+			"id": 2147483609,
+			"path": "Sources/Methods/AJUI_Btn_removePropExceptions.4dm"
+		},
+		{
+			"id": 2147483608,
+			"path": "Sources/Methods/AJUI_Btn_GetSetMainPositionFAB.4dm"
+		},
+		{
+			"id": 2147483607,
+			"path": "Sources/Methods/AJUI_Btn_GetSetBorderSize.4dm"
+		},
+		{
+			"id": 2147483606,
+			"path": "Sources/Methods/AJUI_Btn_resetState.4dm"
+		},
+		{
+			"id": 2147483605,
+			"path": "Sources/Methods/AJUI_Btn_resetAllStates.4dm"
+		},
+		{
+			"id": 2147483604,
+			"path": "Sources/Methods/AJUI_Btn_GetSetPictureRatio.4dm"
+		},
+		{
+			"id": 2147483603,
+			"path": "Sources/Methods/AJUI_Btn_show.4dm"
+		},
+		{
+			"id": 2147483602,
+			"path": "Sources/Methods/AJUI_Btn_GetSetMarginHorizontal.4dm"
+		},
+		{
+			"id": 2147483601,
+			"path": "Sources/Methods/AJUI_Btn_initAttributes.4dm"
+		},
+		{
+			"id": 2147483600,
+			"path": "Sources/Methods/AJUI_Btn_GetSetPictureOpacity.4dm"
+		},
+		{
+			"id": 2147483599,
+			"path": "Sources/Methods/AJUI_Btn_GetSetCompTextAlign.4dm"
+		},
+		{
+			"id": 2147483598,
+			"path": "Sources/Methods/zz_test.4dm"
+		},
+		{
+			"id": 2147483597,
+			"path": "Sources/Methods/AJUI_Btn_GetSetComposition.4dm"
+		},
+		{
+			"id": 2147483596,
+			"path": "Sources/Methods/Utl_fontStyle2Constant.4dm"
+		},
+		{
+			"id": 2147483595,
+			"path": "Sources/Methods/AJUI_Btn_draw.4dm"
+		},
+		{
+			"id": 2147483594,
+			"path": "Sources/Methods/AJUI_Btn_templateExport.4dm"
+		},
+		{
+			"id": 2147483593,
+			"path": "Sources/Methods/AJUI_Btn_GetSetFontName.4dm"
+		},
+		{
+			"id": 2147483592,
+			"path": "Sources/Methods/AJUI_Btn_templateImport.4dm"
+		},
+		{
+			"id": 2147483591,
+			"path": "Sources/Methods/AJUI_Btn_drawSVG.4dm"
+		},
+		{
+			"id": 2147483590,
+			"path": "Sources/Methods/AJUI_Btn_info.4dm"
+		},
+		{
+			"id": 2147483589,
+			"path": "Sources/Methods/AJUI_Btn_GetSetRadiusFab.4dm"
+		},
+		{
+			"id": 2147483588,
+			"path": "Sources/Methods/AJUI_Btn_GetSetStartAngleFab.4dm"
+		},
+		{
+			"id": 2147483587,
+			"path": "Sources/Methods/AJUI_Btn_GetSetBoxWidth.4dm"
+		},
+		{
+			"id": 2147483586,
+			"path": "Sources/Methods/AJUI_Btn_GetSetPictureHeight.4dm"
+		},
+		{
+			"id": 2147483585,
+			"path": "Sources/Methods/AJUI_Btn_removeFAB.4dm"
+		},
+		{
+			"id": 2147483584,
+			"path": "Sources/Methods/AJUI_Btn_GetSetCompositePadding.4dm"
+		},
+		{
+			"id": 2147483583,
+			"path": "Sources/Methods/AJUI_Btn_GetSetOnClickCB.4dm"
+		},
+		{
+			"id": 2147483582,
+			"path": "Sources/Methods/AJUI_Btn_GetSetAngleToTravelFAB.4dm"
+		},
+		{
+			"id": 2147483581,
+			"path": "Sources/Methods/AJUI_Btn_GetSetBGPrimaColor.4dm"
+		},
+		{
+			"id": 2147483580,
+			"path": "Sources/Methods/AJUI_Btn_GetSetBoxHeight.4dm"
+		},
+		{
+			"id": 2147483579,
+			"path": "Sources/Methods/AJUI_Btn_GetSetType.4dm"
+		},
+		{
+			"id": 2147483578,
+			"path": "Sources/Methods/AJUI_Btn_GetSetReplacingColor.4dm"
+		},
+		{
+			"id": 2147483577,
+			"path": "Sources/Methods/AJUI_Btn_GetSetCompositeLinked.4dm"
+		},
+		{
+			"id": 2147483576,
+			"path": "Sources/Methods/AJUI_Btn_PropertyCol.4dm"
+		},
+		{
+			"id": 2147483575,
+			"path": "Sources/Methods/New AJUI_Button.4dm"
+		},
+		{
+			"id": 2147483574,
+			"path": "Sources/Methods/AJUI_Btn_initFormulas.4dm"
+		},
+		{
+			"id": 2147483573,
+			"path": "Sources/DatabaseMethods/onStartup.4dm"
+		},
+		{
+			"id": 2147483572,
+			"path": "Sources/DatabaseMethods/onExit.4dm"
+		}
+	],
+	"arch64": true
+}

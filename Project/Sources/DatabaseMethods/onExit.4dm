@@ -1,0 +1,1 @@
+ON EVENT CALL:C190("")  // Deinstalls the event-handling method
