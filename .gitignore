@@ -29,6 +29,7 @@ data.match
 *.4DIndy
 *symbols.txt
 *.journal
+*.match
 
 # dont need the 4d info component folder_reports
 Folder_Reports
