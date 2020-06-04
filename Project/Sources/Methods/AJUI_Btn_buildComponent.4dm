@@ -1,4 +1,4 @@
-//%attributes = {}
+//%attributes = {"invisible":true}
   // AJUI_Btn_buildComponent ( ) 
   //
   //
