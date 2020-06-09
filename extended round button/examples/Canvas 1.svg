@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="33 59 977 618" width="977" height="618">
+  <defs>
+    <font-face font-family="Helvetica Neue" font-size="17" panose-1="2 0 8 3 0 0 0 9 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="975.0061" descent="-216.99524" font-weight="700">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue-Bold"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Helvetica Neue" font-size="13" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Helvetica Neue" font-size="18" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.16 
+    <dc:date>2020-06-09 07:36:16 +0000</dc:date>
+  </metadata>
+  <g id="Canvas_1" stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
+    <title>Canvas 1</title>
+    <g id="Canvas_1: Layer 1">
+      <title>Layer 1</title>
+      <g id="Graphic_16">
+        <rect x="34" y="59.5" width="975.5" height="616.5" fill="#ccc"/>
+        <rect x="34" y="59.5" width="975.5" height="616.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Graphic_7">
+        <path d="M 94 92 L 97.5 92 C 120.69596 92 139.5 110.80404 139.5 134 L 139.5 134 C 139.5 157.19596 120.69596 176 97.5 176 L 94 176 C 70.80404 176 52 157.19596 52 134 L 52 134 C 52 110.80404 70.80404 92 94 92 Z" fill="white"/>
+        <path d="M 94 92 L 97.5 92 C 120.69596 92 139.5 110.80404 139.5 134 L 139.5 134 C 139.5 157.19596 120.69596 176 97.5 176 L 94 176 C 70.80404 176 52 157.19596 52 134 L 52 134 C 52 110.80404 70.80404 92 94 92 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
+      </g>
+      <g id="Graphic_10">
+        <path d="M 737.5 213.5 L 948.5 213.5 C 971.696 213.5 990.5 232.30404 990.5 255.5 L 990.5 255.5 C 990.5 278.69596 971.696 297.5 948.5 297.5 L 737.5 297.5 C 714.304 297.5 695.5 278.69596 695.5 255.5 L 695.5 255.5 C 695.5 232.30404 714.304 213.5 737.5 213.5 Z" fill="white"/>
+        <path d="M 737.5 213.5 L 948.5 213.5 C 971.696 213.5 990.5 232.30404 990.5 255.5 L 990.5 255.5 C 990.5 278.69596 971.696 297.5 948.5 297.5 L 737.5 297.5 C 714.304 297.5 695.5 278.69596 695.5 255.5 L 695.5 255.5 C 695.5 232.30404 714.304 213.5 737.5 213.5 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
+      </g>
+      <g id="Graphic_13">
+        <text transform="translate(737 234.00688)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="17" font-weight="700" fill="black" x="0" y="17">This is an extended</tspan>
+          <tspan font-family="Helvetica Neue" font-size="17" font-weight="700" fill="black" x="0" y="38.49312">button</tspan>
+        </text>
+      </g>
+      <g id="Graphic_15">
+        <text transform="translate(553 247.818)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x="1.525" y="12">left extended from </tspan>
+          <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x="41.5" y="27.364">right</tspan>
+        </text>
+      </g>
+      <g id="Graphic_18">
+        <path d="M 945 361 L 948.5 361 C 971.696 361 990.5 379.80404 990.5 403 L 990.5 403 C 990.5 426.19596 971.696 445 948.5 445 L 945 445 C 921.804 445 903 426.19596 903 403 L 903 403 C 903 379.80404 921.804 361 945 361 Z" fill="white"/>
+        <path d="M 945 361 L 948.5 361 C 971.696 361 990.5 379.80404 990.5 403 L 990.5 403 C 990.5 426.19596 971.696 445 948.5 445 L 945 445 C 921.804 445 903 426.19596 903 403 L 903 403 C 903 379.80404 921.804 361 945 361 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
+      </g>
+      <g id="Graphic_17">
+        <rect x="926.7015" y="383.75344" width="40.097" height="38.49312" id="path"/>
+        <clipPath id="clip_path">
+          <use xl:href="#path"/>
+        </clipPath>
+        <g clip-path="url(#clip_path)">
+          <image xl:href="image2.pdf" width="25" height="24" transform="translate(926.7015 383.75344) scale(1.60388)"/>
+        </g>
+      </g>
+      <g id="Graphic_20">
+        <path d="M 945.25 102.9515 L 948.75 102.9515 C 971.946 102.9515 990.75 121.75554 990.75 144.9515 L 990.75 144.9515 C 990.75 168.14746 971.946 186.9515 948.75 186.9515 L 945.25 186.9515 C 922.054 186.9515 903.25 168.14746 903.25 144.9515 L 903.25 144.9515 C 903.25 121.75554 922.054 102.9515 945.25 102.9515 Z" fill="white"/>
+        <path d="M 945.25 102.9515 L 948.75 102.9515 C 971.946 102.9515 990.75 121.75554 990.75 144.9515 L 990.75 144.9515 C 990.75 168.14746 971.946 186.9515 948.75 186.9515 L 945.25 186.9515 C 922.054 186.9515 903.25 168.14746 903.25 144.9515 L 903.25 144.9515 C 903.25 121.75554 922.054 102.9515 945.25 102.9515 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
+      </g>
+      <g id="Graphic_22">
+        <path d="M 737.5 468.5 L 948.5 468.5 C 971.696 468.5 990.5 487.30404 990.5 510.5 L 990.5 510.5 C 990.5 533.69596 971.696 552.5 948.5 552.5 L 737.5 552.5 C 714.304 552.5 695.5 533.69596 695.5 510.5 L 695.5 510.5 C 695.5 487.30404 714.304 468.5 737.5 468.5 Z" fill="white"/>
+        <path d="M 737.5 468.5 L 948.5 468.5 C 971.696 468.5 990.5 487.30404 990.5 510.5 L 990.5 510.5 C 990.5 533.69596 971.696 552.5 948.5 552.5 L 737.5 552.5 C 714.304 552.5 695.5 533.69596 695.5 510.5 L 695.5 510.5 C 695.5 487.30404 714.304 468.5 737.5 468.5 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
+      </g>
+      <g id="Graphic_23">
+        <text transform="translate(737 489.0069)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="17" font-weight="700" fill="black" x="0" y="17">This is an extended</tspan>
+          <tspan font-family="Helvetica Neue" font-size="17" font-weight="700" fill="black" x="0" y="38.49312">button</tspan>
+        </text>
+      </g>
+      <g id="Graphic_24">
+        <rect x="926.7015" y="491.25344" width="40.097" height="38.49312" id="path_2"/>
+        <clipPath id="clip_path_2">
+          <use xl:href="#path_2"/>
+        </clipPath>
+        <g clip-path="url(#clip_path_2)">
+          <image xl:href="image2.pdf" width="25" height="24" transform="translate(926.7015 491.25344) scale(1.60388)"/>
+        </g>
+      </g>
+      <g id="Graphic_25">
+        <rect x="926.9515" y="124.903" width="40.097" height="40.097" id="path_3"/>
+        <clipPath id="clip_path_3">
+          <use xl:href="#path_3"/>
+        </clipPath>
+        <g clip-path="url(#clip_path_3)">
+          <image xl:href="image3.pdf" width="16" height="16" transform="translate(926.9515 124.903) scale(2.5060624)"/>
+        </g>
+      </g>
+      <g id="Graphic_26">
+        <rect x="926.9515" y="235.4515" width="40.097" height="40.097" id="path_4"/>
+        <clipPath id="clip_path_4">
+          <use xl:href="#path_4"/>
+        </clipPath>
+        <g clip-path="url(#clip_path_4)">
+          <image xl:href="image3.pdf" width="16" height="16" transform="translate(926.9515 235.4515) scale(2.5060624)"/>
+        </g>
+      </g>
+      <g id="Graphic_27">
+        <rect x="75.7015" y="113.9515" width="40.097" height="40.097" id="path_5"/>
+        <clipPath id="clip_path_5">
+          <use xl:href="#path_5"/>
+        </clipPath>
+        <g clip-path="url(#clip_path_5)">
+          <image xl:href="image3.pdf" width="16" height="16" transform="translate(75.7015 113.9515) scale(2.5060624)"/>
+        </g>
+      </g>
+      <g id="Graphic_28">
+        <path d="M 94 213.5 L 305 213.5 C 328.19596 213.5 347 232.30404 347 255.5 L 347 255.5 C 347 278.69596 328.19596 297.5 305 297.5 L 94 297.5 C 70.80404 297.5 52 278.69596 52 255.5 L 52 255.5 C 52 232.30404 70.80404 213.5 94 213.5 Z" fill="white"/>
+        <path d="M 94 213.5 L 305 213.5 C 328.19596 213.5 347 232.30404 347 255.5 L 347 255.5 C 347 278.69596 328.19596 297.5 305 297.5 L 94 297.5 C 70.80404 297.5 52 278.69596 52 255.5 L 52 255.5 C 52 232.30404 70.80404 213.5 94 213.5 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
+      </g>
+      <g id="Graphic_29">
+        <text transform="translate(139 234.00688)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="17" font-weight="700" fill="black" x="0" y="17">This is an extended</tspan>
+          <tspan font-family="Helvetica Neue" font-size="17" font-weight="700" fill="black" x="0" y="38.49312">button</tspan>
+        </text>
+      </g>
+      <g id="Graphic_30">
+        <text transform="translate(369 247.818)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x="12.484" y="12">right extended </tspan>
+          <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x="30.541" y="27.364">from left</tspan>
+        </text>
+      </g>
+      <g id="Graphic_31">
+        <rect x="69.5" y="235.4515" width="40.097" height="40.097" id="path_6"/>
+        <clipPath id="clip_path_6">
+          <use xl:href="#path_6"/>
+        </clipPath>
+        <g clip-path="url(#clip_path_6)">
+          <image xl:href="image3.pdf" width="16" height="16" transform="translate(69.5 235.4515) scale(2.5060624)"/>
+        </g>
+      </g>
+      <g id="Graphic_32">
+        <text transform="translate(553 501.2651)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x="1.525" y="12">left extended from </tspan>
+          <tspan font-family="Helvetica Neue" font-size="13" font-weight="400" fill="black" x="41.5" y="27.364">right</tspan>
+        </text>
+      </g>
+      <g id="Graphic_33">
+        <text transform="translate(455.02425 118.3205)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="400" fill="black" x="2.471" y="17">round button</tspan>
+        </text>
+      </g>
+      <g id="Line_34">
+        <line x1="450.02425" y1="129.15063" x2="170.04452" y2="129.51825" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_35">
+        <line x1="569.02425" y1="131.88985" x2="875.3767" y2="146.39575" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>
