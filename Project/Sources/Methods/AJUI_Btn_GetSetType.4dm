@@ -1,7 +1,6 @@
 //%attributes = {"invisible":true}
   // AJUI_Btn_GetSetType ( $state { ; $type } ) -> return
   //
-  // $state : (text) button state
   // $type : (text) (optional) type
   // return : (text) (return) current type
   //

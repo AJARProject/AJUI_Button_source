@@ -1,5 +1,5 @@
 //%attributes = {"invisible":true}
-  // AJUI_Btn_resetAllStates ( param1 { ; param2 } ) -> return
+  // AJUI_Btn_resetAllStates (  ) 
   //
   //
   // Clean/Reset all states exceptions

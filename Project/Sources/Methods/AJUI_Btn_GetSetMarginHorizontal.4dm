@@ -3,7 +3,7 @@
   //
   // $state : (text) button state
   // $margin : (longint) (optional) margin horizontal
-  // return : (longint) (return) current font size
+  // return : (longint) (return) current margin horizontal
   //
   // Getter and setter for the text margin horizontal
 

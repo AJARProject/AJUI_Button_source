@@ -22,7 +22,7 @@ C_OBJECT:C1216($1;$instance_obj)
 $instance_obj:=$1
 
   // ----------------------
-  // Function
+  // OPERATION
   // ----------------------
 $instance_obj.Draw:=Formula:C1597(AJUI_Btn_draw )
 $instance_obj.ResetState:=Formula:C1597(AJUI_Btn_resetState )

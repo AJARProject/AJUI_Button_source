@@ -1,9 +1,8 @@
 //%attributes = {"invisible":true}
-  // AJUI_Btn_removePropException ( $property  ; $constant ; $CategoryName ) 
+  // AJUI_Btn_removePropException ( $formula  ; $state  ) 
   //
-  // $property : (text) property name
-  // $CategoryName : (text) name of the category associated to the property
-  // $constant : (text) state to target
+  // $formula : (text) formula name
+  // $state : (text) state to target
   //
   // This method remove an exception
 

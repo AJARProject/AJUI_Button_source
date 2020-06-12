@@ -1,8 +1,7 @@
 //%attributes = {"invisible":true}
   // AJUI_Btn_removePropExceptions ( $property ; $CategoryName ) 
   //
-  // $property : (text) property name
-  // $CategoryName : (text) name of the category associated to the property
+  // $formula : (text) formula name
   //
   // This method remove all the exceptions for a property
   // short_description

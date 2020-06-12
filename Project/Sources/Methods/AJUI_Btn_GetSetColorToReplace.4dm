@@ -1,6 +1,7 @@
 //%attributes = {"invisible":true}
   // AJUI_Btn_GetSetColorToReplace ( { $color } ) -> return
   //
+  // $state : (text) button state
   // $color : (text) (optional) color
   // return : (text) (return) current old color
   //

@@ -2,8 +2,8 @@
   // AJUI_Btn_GetSetPictureScale ( $state { ; $percent } ) -> return
   //
   // $state : (text) state
-  // $percent : (real) (optional) scale in percent
-  // return : (text) (return) current scale
+  // $percent : (longint) (optional) scale in percent
+  // return : (longint) (return) current scale
   //
   // Getter and setter for the size of the picture, scale with the size of the button
 

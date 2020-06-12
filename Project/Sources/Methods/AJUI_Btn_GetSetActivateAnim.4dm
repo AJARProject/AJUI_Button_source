@@ -1,7 +1,7 @@
 //%attributes = {"invisible":true}
-  // AJUI_Btn_GetSetActivateAnim ( $animation ) -> return
+  // AJUI_Btn_GetSetActivateAnim ( {$animation} ) -> return
   //
-  // $animation : (boolean) activate/inactivate
+  // $animation : (boolean) (optional) activate/inactivate
   // $animation : (boolean) (return) animation executed ?
   //
   // Getter and setter to activate/inactivate the FAB animation

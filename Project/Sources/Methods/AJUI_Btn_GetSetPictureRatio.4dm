@@ -3,7 +3,7 @@
   //
   // $state : (text) state
   // $ratio : (real) (optional) ratio to resize picture
-  // return : (text) (return) current ratio
+  // return : (real) (return) current ratio
   //
   // Getter and setter for the size of the picture with a ratio
 
