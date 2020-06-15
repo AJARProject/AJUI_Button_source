@@ -10,7 +10,7 @@
 
 ## Return value
 
-(object) instance of an AJUI Tip 
+(object) instance of an AJUI Button 
 
 ## Description
 
