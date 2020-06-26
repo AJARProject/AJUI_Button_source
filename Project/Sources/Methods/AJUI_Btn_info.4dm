@@ -20,6 +20,6 @@ End if
 
 C_TEXT:C284($0)
 
-$version_t:="1.3.2-Build170"  // Fri, 12 Jun 2020 14:44:31 GMT
+$version_t:="1.3.2-Build171"  // Fri, 26 Jun 2020 08:19:21 GMT
 
 $0:="AJUI Button(v18): "+$version_t
