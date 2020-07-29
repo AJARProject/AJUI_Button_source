@@ -152,19 +152,27 @@ End if
 If ($currentFormObj=$name)
 	Case of 
 		: ($event=On Mouse Up:K2:58)
-			If ($instance_obj.btn.fab.mainBtn)
-				AJUI_Btn_callbackFAB ($instance_obj)
-			Else 
-				$callback:=$instance_obj.btn.global.onClickCB
-				If ($callback#"") & ($instance_obj.btn.global.inCallback=False:C215)
-					If (AJUI_Btn_checkValidCallback ($callback))
-						$instance_obj.btn.global.inCallback:=True:C214
-						If ($instance_obj.btn.global.clickCBParams=Null:C1517)
-							EXECUTE METHOD:C1007($callback)
-						Else 
-							EXECUTE METHOD:C1007($callback;*;$instance_obj.btn.global.clickCBParams)
+			GET MOUSE:C468($mouseX;$mouseY;$state)
+			CONVERT COORDINATES:C1365($mouseX;$mouseY;XY Current window:K27:6;XY Current form:K27:5)
+			
+			OBJECT GET COORDINATES:C663(*;$name;$left;$top;$right;$bottom)
+			
+			If ($mouseX>=$left) & ($mouseX<=$right) & ($mouseY>=$top) & ($mouseY<=$bottom)
+				
+				If ($instance_obj.btn.fab.mainBtn)
+					AJUI_Btn_callbackFAB ($instance_obj)
+				Else 
+					$callback:=$instance_obj.btn.global.onClickCB
+					If ($callback#"") & ($instance_obj.btn.global.inCallback=False:C215)
+						If (AJUI_Btn_checkValidCallback ($callback))
+							$instance_obj.btn.global.inCallback:=True:C214
+							If ($instance_obj.btn.global.clickCBParams=Null:C1517)
+								EXECUTE METHOD:C1007($callback)
+							Else 
+								EXECUTE METHOD:C1007($callback;*;$instance_obj.btn.global.clickCBParams)
+							End if 
+							$instance_obj.btn.global.inCallback:=False:C215
 						End if 
-						$instance_obj.btn.global.inCallback:=False:C215
 					End if 
 				End if 
 			End if 
