@@ -24,11 +24,11 @@ Function OnClick
 	  // ----------------------
 	  // Getter and setter for the callback on the click event
 	
-	  // $1 : (text) (optional) button state
-	  // $2 : (longint) (optional) callback
-	  // $0 : (longint) (return) current callback
+	  // $callback : (variant) (optional) callback
+	  // $params : (object) (optional) params
+	  // return : (variant) (return) current callback
 	
-	C_TEXT:C284($0;$1)
+	C_VARIANT:C1683($0;$1)
 	C_OBJECT:C1216($2)
 	
 	Case of 
@@ -46,11 +46,11 @@ Function OnDoubleClick
 	  // ----------------------
 	  // Getter and setter for the callback on the double click event
 	
-	  // $1 : (text) (optional) button state
-	  // $2 : (longint) (optional) callback
-	  // $0 : (longint) (return) current callback
+	  // $callback : (variant) (optional) callback
+	  // $params : (object) (optional) params
+	  // return : (variant) (return) current callback
 	
-	C_TEXT:C284($0;$1)
+	C_VARIANT:C1683($0;$1)
 	C_OBJECT:C1216($2)
 	
 	Case of 

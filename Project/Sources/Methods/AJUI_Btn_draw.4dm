@@ -17,7 +17,8 @@ If (False:C215)
 End if 
 
 C_OBJECT:C1216($instance_obj;$toDraw_obj)
-C_TEXT:C284($name;$callback)
+C_TEXT:C284($name)
+C_VARIANT:C1683($callback)
 C_PICTURE:C286($pict)
 
 $instance_obj:=This:C1470
@@ -163,17 +164,30 @@ If ($currentFormObj=$name)
 					AJUI_Btn_callbackFAB ($instance_obj)
 				Else 
 					$callback:=$instance_obj.btn.global.onClickCB
-					If ($callback#"") & ($instance_obj.btn.global.inCallback=False:C215)
-						If (AJUI_Btn_checkValidCallback ($callback))
-							$instance_obj.btn.global.inCallback:=True:C214
-							If ($instance_obj.btn.global.clickCBParams=Null:C1517)
-								EXECUTE METHOD:C1007($callback)
-							Else 
-								EXECUTE METHOD:C1007($callback;*;$instance_obj.btn.global.clickCBParams)
+					Case of 
+						: ($callback=Is text:K8:3)  //callback
+							If ($callback#"") & ($instance_obj.btn.global.inCallback=False:C215)
+								If (AJUI_Btn_checkValidCallback ($callback))
+									$instance_obj.btn.global.inCallback:=True:C214
+									If ($instance_obj.btn.global.clickCBParams=Null:C1517)
+										EXECUTE METHOD:C1007($callback)
+									Else 
+										EXECUTE METHOD:C1007($callback;*;$instance_obj.btn.global.clickCBParams)
+									End if 
+									$instance_obj.btn.global.inCallback:=False:C215
+								End if 
 							End if 
-							$instance_obj.btn.global.inCallback:=False:C215
-						End if 
-					End if 
+						: ($callback=Is object:K8:27)  //formula
+							If ($instance_obj.btn.global.inCallback=False:C215)
+								$instance_obj.btn.global.inCallback:=True:C214
+								If ($instance_obj.btn.global.clickCBParams=Null:C1517)
+									$callback.call()
+								Else 
+									$callback.call($instance_obj.btn.global.clickCBParams)
+								End if 
+								$instance_obj.btn.global.inCallback:=False:C215
+							End if 
+					End case 
 				End if 
 			End if 
 			
@@ -182,17 +196,30 @@ If ($currentFormObj=$name)
 				AJUI_Btn_callbackFAB ($instance_obj)
 			Else 
 				$callback:=$instance_obj.btn.global.onDoubleClickCB
-				If ($callback#"") & ($instance_obj.btn.global.inCallback=False:C215)
-					If (AJUI_Btn_checkValidCallback ($callback))
-						$instance_obj.btn.global.inCallback:=True:C214
-						If ($instance_obj.btn.global.doubleClickCBParams=Null:C1517)
-							EXECUTE METHOD:C1007($callback)
-						Else 
-							EXECUTE METHOD:C1007($callback;*;$instance_obj.btn.global.doubleClickCBParams)
+				Case of 
+					: ($callback=Is text:K8:3)  //callback
+						If ($callback#"") & ($instance_obj.btn.global.inCallback=False:C215)
+							If (AJUI_Btn_checkValidCallback ($callback))
+								$instance_obj.btn.global.inCallback:=True:C214
+								If ($instance_obj.btn.global.doubleClickCBParams=Null:C1517)
+									EXECUTE METHOD:C1007($callback)
+								Else 
+									EXECUTE METHOD:C1007($callback;*;$instance_obj.btn.global.doubleClickCBParams)
+								End if 
+								$instance_obj.btn.global.inCallback:=False:C215
+							End if 
 						End if 
-						$instance_obj.btn.global.inCallback:=False:C215
-					End if 
-				End if 
+					: ($callback=Is object:K8:27)  //formula
+						If ($instance_obj.btn.global.inCallback=False:C215)
+							$instance_obj.btn.global.inCallback:=True:C214
+							If ($instance_obj.btn.global.doubleClickCBParams=Null:C1517)
+								$callback.call()
+							Else 
+								$callback.call($instance_obj.btn.global.doubleClickCBParams)
+							End if 
+							$instance_obj.btn.global.inCallback:=False:C215
+						End if 
+				End case 
 			End if 
 	End case 
 End if 

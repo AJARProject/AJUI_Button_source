@@ -1,9 +1,9 @@
 //%attributes = {"invisible":true}
-  // AJUI_Btn_GetSetOnClickCB ( { $callback }  ) -> return
+  // AJUI_Btn_GetSetOnClickCB ( { $callback ; { $params  } }  ) -> return
   //
-  // $state : (text) button state
-  // $callback : (longint) (optional) callback
-  // return : (longint) (return) current callback
+  // $callback : (variant) (optional) callback
+  // $params : (object) (optional) params
+  // return : (variant) (return) current callback
   //
   // Getter and setter for the callback on the click event
 
@@ -20,7 +20,7 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_TEXT:C284($0;$1;$callback)
+C_VARIANT:C1683($0;$1;$callback)
 C_OBJECT:C1216($2)
 
 If (Count parameters:C259=0)
@@ -29,15 +29,17 @@ Else
 	$callback:=$1
 	This:C1470.btn.global.onClickCB:=$callback
 	
-	If ($callback#"")
-		ARRAY TEXT:C222($_methods;0)
-		METHOD GET NAMES:C1166($_methods;$callback;*)
-		If (Size of array:C274($_methods)=0)
-			  //ask to create the callback
-			CONFIRM:C162("Callback method for OnClick not found, Do you want to create it ?";"Yes";"No")
-			If (OK=1)
-				$code:="C_OBJECT($1)"
-				METHOD SET CODE:C1194($callback;$code;*)
+	If ($callback=Is text:K8:3)
+		If ($callback#"")
+			ARRAY TEXT:C222($_methods;0)
+			METHOD GET NAMES:C1166($_methods;$callback;*)
+			If (Size of array:C274($_methods)=0)
+				  //ask to create the callback
+				CONFIRM:C162("Callback method for OnClick not found, Do you want to create it ?";"Yes";"No")
+				If (OK=1)
+					$code:="C_OBJECT($1)"
+					METHOD SET CODE:C1194($callback;$code;*)
+				End if 
 			End if 
 		End if 
 	End if 
