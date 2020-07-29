@@ -117,6 +117,8 @@ If ($btn_composition#"text")
 				$svg_txt:=Replace string:C233($svg_txt;"fill:"+$colorToReplace;"fill:"+$replacingColor)
 				$svg_txt:=Replace string:C233($svg_txt;"fill: "+$colorToReplace;"fill: "+$replacingColor)
 				$svg_txt:=Replace string:C233($svg_txt;"stroke=\""+$colorToReplace;"stroke=\""+$replacingColor)
+				$svg_txt:=Replace string:C233($svg_txt;"stroke:"+$colorToReplace;"stroke:"+$replacingColor)
+				$svg_txt:=Replace string:C233($svg_txt;"stroke: "+$colorToReplace;"stroke: "+$replacingColor)
 			End if 
 			
 			$dom_ref:=DOM Parse XML variable:C720($svg_txt)
