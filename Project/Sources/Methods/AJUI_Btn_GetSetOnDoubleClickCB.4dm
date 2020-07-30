@@ -29,7 +29,7 @@ Else
 	$callback:=$1
 	This:C1470.btn.global.onDoubleClickCB:=$callback
 	
-	If ($callback=Is text:K8:3)
+	If (Value type:C1509($callback)=Is text:K8:3)
 		If ($callback#"")
 			ARRAY TEXT:C222($_methods;0)
 			METHOD GET NAMES:C1166($_methods;$callback;*)

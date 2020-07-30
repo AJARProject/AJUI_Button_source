@@ -165,7 +165,7 @@ If ($currentFormObj=$name)
 				Else 
 					$callback:=$instance_obj.btn.global.onClickCB
 					Case of 
-						: ($callback=Is text:K8:3)  //callback
+						: (Value type:C1509($callback)=Is text:K8:3)  //callback
 							If ($callback#"") & ($instance_obj.btn.global.inCallback=False:C215)
 								If (AJUI_Btn_checkValidCallback ($callback))
 									$instance_obj.btn.global.inCallback:=True:C214
@@ -177,13 +177,13 @@ If ($currentFormObj=$name)
 									$instance_obj.btn.global.inCallback:=False:C215
 								End if 
 							End if 
-						: ($callback=Is object:K8:27)  //formula
+						: (Value type:C1509($callback)=Is object:K8:27)  //formula
 							If ($instance_obj.btn.global.inCallback=False:C215)
 								$instance_obj.btn.global.inCallback:=True:C214
 								If ($instance_obj.btn.global.clickCBParams=Null:C1517)
 									$callback.call()
 								Else 
-									$callback.call($instance_obj.btn.global.clickCBParams)
+									$callback.call(Null:C1517;$instance_obj.btn.global.clickCBParams)
 								End if 
 								$instance_obj.btn.global.inCallback:=False:C215
 							End if 
@@ -197,7 +197,7 @@ If ($currentFormObj=$name)
 			Else 
 				$callback:=$instance_obj.btn.global.onDoubleClickCB
 				Case of 
-					: ($callback=Is text:K8:3)  //callback
+					: (Value type:C1509($callback)=Is text:K8:3)  //callback
 						If ($callback#"") & ($instance_obj.btn.global.inCallback=False:C215)
 							If (AJUI_Btn_checkValidCallback ($callback))
 								$instance_obj.btn.global.inCallback:=True:C214
@@ -209,13 +209,13 @@ If ($currentFormObj=$name)
 								$instance_obj.btn.global.inCallback:=False:C215
 							End if 
 						End if 
-					: ($callback=Is object:K8:27)  //formula
+					: (Value type:C1509($callback)=Is object:K8:27)  //formula
 						If ($instance_obj.btn.global.inCallback=False:C215)
 							$instance_obj.btn.global.inCallback:=True:C214
 							If ($instance_obj.btn.global.doubleClickCBParams=Null:C1517)
 								$callback.call()
 							Else 
-								$callback.call($instance_obj.btn.global.doubleClickCBParams)
+								$callback.call(Null:C1517;$instance_obj.btn.global.doubleClickCBParams)
 							End if 
 							$instance_obj.btn.global.inCallback:=False:C215
 						End if 
