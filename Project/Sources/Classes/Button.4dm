@@ -18,7 +18,7 @@ Class constructor
 	
 	AJUI_Btn_initAttributes(This:C1470)
 	
-Function OnClick
+Function onClick
 	// ----------------------
 	// EventCallback
 	// ----------------------
@@ -40,7 +40,7 @@ Function OnClick
 			AJUI_Btn_GetSetOnClickCB($1;$2)
 	End case 
 	
-Function OnDoubleClick
+Function onDoubleClick
 	// ----------------------
 	// EventCallback
 	// ----------------------
@@ -62,7 +62,7 @@ Function OnDoubleClick
 			AJUI_Btn_GetSetOnDoubleClickCB($1;$2)
 	End case 
 	
-Function Composition
+Function composition
 	// ----------------------
 	// Button Definition
 	// ----------------------
@@ -79,7 +79,7 @@ Function Composition
 		AJUI_Btn_GetSetComposition($1)
 	End if 
 	
-Function Name
+Function name
 	// ----------------------
 	// Button Definition
 	// ----------------------
@@ -96,7 +96,7 @@ Function Name
 		AJUI_Btn_GetSetName($1)
 	End if 
 	
-Function Type
+Function type
 	// ----------------------
 	// Button Definition
 	// ----------------------
@@ -113,7 +113,7 @@ Function Type
 		AJUI_Btn_GetSetType($1)
 	End if 
 	
-Function BGColor
+Function backgroundColor
 	// ----------------------
 	// Button Box
 	// ----------------------
@@ -131,7 +131,18 @@ Function BGColor
 		$0:=AJUI_Btn_GetSetBGPrimaColor($1)
 	End if 
 	
-Function CornerRadius
+Function bgColor
+	// ALIAS for backgroundColor
+	
+	C_TEXT:C284($0;$1;$2)
+	
+	If (Count parameters:C259=2)
+		AJUI_Btn_GetSetBGPrimaColor($1;$2)
+	Else 
+		$0:=AJUI_Btn_GetSetBGPrimaColor($1)
+	End if 
+	
+Function cornerRadius
 	// ----------------------
 	// Button Box
 	// ----------------------
@@ -150,7 +161,7 @@ Function CornerRadius
 		$0:=AJUI_Btn_GetSetCornerRadius($1)
 	End if 
 	
-Function Height
+Function height
 	// ----------------------
 	// Button Box
 	// ----------------------
@@ -169,7 +180,7 @@ Function Height
 		$0:=AJUI_Btn_GetSetBoxHeight($1)
 	End if 
 	
-Function Resizable
+Function resizable
 	// ----------------------
 	// Button Box
 	// ----------------------
@@ -186,7 +197,7 @@ Function Resizable
 		AJUI_Btn_GetSetResizeBox($1)
 	End if 
 	
-Function Width
+Function width
 	// ----------------------
 	// Button Box
 	// ----------------------
@@ -224,7 +235,7 @@ Function padding
 		$0:=AJUI_Btn_GetSetBoxPadding($1)
 	End if 
 	
-Function BorderColor
+Function borderColor
 	// ----------------------
 	// Border
 	// ----------------------
@@ -242,7 +253,7 @@ Function BorderColor
 		$0:=AJUI_Btn_GetSetBorderColor($1)
 	End if 
 	
-Function BorderSize
+Function borderSize
 	// ----------------------
 	// Border
 	// ----------------------
@@ -261,7 +272,7 @@ Function BorderSize
 		$0:=AJUI_Btn_GetSetBorderSize($1)
 	End if 
 	
-Function FontColor
+Function fontColor
 	// ----------------------
 	// Text
 	// ----------------------
@@ -279,7 +290,7 @@ Function FontColor
 		$0:=AJUI_Btn_GetSetFontColor($1)
 	End if 
 	
-Function FontName
+Function fontName
 	// ----------------------
 	// Text
 	// ----------------------
@@ -297,7 +308,7 @@ Function FontName
 		$0:=AJUI_Btn_GetSetFontName($1)
 	End if 
 	
-Function FontSize
+Function fontSize
 	// ----------------------
 	// Text
 	// ----------------------
@@ -316,7 +327,7 @@ Function FontSize
 		$0:=AJUI_Btn_GetSetFontSize($1)
 	End if 
 	
-Function FontStyle
+Function fontStyle
 	// ----------------------
 	// Text
 	// ----------------------
@@ -351,7 +362,7 @@ Function textAlign
 		$0:=AJUI_Btn_GetSetTextAlign($1)
 	End if 
 	
-Function Label
+Function label
 	// ----------------------
 	// Text
 	// ----------------------
@@ -369,7 +380,7 @@ Function Label
 		$0:=AJUI_Btn_GetSetLabel($1)
 	End if 
 	
-Function TextMarginHorizontal
+Function horizontalMargin
 	// ----------------------
 	// Text
 	// ----------------------
@@ -388,7 +399,7 @@ Function TextMarginHorizontal
 		$0:=AJUI_Btn_GetSetMarginHorizontal($1)
 	End if 
 	
-Function ColorToReplace
+Function colorToReplace
 	// ----------------------
 	// Picture
 	// ----------------------
@@ -406,7 +417,7 @@ Function ColorToReplace
 		$0:=AJUI_Btn_GetSetColorToReplace($1)
 	End if 
 	
-Function PictureHeight
+Function pictureHeight
 	// ----------------------
 	// Picture
 	// ----------------------
@@ -425,7 +436,7 @@ Function PictureHeight
 		$0:=AJUI_Btn_GetSetPictureHeight($1)
 	End if 
 	
-Function PicturePath
+Function picturePath
 	// ----------------------
 	// Picture
 	// ----------------------
@@ -443,7 +454,7 @@ Function PicturePath
 		$0:=AJUI_Btn_GetSetPicturePath($1)
 	End if 
 	
-Function PictureOpacity
+Function pictureOpacity
 	// ----------------------
 	// Picture
 	// ----------------------
@@ -462,7 +473,7 @@ Function PictureOpacity
 		$0:=AJUI_Btn_GetSetPictureOpacity($1)
 	End if 
 	
-Function PictureRatio
+Function pictureRatio
 	// ----------------------
 	// Picture
 	// ----------------------
@@ -481,7 +492,7 @@ Function PictureRatio
 		$0:=AJUI_Btn_GetSetPictureRatio($1)
 	End if 
 	
-Function PictureScale
+Function pictureScale
 	// ----------------------
 	// Picture
 	// ----------------------
@@ -500,7 +511,7 @@ Function PictureScale
 		$0:=AJUI_Btn_GetSetPictureScale($1)
 	End if 
 	
-Function PictureWidth
+Function pictureWidth
 	// ----------------------
 	// Picture
 	// ----------------------
@@ -519,7 +530,7 @@ Function PictureWidth
 		$0:=AJUI_Btn_GetSetPictureWidth($1)
 	End if 
 	
-Function ReplacingColor
+Function replacingColor
 	// ----------------------
 	// Picture
 	// ----------------------
@@ -537,7 +548,7 @@ Function ReplacingColor
 		$0:=AJUI_Btn_GetSetReplacingColor($1)
 	End if 
 	
-Function BGSecondaryColor
+Function backgroundSecondaryColor
 	// ----------------------
 	// Composite
 	// ----------------------
@@ -555,7 +566,18 @@ Function BGSecondaryColor
 		$0:=AJUI_Btn_GetSetBGSecondColor($1)
 	End if 
 	
-Function CompActiveSecondColor
+Function bgSecondaryColor
+	// ALIAS for backgroundSecondaryColor
+	
+	C_TEXT:C284($0;$1;$2)
+	
+	If (Count parameters:C259=2)
+		AJUI_Btn_GetSetBGSecondColor($1;$2)
+	Else 
+		$0:=AJUI_Btn_GetSetBGSecondColor($1)
+	End if 
+	
+Function activateSecondaryColor
 	// ----------------------
 	// Composite
 	// ----------------------
@@ -572,7 +594,7 @@ Function CompActiveSecondColor
 		AJUI_Btn_GetSetActiveSecColor($1)
 	End if 
 	
-Function CompLinked
+Function linkTextToPicture
 	// ----------------------
 	// Composite
 	// ----------------------
@@ -589,7 +611,7 @@ Function CompLinked
 		AJUI_Btn_GetSetCompositeLinked($1)
 	End if 
 	
-Function CompPadding
+Function spaceBetween
 	// ----------------------
 	// Composite
 	// ----------------------
@@ -608,7 +630,7 @@ Function CompPadding
 		$0:=AJUI_Btn_GetSetCompositePadding($1)
 	End if 
 	
-Function CompPictSizeAllocation
+Function pictureAllocation
 	// ----------------------
 	// Composite
 	// ----------------------
@@ -627,7 +649,7 @@ Function CompPictSizeAllocation
 		$0:=AJUI_Btn_GetSetPictSizeAlloc($1)
 	End if 
 	
-Function CompPicturePosition
+Function picturePosition
 	// ----------------------
 	// Composite
 	// ----------------------
@@ -645,25 +667,7 @@ Function CompPicturePosition
 		$0:=AJUI_Btn_GetSetPicturePosition($1)
 	End if 
 	
-Function CompTextAlign
-	// ----------------------
-	// Composite
-	// ----------------------
-	// Getter and setter for the text align in a composite button
-	
-	// $1 : (text) button state
-	// $2 : (text) (optional) text align
-	// $0 : (text) (return) current text align
-	
-	C_TEXT:C284($0;$1;$2)
-	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetCompTextAlign($1;$2)
-	Else 
-		$0:=AJUI_Btn_GetSetCompTextAlign($1)
-	End if 
-	
-Function FABAdd
+Function FAB_add
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -681,7 +685,7 @@ Function FABAdd
 		AJUI_Btn_addFab($1)
 	End if 
 	
-Function FABAngleToTravel
+Function FAB_angle
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -698,7 +702,7 @@ Function FABAngleToTravel
 		AJUI_Btn_GetSetAngleToTravelFAB($1)
 	End if 
 	
-Function FABClearCollection
+Function FAB_clearCollection
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -706,7 +710,7 @@ Function FABClearCollection
 	
 	AJUI_Btn_clearFabCollection
 	
-Function FABIsAnimated
+Function FAB_animated
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -723,7 +727,7 @@ Function FABIsAnimated
 		AJUI_Btn_GetSetActivateAnim($1)
 	End if 
 	
-Function FABIsClockwise
+Function FAB_clockwise
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -740,7 +744,7 @@ Function FABIsClockwise
 		AJUI_Btn_GetSetClockwiseFAB($1)
 	End if 
 	
-Function FABIsMainButton
+Function FAB_main
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -757,7 +761,7 @@ Function FABIsMainButton
 		AJUI_Btn_GetSetMainFab($1)
 	End if 
 	
-Function FABMainPosition
+Function FAB_position
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -774,7 +778,7 @@ Function FABMainPosition
 		AJUI_Btn_GetSetMainPositionFAB($1)
 	End if 
 	
-Function FABRadius
+Function FAB_radius
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -791,7 +795,7 @@ Function FABRadius
 		AJUI_Btn_GetSetRadiusFab($1)
 	End if 
 	
-Function FABRemove
+Function FAB_remove
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -803,7 +807,7 @@ Function FABRemove
 	
 	AJUI_Btn_removeFAB($1)
 	
-Function FABStartAngle
+Function FAB_startAngle
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -820,7 +824,7 @@ Function FABStartAngle
 		AJUI_Btn_GetSetStartAngleFab($1)
 	End if 
 	
-Function Draw
+Function draw
 	// ----------------------
 	// FUNCTION
 	// ----------------------
@@ -828,7 +832,7 @@ Function Draw
 	
 	AJUI_Btn_draw
 	
-Function Enable
+Function enable
 	// ----------------------
 	// FUNCTION
 	// ----------------------
@@ -840,7 +844,7 @@ Function Enable
 	
 	AJUI_Btn_enable($1)
 	
-Function Export
+Function export
 	// ----------------------
 	// FUNCTION
 	// ----------------------
@@ -857,7 +861,7 @@ Function Export
 		AJUI_Btn_templateExport($1)
 	End if 
 	
-Function Hide
+Function hide
 	// ----------------------
 	// FUNCTION
 	// ----------------------
@@ -865,7 +869,7 @@ Function Hide
 	
 	AJUI_Btn_hide
 	
-Function RemovePropertyException
+Function removePropertyException
 	// ----------------------
 	// FUNCTION
 	// ----------------------
@@ -878,7 +882,7 @@ Function RemovePropertyException
 	
 	AJUI_Btn_removePropException($1;$2)
 	
-Function RemovePropertyExceptions
+Function removePropertyExceptions
 	// ----------------------
 	// FUNCTION
 	// ----------------------
@@ -890,7 +894,7 @@ Function RemovePropertyExceptions
 	
 	AJUI_Btn_removePropExceptions($1)
 	
-Function ResetAllStates
+Function resetAllStates
 	// ----------------------
 	// FUNCTION
 	// ----------------------
@@ -898,7 +902,7 @@ Function ResetAllStates
 	
 	AJUI_Btn_resetAllStates
 	
-Function ResetState
+Function resetState
 	// ----------------------
 	// FUNCTION
 	// ----------------------
@@ -910,7 +914,7 @@ Function ResetState
 	
 	AJUI_Btn_resetState($1)
 	
-Function Show
+Function show
 	// ----------------------
 	// FUNCTION
 	// ----------------------
