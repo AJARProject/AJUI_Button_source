@@ -1,21 +1,21 @@
 //%attributes = {"invisible":true}
-  // AJUI_Btn_drawSVG ( $toDraw_obj ) -> return
-  //
-  // $toDraw_obj : (object) instance of a button
-  // return : (picture) (return) button picture
-  //
-  // This method draw the SVG based on the properties of an instance and return the picture of the SVG
+// AJUI_Btn_drawSVG ( $toDraw_obj ) -> return
+//
+// $toDraw_obj : (object) instance of a button
+// return : (picture) (return) button picture
+//
+// This method draw the SVG based on the properties of an instance and return the picture of the SVG
 
 If (False:C215)
-	  // ----------------------------------------------------
-	  // User name (OS): Gary Criblez
-	  // Date and time: 19.07.19, 10:35:53
-	  // ----------------------------------------------------
-	  // Method: AJUI_Btn_drawSVG
-	  // Description
-	  // 
-	  //
-	  // ----------------------------------------------------
+	// ----------------------------------------------------
+	// User name (OS): Gary Criblez
+	// Date and time: 19.07.19, 10:35:53
+	// ----------------------------------------------------
+	// Method: AJUI_Btn_drawSVG
+	// Description
+	// 
+	//
+	// ----------------------------------------------------
 End if 
 
 
@@ -35,20 +35,20 @@ $btn_type:=$toDraw_obj.btn.global.type
 $btn_composition:=$toDraw_obj.btn.global.composition
 $name:=$toDraw_obj.btn.global.name
 
-  //box
+//box
 $boxWidth:=$toDraw_obj.btn.box.width
 $boxHeight:=$toDraw_obj.btn.box.height
 $cornerRadius:=$toDraw_obj.btn.box.cornerRadius
 $bgPrimaryColor:=$toDraw_obj.btn.box.bgPrimaryColor
-$boxPadding:=1
+$boxPadding:=$toDraw_obj.btn.box.padding
 
-  //border
+//border
 $borderColor:=$toDraw_obj.btn.border.color
 $borderSize:=$toDraw_obj.btn.border.size
 
-  //SIZE TEXT AREA
+//SIZE TEXT AREA
 If ($btn_composition#"picture")
-	  //text
+	//text
 	$label:=$toDraw_obj.btn.text.label
 	$fontName:=$toDraw_obj.btn.text.fontName
 	$fontSize:=$toDraw_obj.btn.text.fontSize
@@ -66,26 +66,26 @@ If ($btn_composition#"picture")
 		$fontOpacity:="1"
 	End if 
 	
-	  //text size calculation
-	$svgCalcRef:=SVG_New 
+	//text size calculation
+	$svgCalcRef:=SVG_New
 	$style_definition:="{font-size:"+String:C10($fontSize)+";fill:"+$fontColor+";font-family:"+$fontName+";fill-opacity:"+$fontOpacity+"}"
-	$textCalcID:=SVG_New_textArea ($svgCalcRef;$label;0;0;0;0;$style_definition)
-	SVG_SET_FONT_STYLE ($svgCalcRef;Utl_fontStyle2Constant ($fontStyle))
+	$textCalcID:=SVG_New_textArea($svgCalcRef;$label;0;0;0;0;$style_definition)
+	SVG_SET_FONT_STYLE($svgCalcRef;Utl_fontStyle2Constant($fontStyle))
 	
 	If (False:C215)
-		SVGTool_SHOW_IN_VIEWER ($svgCalcRef)
+		SVGTool_SHOW_IN_VIEWER($svgCalcRef)
 	End if 
 	
-	$pict:=SVG_Export_to_picture ($svgCalcRef)
+	$pict:=SVG_Export_to_picture($svgCalcRef)
 	PICTURE PROPERTIES:C457($pict;$textWidth;$textHeight)
 	
-	SVG_CLEAR ($svgCalcRef)
+	SVG_CLEAR($svgCalcRef)
 	
 End if 
 
-  //SIZE PICTURE
+//SIZE PICTURE
 If ($btn_composition#"text")
-	  //image
+	//image
 	$picturePath:=$toDraw_obj.btn.picture.path
 	$pictureOpacity:=$toDraw_obj.btn.picture.opacity/100
 	$importPath:=String:C10($toDraw_obj.btn.global.importPath)
@@ -99,7 +99,7 @@ If ($btn_composition#"text")
 		$picturePath:=Get 4D folder:C485(Current resources folder:K5:16;*)+$picturePath
 	End if 
 	$picturePath:=Replace string:C233($picturePath;"/";Folder separator:K24:12)
-	  //$picturePath:=Get 4D folder(Current resources folder;*)+$picturePath
+	//$picturePath:=Get 4D folder(Current resources folder;*)+$picturePath
 	$pictPosition:=$toDraw_obj.btn.composite.picturePosition
 	
 	
@@ -111,7 +111,7 @@ If ($btn_composition#"text")
 			$colorToReplace:=$toDraw_obj.btn.picture.colorToReplace
 			$replacingColor:=$toDraw_obj.btn.picture.replacingColor
 			
-			  //replace color SVG
+			//replace color SVG
 			If ($replacingColor#$colorToReplace) & ($replacingColor#"")
 				$svg_txt:=Replace string:C233($svg_txt;"fill=\""+$colorToReplace;"fill=\""+$replacingColor)
 				$svg_txt:=Replace string:C233($svg_txt;"fill:"+$colorToReplace;"fill:"+$replacingColor)
@@ -163,17 +163,17 @@ If ($btn_composition#"text")
 	
 End if 
 
-  //composite
+//composite
 If ($btn_composition="composite")
 	$pictSizeAllocation:=$toDraw_obj.btn.composite.pictSizeAllocation
 	$linked:=$toDraw_obj.btn.composite.linked
 	$compTextPadding:=$toDraw_obj.btn.composite.padding
 	
-	  //Size allocation between text and picture
+	//Size allocation between text and picture
 	$compositeHeight:=$boxHeight-($borderSize)-($boxPadding*2)
 	$compositeWidth:=$boxWidth-($borderSize)-($boxPadding*2)
 	
-	  //calc sizes allocation
+	//calc sizes allocation
 	If ($pictPosition="top") | ($pictPosition="bottom")
 		
 		If ($pictSizeAllocation>$compositeHeight)
@@ -210,19 +210,19 @@ If ($btn_composition="composite")
 	End if 
 End if 
 
-  //DRAW SVG
+//DRAW SVG
 $svgRef:=DOM Create XML Ref:C861("svg";"http://www.w3.org/2000/svg")
 DOM SET XML ATTRIBUTE:C866($svgRef;"width";$boxWidth;"height";$boxHeight)  // svg area
 
 $startX:=0+($borderSize/2)
 $startY:=0+($borderSize/2)
 
-  //check secondary color 
+//check secondary color 
 If ($toDraw_obj.btn.composite.activeSecondColor) & (Not:C34($linked)) & ($btn_composition="composite")
 	
 	$bgSecondaryColor:=$toDraw_obj.btn.composite.bgSecondaryColor
 	
-	  //percent pict size allocation
+	//percent pict size allocation
 	If ($pictPosition="top") | ($pictPosition="bottom")
 		If ($boxHeight<=0)
 			$percentLinearGradient:=0
@@ -260,35 +260,35 @@ If ($toDraw_obj.btn.composite.activeSecondColor) & (Not:C34($linked)) & ($btn_co
 			
 	End case 
 	
-	$colorID:=SVG_Define_linear_gradient ($svgRef;"composite";$bgSecondaryColor;$bgPrimaryColor;$rotation;"pad";$percentLinearGradient;$percentLinearGradient)
+	$colorID:=SVG_Define_linear_gradient($svgRef;"composite";$bgSecondaryColor;$bgPrimaryColor;$rotation;"pad";$percentLinearGradient;$percentLinearGradient)
 	$bgPrimaryColor:="url(#composite)"
 	
 End if 
 
-  // DRAW TYPE OF BUTTON - Rectangel, Circle
+// DRAW TYPE OF BUTTON - Rectangel, Circle
 Case of 
 	: ($btn_type="rectangle")
-		$btnID:=SVG_New_rect ($svgRef;$startX;$startY;$boxWidth-$borderSize;$boxHeight-$borderSize;$cornerRadius;$cornerRadius;$borderColor;$bgPrimaryColor;$borderSize)
+		$btnID:=SVG_New_rect($svgRef;$startX;$startY;$boxWidth-$borderSize;$boxHeight-$borderSize;$cornerRadius;$cornerRadius;$borderColor;$bgPrimaryColor;$borderSize)
 		
 	: ($btn_type="circle")
-		$btnID:=SVG_New_ellipse_bounded ($svgRef;$startX;$startY;$boxWidth-$borderSize;$boxHeight-$borderSize;$borderColor;$bgPrimaryColor;$borderSize)
+		$btnID:=SVG_New_ellipse_bounded($svgRef;$startX;$startY;$boxWidth-$borderSize;$boxHeight-$borderSize;$borderColor;$bgPrimaryColor;$borderSize)
 	Else 
 		
 End case 
 
 
-  //CALC AND DRAW BUTTON COMPOSITION
+//CALC AND DRAW BUTTON COMPOSITION
 Case of 
 	: ($btn_composition="text")  // text composition
 		
 		$textX:=0+($borderSize/2)+$boxPadding+$textMarginHorizontal
-		$textAlign:="center"
+		$textAlign:=$toDraw_obj.btn.text.align
 		
-		  //calc position and reduce size if necessary
+		//calc position and reduce size if necessary
 		If ($textWidth<($boxWidth-$borderSize-($boxPadding*2)-($textMarginHorizontal*2)))
 			$textWidth:=$boxWidth-$borderSize-($boxPadding*2)-($textMarginHorizontal*2)
 		Else 
-			$resultClip:=AJUI_Btn_clipTextToFit ($toDraw_obj;$textWidth;$boxWidth-$borderSize-($boxPadding*2)-($textMarginHorizontal*2))
+			$resultClip:=AJUI_Btn_clipTextToFit($toDraw_obj;$textWidth;$boxWidth-$borderSize-($boxPadding*2)-($textMarginHorizontal*2))
 			$label:=$resultClip.label
 			$textWidth:=$resultClip.width
 		End if 
@@ -301,25 +301,25 @@ Case of
 			$textY:=0+($borderSize/2)+$textPaddingY
 		End if 
 		
-		  //draw text area
+		//draw text area
 		$style_definition:="{font-size:"+String:C10($fontSize)+";fill:"+$fontColor+";font-family:"+$fontName+";text-align:"+$textAlign+";fill-opacity:"+$fontOpacity+"}"
-		$textID:=SVG_New_textArea ($svgRef;$label;$textX;$textY;$textWidth;$textHeight;$style_definition)
-		SVG_SET_FONT_STYLE ($svgRef;Utl_fontStyle2Constant ($fontStyle))
+		$textID:=SVG_New_textArea($svgRef;$label;$textX;$textY;$textWidth;$textHeight;$style_definition)
+		SVG_SET_FONT_STYLE($svgRef;Utl_fontStyle2Constant($fontStyle))
 		
 		
 	: ($btn_composition="picture")  // picture composition
 		
 		If (Test path name:C476($picturePath)=Is a document:K24:1)
-			  //resize picture if necessary
-			$resultResize:=AJUI_Btn_resizePicture ($boxWidth;$boxHeight;$pictScaleWidth;$pictScaleHeight)
+			//resize picture if necessary
+			$resultResize:=AJUI_Btn_resizePicture($boxWidth;$boxHeight;$pictScaleWidth;$pictScaleHeight)
 			$pictScaleWidth:=$resultResize.width
 			$pictScaleHeight:=$resultResize.height
 			
-			  //calc position
+			//calc position
 			$posX:=($boxWidth-$pictScaleWidth)/2
 			$posY:=($boxHeight-$pictScaleHeight)/2
 			
-			  //draw picture
+			//draw picture
 			If ($picturePath="")
 				$btn_pict:=$btn_pict*0
 			End if 
@@ -329,7 +329,7 @@ Case of
 			BASE64 ENCODE:C895($pict_blob;$image_txt)
 			$image_txt:="data:image/svg+xml;base64,"+$image_txt
 			
-			  //add picture to SVG
+			//add picture to SVG
 			$dom_image:=DOM Create XML element:C865($svgRef;"image";\
 				"xlink:href";$image_txt;\
 				"opacity";$pictureOpacity;\
@@ -345,13 +345,13 @@ Case of
 		
 		
 		
-		  //CALC PICTURE
+		//CALC PICTURE
 		If ($pictureScale>0)
 			$pictScaleWidth:=$pictWidthAllocated*$pictureScale/100
 			$pictScaleHeight:=$pictHeightAllocated*$pictureScale/100
 		Else 
 			
-			$resultResize:=AJUI_Btn_resizePicture ($pictWidthAllocated;$pictHeightAllocated;$pictScaleWidth;$pictScaleHeight)
+			$resultResize:=AJUI_Btn_resizePicture($pictWidthAllocated;$pictHeightAllocated;$pictScaleWidth;$pictScaleHeight)
 			$pictScaleWidth:=$resultResize.width
 			$pictScaleHeight:=$resultResize.height
 			
@@ -360,7 +360,7 @@ Case of
 		$paddingPictX:=(($pictWidthAllocated-$pictScaleWidth)/2)
 		$paddingPictY:=(($pictHeightAllocated-$pictScaleHeight)/2)
 		
-		  //CALC TEXT
+		//CALC TEXT
 		$textX:=($borderSize/2)+$boxPadding
 		
 		If ($textHeight>$textHeightAllocated)
@@ -371,8 +371,8 @@ Case of
 			$textY:=$textPaddingY+($borderSize/2)+$boxPadding
 		End if 
 		
-		  //calc global content size in case of linked (picture + text), Text is resize if necessary
-		  //$global content size is apply in x or y depending on the position
+		//calc global content size in case of linked (picture + text), Text is resize if necessary
+		//$global content size is apply in x or y depending on the position
 		If ($linked)
 			If ($pictPosition="top") | ($pictPosition="bottom")
 				$globalContentSize:=$pictScaleHeight+$compTextPadding+$textHeight
@@ -384,7 +384,7 @@ Case of
 					$linkedPadding:=0
 					$pictHeightAllocated:=$contentSizetAllocated-$textHeight-$compTextPadding
 					
-					$resultResize:=AJUI_Btn_resizePicture ($pictWidthAllocated;$pictHeightAllocated;$pictScaleWidth;$pictScaleHeight)
+					$resultResize:=AJUI_Btn_resizePicture($pictWidthAllocated;$pictHeightAllocated;$pictScaleWidth;$pictScaleHeight)
 					$pictScaleWidth:=$resultResize.width
 					$pictScaleHeight:=$resultResize.height
 					
@@ -405,7 +405,7 @@ Case of
 		End if 
 		
 		
-		  //adapt positions x,y to picture position
+		//adapt positions x,y to picture position
 		Case of 
 			: ($pictPosition="top")
 				$posX:=($borderSize/2)+$boxPadding+$paddingPictX
@@ -458,7 +458,7 @@ Case of
 		End case 
 		
 		
-		  //draw picture and text area
+		//draw picture and text area
 		If ($picturePath="")
 			$btn_pict:=$btn_pict*0
 		End if 
@@ -469,7 +469,7 @@ Case of
 			BASE64 ENCODE:C895($pict_blob;$image_txt)
 			$image_txt:="data:image/svg+xml;base64,"+$image_txt
 			
-			  //add picture to SVG
+			//add picture to SVG
 			$dom_image:=DOM Create XML element:C865($svgRef;"image";\
 				"xlink:href";$image_txt;\
 				"opacity";$pictureOpacity;\
@@ -479,9 +479,9 @@ Case of
 				"height";$pictScaleHeight)
 		End if 
 		
-		  //clip text if necessary
+		//clip text if necessary
 		If ($textWidth>$textWidthAllocated)
-			$resultClip:=AJUI_Btn_clipTextToFit ($toDraw_obj;$textWidth;$textWidthAllocated)
+			$resultClip:=AJUI_Btn_clipTextToFit($toDraw_obj;$textWidth;$textWidthAllocated)
 			$label:=$resultClip.label
 			$textWidth:=$resultClip.width
 		End if 
@@ -489,18 +489,18 @@ Case of
 		$textWidth:=$textWidthAllocated
 		$textAlign:=$toDraw_obj.btn.composite.textAlign
 		$style_definition:="{font-size:"+String:C10($fontSize)+";fill:"+$fontColor+";font-family:"+$fontName+";text-align:"+$textAlign+";fill-opacity:"+$fontOpacity+"}"
-		$textID:=SVG_New_textArea ($svgRef;$label;$textX;$textY;$textWidth;$textHeight;$style_definition)
-		SVG_SET_FONT_STYLE ($svgRef;Utl_fontStyle2Constant ($fontStyle))
+		$textID:=SVG_New_textArea($svgRef;$label;$textX;$textY;$textWidth;$textHeight;$style_definition)
+		SVG_SET_FONT_STYLE($svgRef;Utl_fontStyle2Constant($fontStyle))
 		
 End case 
 
 
 If (False:C215)  //for testing purpose
-	SVGTool_SHOW_IN_VIEWER ($svgRef)
+	SVGTool_SHOW_IN_VIEWER($svgRef)
 End if 
 
-  //generate picture
-$pict:=SVG_Export_to_picture ($svgRef)
-SVG_CLEAR ($svgRef)
+//generate picture
+$pict:=SVG_Export_to_picture($svgRef)
+SVG_CLEAR($svgRef)
 
 $0:=$pict

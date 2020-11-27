@@ -1,21 +1,21 @@
 //%attributes = {"invisible":true}
-  // AJUI_Btn_initAttributes ( $instance_obj  ) 
-  //
-  // $instance_obj : (object) instance object
-  //
-  // Init attributes in a button instance object
+// AJUI_Btn_initAttributes ( $instance_obj  ) 
+//
+// $instance_obj : (object) instance object
+//
+// Init attributes in a button instance object
 
 If (False:C215)
-	  // ----------------------------------------------------
-	  // User name (OS): Gary Criblez
-	  // Date and time: 19.07.19, 12:03:05
-	  // ----------------------------------------------------
-	  // Method: AJUI_Btn_initAttributes
-	  // Description
-	  // 
-	  // IN CASE OF MODIFICATION : EDIT THE AJUI_Btn_PropertyCol method
-	  //
-	  // ----------------------------------------------------
+	// ----------------------------------------------------
+	// User name (OS): Gary Criblez
+	// Date and time: 19.07.19, 12:03:05
+	// ----------------------------------------------------
+	// Method: AJUI_Btn_initAttributes
+	// Description
+	// 
+	// IN CASE OF MODIFICATION : EDIT THE AJUI_Btn_PropertyCol method
+	//
+	// ----------------------------------------------------
 End if 
 
 
@@ -27,11 +27,9 @@ $instance_obj:=$1
 $pict:=$pict*0
 
 
-
-
-  // ----------------------
-  // Button Definition
-  // ----------------------
+// ----------------------
+// Button Definition
+// ----------------------
 If ($instance_obj.btn=Null:C1517)
 	$instance_obj.btn:=New object:C1471
 End if 
@@ -57,9 +55,9 @@ End if
 $instance_obj.btn.global.inCallback:=False:C215  //avoid recall of the callback
 
 
-  // ----------------------
-  // Button Box
-  // ----------------------
+// ----------------------
+// Button Box
+// ----------------------
 If ($instance_obj.btn.box=Null:C1517)
 	$instance_obj.btn.box:=New object:C1471
 End if 
@@ -72,6 +70,9 @@ End if
 If ($instance_obj.btn.box.height=Null:C1517)
 	$instance_obj.btn.box.height:=-1
 End if 
+If ($instance_obj.btn.box.padding=Null:C1517)
+	$instance_obj.btn.box.padding:=3
+End if 
 If ($instance_obj.btn.box.cornerRadius=Null:C1517)
 	$instance_obj.btn.box.cornerRadius:=5
 End if 
@@ -80,9 +81,9 @@ If ($instance_obj.btn.box.bgPrimaryColor=Null:C1517)
 End if 
 
 
-  // ----------------------
-  // Border
-  // ----------------------
+// ----------------------
+// Border
+// ----------------------
 If ($instance_obj.btn.border=Null:C1517)
 	$instance_obj.btn.border:=New object:C1471
 End if 
@@ -94,9 +95,9 @@ If ($instance_obj.btn.border.size=Null:C1517)
 End if 
 
 
-  // ----------------------
-  // Text
-  // ----------------------
+// ----------------------
+// Text
+// ----------------------
 If ($instance_obj.btn.text=Null:C1517)
 	$instance_obj.btn.text:=New object:C1471
 End if 
@@ -112,6 +113,9 @@ End if
 If ($instance_obj.btn.text.fontColor=Null:C1517)
 	$instance_obj.btn.text.fontColor:="white"
 End if 
+If ($instance_obj.btn.text.align=Null:C1517)
+	$instance_obj.btn.text.align:="center"
+End if 
 If ($instance_obj.btn.text.fontStyle=Null:C1517)
 	$instance_obj.btn.text.fontStyle:=""  //None, Bold, Italic, Underline, Strikethrough
 End if 
@@ -119,9 +123,9 @@ If ($instance_obj.btn.text.marginHorizontal=Null:C1517)
 	$instance_obj.btn.text.marginHorizontal:=0
 End if 
 
-  // ----------------------
-  // Picture
-  // ----------------------
+// ----------------------
+// Picture
+// ----------------------
 If ($instance_obj.btn.picture=Null:C1517)
 	$instance_obj.btn.picture:=New object:C1471
 End if 
@@ -153,9 +157,9 @@ If ($instance_obj.btn.picture.opacity=Null:C1517)
 	$instance_obj.btn.picture.opacity:=100  //percent
 End if 
 
-  // ----------------------
-  // Composite
-  // ----------------------
+// ----------------------
+// Composite
+// ----------------------
 If ($instance_obj.btn.composite=Null:C1517)
 	$instance_obj.btn.composite:=New object:C1471
 End if 
@@ -181,9 +185,9 @@ If ($instance_obj.btn.composite.bgSecondaryColor=Null:C1517)
 	$instance_obj.btn.composite.bgSecondaryColor:="#9fddf9"  // apply when the btn is separate in two part (text + icon for example)
 End if 
 
-  // ----------------------
-  // FAB
-  // ----------------------
+// ----------------------
+// FAB
+// ----------------------
 If ($instance_obj.btn.fab=Null:C1517)
 	$instance_obj.btn.fab:=New object:C1471
 End if 
@@ -216,7 +220,7 @@ $instance_obj.btn.fab.duration:=120  // expressed in milliseconds
 $instance_obj.btn.fab.rate:=60  // number of draw by sec
 
 
-  //state Parts
+//state Parts
 If ($instance_obj.btn.hover=Null:C1517)
 	$instance_obj.btn.hover:=New object:C1471
 End if 
