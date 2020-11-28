@@ -1,21 +1,21 @@
 //%attributes = {"invisible":true,"shared":true}
-  // AJUI_Btn_LoadTemplates ( { $folderTargetPath } ) -> return
-  //
-  // $folderTargetPath : (text) (optional) path to the template
-  // $templates_col : (text) (return) collection of templates
-  //
-  // This method return in a collection all the json files from the specified/default path (.../Ressources/AJUI_Button_Templates/)
+// AJUI_Btn_LoadTemplates ( { $folderTargetPath } ) -> return
+//
+// $folderTargetPath : (text) (optional) path to the template
+// $templates_col : (text) (return) collection of templates
+//
+// This method return in a collection all the json files from the specified/default path (.../Ressources/AJUI_Button_Templates/)
 
 If (False:C215)
-	  // ----------------------------------------------------
-	  // User name (OS): Gary Criblez
-	  // Date and time: 07.08.19, 10:32:04
-	  // ----------------------------------------------------
-	  // Method: AJUI_Btn_LoadTemplates
-	  // Description
-	  // 
-	  //
-	  // ----------------------------------------------------
+	// ----------------------------------------------------
+	// User name (OS): Gary Criblez
+	// Date and time: 07.08.19, 10:32:04
+	// ----------------------------------------------------
+	// Method: AJUI_Btn_LoadTemplates
+	// Description
+	// 
+	//
+	// ----------------------------------------------------
 End if 
 
 C_COLLECTION:C1488($0;$templates_col)
@@ -48,14 +48,14 @@ If ($testPathName=0)  //check folder
 		If ($filePath="@.json")
 			$json_t:=Document to text:C1236($filePath)
 			If ($json_t="")
-				  //do nothing
+				//do nothing
 			Else 
 				$btn_instance_obj:=New object:C1471
 				$btn_instance_obj:=JSON Parse:C1218($json_t)
 				$file:=File:C1566($filePath;fk platform path:K87:2)
 				$btn_instance_obj.templateName:=$file.name
 				$btn_instance_obj.templatePath:=Replace string:C233($file.platformPath;$file.name+".json";"")
-				$btn_instance_obj:=New AJUI_Button ($btn_instance_obj)  //add missing properties and reset calc properties
+				$btn_instance_obj:=AJUI_Button.new($btn_instance_obj)  //add missing properties and reset calc properties
 				$templates_col.push($btn_instance_obj)
 			End if 
 		End if 

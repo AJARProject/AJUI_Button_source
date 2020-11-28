@@ -1,22 +1,22 @@
 //%attributes = {"invisible":true}
-  // AJUI_Btn_GetSetBGPrimaColor ( $state { ; param2 } ) -> return
-  //
-  // $state : (text) button state
-  // $color : (text) (optional) color
-  // return : (text) (return) current BG primary color
-  //
-  // Getter and setter for the background primary color of the button
+// AJUI_Btn_GetSetBGPrimaColor ( $state { ; param2 } ) -> return
+//
+// $state : (text) button state
+// $color : (text) (optional) color
+// return : (text) (return) current BG primary color
+//
+// Getter and setter for the background color of the button
 
 If (False:C215)
-	  // ----------------------------------------------------
-	  // User name (OS): Gary Criblez
-	  // Date and time: 19.07.19, 10:40:27
-	  // ----------------------------------------------------
-	  // Method: AJUI_Btn_GetSetBGPrimaColor
-	  // Description
-	  // 
-	  //
-	  // ----------------------------------------------------
+	// ----------------------------------------------------
+	// User name (OS): Gary Criblez
+	// Date and time: 19.07.19, 10:40:27
+	// ----------------------------------------------------
+	// Method: AJUI_Btn_GetSetBGPrimaColor
+	// Description
+	// 
+	//
+	// ----------------------------------------------------
 End if 
 
 
@@ -34,19 +34,19 @@ End if
 
 If (Count parameters:C259=1)
 	
-	If ($current_obj.box.bgPrimaryColor#Null:C1517)
-		$0:=$current_obj.box.bgPrimaryColor
+	If ($current_obj.box.backgroundColor#Null:C1517)
+		$0:=$current_obj.box.backgroundColor
 	Else 
-		$0:=This:C1470.btn.box.bgPrimaryColor
+		$0:=This:C1470.btn.box.backgroundColor
 	End if 
 	
 Else 
 	$color:=$2
 	
 	If ($color#"")
-		$current_obj.box.bgPrimaryColor:=$color
+		$current_obj.box.backgroundColor:=$color
 	Else 
-		$current_obj.box.bgPrimaryColor:="none"
+		$current_obj.box.backgroundColor:="none"
 	End if 
 	
 End if 

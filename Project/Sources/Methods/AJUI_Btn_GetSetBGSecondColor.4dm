@@ -1,22 +1,22 @@
 //%attributes = {"invisible":true}
-  // AJUI_Btn_GetSetBGSecondColor ( $state { ; param2 } ) -> return
-  //
-  // $state : (text) button state
-  // $color : (text) (optional) color
-  // return : (text) (return) current BG secondary color
-  //
-  // Getter and setter for the background secondary color of the button
+// AJUI_Btn_GetSetBGSecondColor ( $state { ; param2 } ) -> return
+//
+// $state : (text) button state
+// $color : (text) (optional) color
+// return : (text) (return) current BG secondary color
+//
+// Getter and setter for the background secondary color of the button
 
 If (False:C215)
-	  // ----------------------------------------------------
-	  // User name (OS): Gary Criblez
-	  // Date and time: 19.07.19, 10:42:26
-	  // ----------------------------------------------------
-	  // Method: AJUI_Btn_GetSetBGSecondColor
-	  // Description
-	  // 
-	  //
-	  // ----------------------------------------------------
+	// ----------------------------------------------------
+	// User name (OS): Gary Criblez
+	// Date and time: 19.07.19, 10:42:26
+	// ----------------------------------------------------
+	// Method: AJUI_Btn_GetSetBGSecondColor
+	// Description
+	// 
+	//
+	// ----------------------------------------------------
 End if 
 
 
@@ -34,19 +34,19 @@ End if
 
 If (Count parameters:C259=1)
 	
-	If ($current_obj.composite.bgSecondaryColor#Null:C1517)
-		$0:=$current_obj.composite.bgSecondaryColor
+	If ($current_obj.composite.backgroundSecondaryColor#Null:C1517)
+		$0:=$current_obj.composite.backgroundSecondaryColor
 	Else 
-		$0:=This:C1470.btn.composite.bgSecondaryColor
+		$0:=This:C1470.btn.composite.backgroundSecondaryColor
 	End if 
 	
 Else 
 	$color:=$2
 	
 	If ($color#"")
-		$current_obj.composite.bgSecondaryColor:=$color
+		$current_obj.composite.backgroundSecondaryColor:=$color
 	Else 
-		$current_obj.composite.bgSecondaryColor:="none"
+		$current_obj.composite.backgroundSecondaryColor:="none"
 	End if 
 	
 End if 

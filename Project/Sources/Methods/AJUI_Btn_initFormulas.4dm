@@ -74,7 +74,7 @@ $instance_obj.FontSize:=Formula:C1597(AJUI_Btn_GetSetFontSize)
 $instance_obj.FontColor:=Formula:C1597(AJUI_Btn_GetSetFontColor)
 $instance_obj.FontStyle:=Formula:C1597(AJUI_Btn_GetSetFontStyle)
 $instance_obj.textAlign:=Formula:C1597(AJUI_Btn_GetSetTextAlign)
-$instance_obj.TextMarginHorizontal:=Formula:C1597(AJUI_Btn_GetSetMarginHorizontal)
+$instance_obj.TextMarginHorizontal:=Formula:C1597(AJUI_Btn_GetSetHorizontalMargin)
 
 // ----------------------
 // Picture
@@ -95,7 +95,7 @@ $instance_obj.PictureScale:=Formula:C1597(AJUI_Btn_GetSetPictureScale)
 $instance_obj.CompLinked:=Formula:C1597(AJUI_Btn_GetSetCompositeLinked)
 $instance_obj.CompPadding:=Formula:C1597(AJUI_Btn_GetSetCompositePadding)
 $instance_obj.CompPictSizeAllocation:=Formula:C1597(AJUI_Btn_GetSetPictSizeAlloc)
-$instance_obj.CompTextAlign:=Formula:C1597(AJUI_Btn_GetSetCompTextAlign)
+$instance_obj.CompTextAlign:=Formula:C1597(AJUI_Btn_GetSetTextAlign)
 $instance_obj.CompActiveSecondColor:=Formula:C1597(AJUI_Btn_GetSetActiveSecColor)
 $instance_obj.CompPicturePosition:=Formula:C1597(AJUI_Btn_GetSetPicturePosition)
 $instance_obj.BGSecondaryColor:=Formula:C1597(AJUI_Btn_GetSetBGSecondColor)

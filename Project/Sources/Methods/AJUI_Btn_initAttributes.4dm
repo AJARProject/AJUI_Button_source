@@ -76,8 +76,8 @@ End if
 If ($instance_obj.btn.box.cornerRadius=Null:C1517)
 	$instance_obj.btn.box.cornerRadius:=5
 End if 
-If ($instance_obj.btn.box.bgPrimaryColor=Null:C1517)
-	$instance_obj.btn.box.bgPrimaryColor:="#4d9ad4"
+If ($instance_obj.btn.box.backgroundColor=Null:C1517)
+	$instance_obj.btn.box.backgroundColor:="#4d9ad4"
 End if 
 
 
@@ -119,8 +119,8 @@ End if
 If ($instance_obj.btn.text.fontStyle=Null:C1517)
 	$instance_obj.btn.text.fontStyle:=""  //None, Bold, Italic, Underline, Strikethrough
 End if 
-If ($instance_obj.btn.text.marginHorizontal=Null:C1517)
-	$instance_obj.btn.text.marginHorizontal:=0
+If ($instance_obj.btn.text.horizontalMargin=Null:C1517)
+	$instance_obj.btn.text.horizontalMargin:=0
 End if 
 
 // ----------------------
@@ -166,8 +166,8 @@ End if
 If ($instance_obj.btn.composite.linked=Null:C1517)
 	$instance_obj.btn.composite.linked:=False:C215
 End if 
-If ($instance_obj.btn.composite.padding=Null:C1517)
-	$instance_obj.btn.composite.padding:=10
+If ($instance_obj.btn.composite.spaceBetween=Null:C1517)
+	$instance_obj.btn.composite.spaceBetween:=10
 End if 
 If ($instance_obj.btn.composite.pictSizeAllocation=Null:C1517)
 	$instance_obj.btn.composite.pictSizeAllocation:=30
@@ -175,14 +175,11 @@ End if
 If ($instance_obj.btn.composite.activeSecondColor=Null:C1517)
 	$instance_obj.btn.composite.activeSecondColor:=False:C215
 End if 
-If ($instance_obj.btn.composite.textAlign=Null:C1517)
-	$instance_obj.btn.composite.textAlign:="center"  //left, center, top. Only apply for a composite button
-End if 
 If ($instance_obj.btn.composite.picturePosition=Null:C1517)
 	$instance_obj.btn.composite.picturePosition:="left"
 End if 
-If ($instance_obj.btn.composite.bgSecondaryColor=Null:C1517)
-	$instance_obj.btn.composite.bgSecondaryColor:="#9fddf9"  // apply when the btn is separate in two part (text + icon for example)
+If ($instance_obj.btn.composite.backgroundSecondaryColor=Null:C1517)
+	$instance_obj.btn.composite.backgroundSecondaryColor:="#9fddf9"  // apply when the btn is separate in two part (text + icon for example)
 End if 
 
 // ----------------------

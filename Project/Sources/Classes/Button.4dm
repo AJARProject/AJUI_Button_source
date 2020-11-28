@@ -394,9 +394,9 @@ Function horizontalMargin
 	C_LONGINT:C283($0;$2)
 	
 	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetMarginHorizontal($1;$2)
+		AJUI_Btn_GetSetHorizontalMargin($1;$2)
 	Else 
-		$0:=AJUI_Btn_GetSetMarginHorizontal($1)
+		$0:=AJUI_Btn_GetSetHorizontalMargin($1)
 	End if 
 	
 Function colorToReplace

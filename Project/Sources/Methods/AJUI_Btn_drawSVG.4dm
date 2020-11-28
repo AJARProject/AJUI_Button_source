@@ -24,7 +24,7 @@ C_PICTURE:C286($0;$pict;$btn_pict)
 C_TEXT:C284($label;$fontName;$fontColor;$label;$fontStyle;$svgRef)
 C_TEXT:C284($pictPosition;$image_txt;$name;$importPath)
 C_TEXT:C284($btn_composition;$btn_type)
-C_LONGINT:C283($fontSize;$borderSize;$boxPadding;$compTextPadding;$rotation;$textMarginHorizontal)
+C_LONGINT:C283($fontSize;$borderSize;$boxPadding;$spaceBetween;$rotation;$texthorizontalMargin)
 C_REAL:C285($startX;$startY;$pictSizeAllocation;$textSizeAllocation;$pictureOpacity;$pictScaleWidth;$pictScaleHeight;$pictureRatio;$percentLinearGradient;$fontOpacityNum)
 C_BOOLEAN:C305($linked)
 C_BLOB:C604($pict_blob)
@@ -39,12 +39,15 @@ $name:=$toDraw_obj.btn.global.name
 $boxWidth:=$toDraw_obj.btn.box.width
 $boxHeight:=$toDraw_obj.btn.box.height
 $cornerRadius:=$toDraw_obj.btn.box.cornerRadius
-$bgPrimaryColor:=$toDraw_obj.btn.box.bgPrimaryColor
+$backgroundColor:=$toDraw_obj.btn.box.backgroundColor
 $boxPadding:=$toDraw_obj.btn.box.padding
 
 //border
 $borderColor:=$toDraw_obj.btn.border.color
 $borderSize:=$toDraw_obj.btn.border.size
+
+// Text align
+$textAlign:=$toDraw_obj.btn.text.align
 
 //SIZE TEXT AREA
 If ($btn_composition#"picture")
@@ -54,7 +57,7 @@ If ($btn_composition#"picture")
 	$fontSize:=$toDraw_obj.btn.text.fontSize
 	$fontColor:=$toDraw_obj.btn.text.fontColor
 	$fontStyle:=$toDraw_obj.btn.text.fontStyle
-	$textMarginHorizontal:=$toDraw_obj.btn.text.marginHorizontal
+	$texthorizontalMargin:=$toDraw_obj.btn.text.horizontalMargin
 	
 	$posOpacity:=Position:C15(":";$fontColor)
 	If ($posOpacity>0)
@@ -167,7 +170,7 @@ End if
 If ($btn_composition="composite")
 	$pictSizeAllocation:=$toDraw_obj.btn.composite.pictSizeAllocation
 	$linked:=$toDraw_obj.btn.composite.linked
-	$compTextPadding:=$toDraw_obj.btn.composite.padding
+	$spaceBetween:=$toDraw_obj.btn.composite.spaceBetween
 	
 	//Size allocation between text and picture
 	$compositeHeight:=$boxHeight-($borderSize)-($boxPadding*2)
@@ -187,9 +190,9 @@ If ($btn_composition="composite")
 		$textWidthAllocated:=$compositeWidth
 		
 		If ($linked)
-			$textHeightAllocated:=$textHeightAllocated-$compTextPadding
+			$textHeightAllocated:=$textHeightAllocated-$spaceBetween
 		Else 
-			$textWidthAllocated:=$textWidthAllocated-($textMarginHorizontal*2)
+			$textWidthAllocated:=$textWidthAllocated-($texthorizontalMargin*2)
 		End if 
 	Else 
 		If ($pictSizeAllocation>$compositeWidth)
@@ -203,9 +206,9 @@ If ($btn_composition="composite")
 		$textWidthAllocated:=$compositeWidth-$pictSizeAllocation
 		
 		If ($linked)
-			$textWidthAllocated:=$textWidthAllocated-$compTextPadding
+			$textWidthAllocated:=$textWidthAllocated-$spaceBetween
 		Else 
-			$textWidthAllocated:=$textWidthAllocated-($textMarginHorizontal*2)
+			$textWidthAllocated:=$textWidthAllocated-($texthorizontalMargin*2)
 		End if 
 	End if 
 End if 
@@ -220,7 +223,7 @@ $startY:=0+($borderSize/2)
 //check secondary color 
 If ($toDraw_obj.btn.composite.activeSecondColor) & (Not:C34($linked)) & ($btn_composition="composite")
 	
-	$bgSecondaryColor:=$toDraw_obj.btn.composite.bgSecondaryColor
+	$backgroundSecondaryColor:=$toDraw_obj.btn.composite.backgroundSecondaryColor
 	
 	//percent pict size allocation
 	If ($pictPosition="top") | ($pictPosition="bottom")
@@ -260,18 +263,18 @@ If ($toDraw_obj.btn.composite.activeSecondColor) & (Not:C34($linked)) & ($btn_co
 			
 	End case 
 	
-	$colorID:=SVG_Define_linear_gradient($svgRef;"composite";$bgSecondaryColor;$bgPrimaryColor;$rotation;"pad";$percentLinearGradient;$percentLinearGradient)
-	$bgPrimaryColor:="url(#composite)"
+	$colorID:=SVG_Define_linear_gradient($svgRef;"composite";$backgroundSecondaryColor;$backgroundColor;$rotation;"pad";$percentLinearGradient;$percentLinearGradient)
+	$backgroundColor:="url(#composite)"
 	
 End if 
 
 // DRAW TYPE OF BUTTON - Rectangel, Circle
 Case of 
 	: ($btn_type="rectangle")
-		$btnID:=SVG_New_rect($svgRef;$startX;$startY;$boxWidth-$borderSize;$boxHeight-$borderSize;$cornerRadius;$cornerRadius;$borderColor;$bgPrimaryColor;$borderSize)
+		$btnID:=SVG_New_rect($svgRef;$startX;$startY;$boxWidth-$borderSize;$boxHeight-$borderSize;$cornerRadius;$cornerRadius;$borderColor;$backgroundColor;$borderSize)
 		
 	: ($btn_type="circle")
-		$btnID:=SVG_New_ellipse_bounded($svgRef;$startX;$startY;$boxWidth-$borderSize;$boxHeight-$borderSize;$borderColor;$bgPrimaryColor;$borderSize)
+		$btnID:=SVG_New_ellipse_bounded($svgRef;$startX;$startY;$boxWidth-$borderSize;$boxHeight-$borderSize;$borderColor;$backgroundColor;$borderSize)
 	Else 
 		
 End case 
@@ -281,14 +284,13 @@ End case
 Case of 
 	: ($btn_composition="text")  // text composition
 		
-		$textX:=0+($borderSize/2)+$boxPadding+$textMarginHorizontal
-		$textAlign:=$toDraw_obj.btn.text.align
+		$textX:=0+($borderSize/2)+$boxPadding+$texthorizontalMargin
 		
 		//calc position and reduce size if necessary
-		If ($textWidth<($boxWidth-$borderSize-($boxPadding*2)-($textMarginHorizontal*2)))
-			$textWidth:=$boxWidth-$borderSize-($boxPadding*2)-($textMarginHorizontal*2)
+		If ($textWidth<($boxWidth-$borderSize-($boxPadding*2)-($texthorizontalMargin*2)))
+			$textWidth:=$boxWidth-$borderSize-($boxPadding*2)-($texthorizontalMargin*2)
 		Else 
-			$resultClip:=AJUI_Btn_clipTextToFit($toDraw_obj;$textWidth;$boxWidth-$borderSize-($boxPadding*2)-($textMarginHorizontal*2))
+			$resultClip:=AJUI_Btn_clipTextToFit($toDraw_obj;$textWidth;$boxWidth-$borderSize-($boxPadding*2)-($texthorizontalMargin*2))
 			$label:=$resultClip.label
 			$textWidth:=$resultClip.width
 		End if 
@@ -375,14 +377,14 @@ Case of
 		//$global content size is apply in x or y depending on the position
 		If ($linked)
 			If ($pictPosition="top") | ($pictPosition="bottom")
-				$globalContentSize:=$pictScaleHeight+$compTextPadding+$textHeight
+				$globalContentSize:=$pictScaleHeight+$spaceBetween+$textHeight
 				$contentSizetAllocated:=$boxHeight-$borderSize-($boxPadding*2)
 				
 				If ($globalContentSize<=$contentSizetAllocated)
 					$linkedPadding:=($contentSizetAllocated-$globalContentSize)/2
 				Else 
 					$linkedPadding:=0
-					$pictHeightAllocated:=$contentSizetAllocated-$textHeight-$compTextPadding
+					$pictHeightAllocated:=$contentSizetAllocated-$textHeight-$spaceBetween
 					
 					$resultResize:=AJUI_Btn_resizePicture($pictWidthAllocated;$pictHeightAllocated;$pictScaleWidth;$pictScaleHeight)
 					$pictScaleWidth:=$resultResize.width
@@ -391,7 +393,7 @@ Case of
 				End if 
 				
 			Else 
-				$globalContentSize:=$pictScaleWidth+$compTextPadding+$textWidth
+				$globalContentSize:=$pictScaleWidth+$spaceBetween+$textWidth
 				$contentSizetAllocated:=$boxWidth-$borderSize-($boxPadding*2)
 				
 				If ($globalContentSize<=$contentSizetAllocated)
@@ -399,7 +401,7 @@ Case of
 					$textWidthAllocated:=$textWidth
 				Else 
 					$linkedPadding:=0
-					$textWidthAllocated:=$contentSizetAllocated-$pictScaleWidth-$compTextPadding
+					$textWidthAllocated:=$contentSizetAllocated-$pictScaleWidth-$spaceBetween
 				End if 
 			End if 
 		End if 
@@ -409,11 +411,11 @@ Case of
 		Case of 
 			: ($pictPosition="top")
 				$posX:=($borderSize/2)+$boxPadding+$paddingPictX
-				$textX:=$textX+$textMarginHorizontal
+				$textX:=$textX+$texthorizontalMargin
 				
 				If ($linked)
 					$posY:=($borderSize/2)+$boxPadding+$linkedPadding
-					$textY:=$posY+$pictScaleHeight+$compTextPadding
+					$textY:=$posY+$pictScaleHeight+$spaceBetween
 				Else 
 					$posY:=($borderSize/2)+($boxPadding/2)+$paddingPictY
 					$textY:=$pictHeightAllocated+($borderSize/2)+($boxPadding*1.5)+$textPaddingY
@@ -421,11 +423,11 @@ Case of
 				
 			: ($pictPosition="bottom")
 				$posX:=($borderSize/2)+$boxPadding+$paddingPictX
-				$textX:=$textX+$textMarginHorizontal
+				$textX:=$textX+$texthorizontalMargin
 				
 				If ($linked)
 					$textY:=($borderSize/2)+$boxPadding+$linkedPadding
-					$posY:=$textY+$textHeight+$compTextPadding
+					$posY:=$textY+$textHeight+$spaceBetween
 				Else 
 					$textY:=($borderSize/2)-($boxPadding/2)+$textPaddingY
 					$posY:=$paddingPictY+$textHeightAllocated+($boxPadding*1.5)+($borderSize/2)
@@ -437,10 +439,10 @@ Case of
 				
 				If ($linked)
 					$posX:=($borderSize/2)+$boxPadding+$linkedPadding
-					$textX:=$posX+$pictScaleWidth+$compTextPadding
+					$textX:=$posX+$pictScaleWidth+$spaceBetween
 				Else 
 					$posX:=$paddingPictX+($boxPadding/2)+($borderSize/2)
-					$textX:=$pictWidthAllocated+($borderSize/2)+($boxPadding*1.5)+$textMarginHorizontal
+					$textX:=$pictWidthAllocated+($borderSize/2)+($boxPadding*1.5)+$texthorizontalMargin
 				End if 
 				
 			: ($pictPosition="right")
@@ -448,11 +450,11 @@ Case of
 				
 				If ($linked)
 					$textX:=($borderSize/2)+$boxPadding+$linkedPadding
-					$posX:=$textX+$textWidthAllocated+$compTextPadding+($textMarginHorizontal*2)
+					$posX:=$textX+$textWidthAllocated+$spaceBetween+($texthorizontalMargin*2)
 					
 				Else 
-					$posX:=$paddingPictX+$textWidthAllocated+($boxPadding*1.5)+($borderSize/2)+($textMarginHorizontal*2)
-					$textX:=($borderSize/2)+($boxPadding/2)+$textMarginHorizontal
+					$posX:=$paddingPictX+$textWidthAllocated+($boxPadding*1.5)+($borderSize/2)+($texthorizontalMargin*2)
+					$textX:=($borderSize/2)+($boxPadding/2)+$texthorizontalMargin
 				End if 
 				
 		End case 
@@ -487,7 +489,6 @@ Case of
 		End if 
 		
 		$textWidth:=$textWidthAllocated
-		$textAlign:=$toDraw_obj.btn.composite.textAlign
 		$style_definition:="{font-size:"+String:C10($fontSize)+";fill:"+$fontColor+";font-family:"+$fontName+";text-align:"+$textAlign+";fill-opacity:"+$fontOpacity+"}"
 		$textID:=SVG_New_textArea($svgRef;$label;$textX;$textY;$textWidth;$textHeight;$style_definition)
 		SVG_SET_FONT_STYLE($svgRef;Utl_fontStyle2Constant($fontStyle))
