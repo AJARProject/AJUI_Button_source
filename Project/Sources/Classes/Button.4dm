@@ -1,18 +1,20 @@
 Class constructor
-	
 	C_OBJECT:C1216($1;$template_obj)
 	
 	If (Count parameters:C259=1)
-		If ($1.templatePath=Null:C1517)
-			$template_obj:=AJUI_Btn_templateImport($1.templateName)
+		$template_obj:=$1
+		If ($template_obj.templatePath=Null:C1517)
+			$template_obj:=AJUI_Btn_templateImport($template_obj.templateName)
 		Else 
-			$template_obj:=AJUI_Btn_templateImport($1.templateName;$1.templatePath)
+			$template_obj:=AJUI_Btn_templateImport($template_obj.templateName;$template_obj.templatePath)
 		End if 
 		
 		If (This:C1470.btn.failImport)
 			$template_obj:=New object:C1471()
 		Else 
 			This:C1470.btn:=$template_obj.btn
+			This:C1470.templateName:=String:C10($template_obj.templateName)
+			This:C1470.templatePath:=String:C10($template_obj.templatePath)
 		End if 
 	End if 
 	
