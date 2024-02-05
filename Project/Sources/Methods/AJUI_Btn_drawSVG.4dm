@@ -20,8 +20,8 @@ End if
 
 
 C_OBJECT:C1216($1; $toDraw_obj; $resultResize; $resultClip; $file)
-C_PICTURE:C286($0; $pict; $btn_pict)
-C_TEXT:C284($label; $fontName; $fontColor; $label; $fontStyle; $svgRef)
+C_PICTURE:C286($0; $pict; $btn_pict; $picture)
+C_TEXT:C284($label; $fontName; $fontColor; $label; $fontStyle; $svgRef; $pictureExtension)
 C_TEXT:C284($pictPosition; $image_txt; $name; $importPath)
 C_TEXT:C284($btn_composition; $btn_type)
 C_LONGINT:C283($fontSize; $borderSize; $boxPadding; $spaceBetween; $rotation; $texthorizontalMargin)
@@ -90,6 +90,11 @@ End if
 If ($btn_composition#"text")
 	//image
 	$picturePath:=$toDraw_obj.btn.picture.path
+	If ($toDraw_obj.btn.picture.picture#Null:C1517)
+		$picture:=$toDraw_obj.btn.picture.picture
+	Else 
+		$picture*=0
+	End if 
 	$pictureOpacity:=$toDraw_obj.btn.picture.opacity/100
 	$importPath:=String:C10($toDraw_obj.btn.global.importPath)
 	If ($picturePath="#@")
@@ -105,34 +110,39 @@ If ($btn_composition#"text")
 	//$picturePath:=Get 4D folder(Current resources folder;*)+$picturePath
 	$pictPosition:=$toDraw_obj.btn.composite.picturePosition
 	
-	
-	If (Test path name:C476($picturePath)=Is a document:K24:1)
-		$file:=File:C1566($picturePath; fk platform path:K87:2)
-		If ($file.extension=".svg")
-			$svg_txt:=Document to text:C1236($picturePath)
-			
-			$colorToReplace:=$toDraw_obj.btn.picture.colorToReplace
-			$replacingColor:=$toDraw_obj.btn.picture.replacingColor
-			
-			//replace color SVG
-			If ($replacingColor#$colorToReplace) & ($replacingColor#"")
-				$svg_txt:=Replace string:C233($svg_txt; "fill=\""+$colorToReplace; "fill=\""+$replacingColor)
-				$svg_txt:=Replace string:C233($svg_txt; "fill:"+$colorToReplace; "fill:"+$replacingColor)
-				$svg_txt:=Replace string:C233($svg_txt; "fill: "+$colorToReplace; "fill: "+$replacingColor)
-				$svg_txt:=Replace string:C233($svg_txt; "stroke=\""+$colorToReplace; "stroke=\""+$replacingColor)
-				$svg_txt:=Replace string:C233($svg_txt; "stroke:"+$colorToReplace; "stroke:"+$replacingColor)
-				$svg_txt:=Replace string:C233($svg_txt; "stroke: "+$colorToReplace; "stroke: "+$replacingColor)
-			End if 
-			
-			$dom_ref:=DOM Parse XML variable:C720($svg_txt)
-			
-			SVG EXPORT TO PICTURE:C1017($dom_ref; $btn_pict)
-			DOM CLOSE XML:C722($dom_ref)
-		Else 
-			READ PICTURE FILE:C678($picturePath; $btn_pict)
-		End if 
+	If (Picture size:C356($picture)>0)
+		$btn_pict:=$picture
+		$pictureExtension:=".png"
 	Else 
-		$btn_pict:=$btn_pict*0
+		If (Test path name:C476($picturePath)=Is a document:K24:1)
+			$file:=File:C1566($picturePath; fk platform path:K87:2)
+			$pictureExtension:=$file.extension
+			If ($file.extension=".svg")
+				$svg_txt:=Document to text:C1236($picturePath)
+				
+				$colorToReplace:=$toDraw_obj.btn.picture.colorToReplace
+				$replacingColor:=$toDraw_obj.btn.picture.replacingColor
+				
+				//replace color SVG
+				If ($replacingColor#$colorToReplace) & ($replacingColor#"")
+					$svg_txt:=Replace string:C233($svg_txt; "fill=\""+$colorToReplace; "fill=\""+$replacingColor)
+					$svg_txt:=Replace string:C233($svg_txt; "fill:"+$colorToReplace; "fill:"+$replacingColor)
+					$svg_txt:=Replace string:C233($svg_txt; "fill: "+$colorToReplace; "fill: "+$replacingColor)
+					$svg_txt:=Replace string:C233($svg_txt; "stroke=\""+$colorToReplace; "stroke=\""+$replacingColor)
+					$svg_txt:=Replace string:C233($svg_txt; "stroke:"+$colorToReplace; "stroke:"+$replacingColor)
+					$svg_txt:=Replace string:C233($svg_txt; "stroke: "+$colorToReplace; "stroke: "+$replacingColor)
+				End if 
+				
+				$dom_ref:=DOM Parse XML variable:C720($svg_txt)
+				
+				SVG EXPORT TO PICTURE:C1017($dom_ref; $btn_pict)
+				DOM CLOSE XML:C722($dom_ref)
+			Else 
+				READ PICTURE FILE:C678($picturePath; $btn_pict)
+			End if 
+		Else 
+			$btn_pict:=$btn_pict*0
+		End if 
 	End if 
 	$pictureScale:=$toDraw_obj.btn.picture.scale
 	
@@ -311,7 +321,7 @@ Case of
 		
 	: ($btn_composition="picture")  // picture composition
 		
-		If (Test path name:C476($picturePath)=Is a document:K24:1)
+		If (Picture size:C356($btn_pict)>0)
 			//resize picture if necessary
 			$resultResize:=AJUI_Btn_resizePicture($boxWidth; $boxHeight; $pictScaleWidth; $pictScaleHeight)
 			$pictScaleWidth:=$resultResize.width
@@ -321,13 +331,7 @@ Case of
 			$posX:=($boxWidth-$pictScaleWidth)/2
 			$posY:=($boxHeight-$pictScaleHeight)/2
 			
-			//draw picture
-			If ($picturePath="")
-				$btn_pict:=$btn_pict*0
-			End if 
-			
-			
-			PICTURE TO BLOB:C692($btn_pict; $pict_blob; $file.extension)
+			PICTURE TO BLOB:C692($btn_pict; $pict_blob; $pictureExtension)
 			BASE64 ENCODE:C895($pict_blob; $image_txt)
 			$image_txt:="data:image/svg+xml;base64,"+$image_txt
 			
@@ -459,15 +463,9 @@ Case of
 				
 		End case 
 		
-		
-		//draw picture and text area
-		If ($picturePath="")
-			$btn_pict:=$btn_pict*0
-		End if 
-		
-		If (Test path name:C476($picturePath)=Is a document:K24:1)
+		If (Picture size:C356($btn_pict)>0)
 			
-			PICTURE TO BLOB:C692($btn_pict; $pict_blob; $file.extension)
+			PICTURE TO BLOB:C692($btn_pict; $pict_blob; $pictureExtension)
 			BASE64 ENCODE:C895($pict_blob; $image_txt)
 			$image_txt:="data:image/svg+xml;base64,"+$image_txt
 			
