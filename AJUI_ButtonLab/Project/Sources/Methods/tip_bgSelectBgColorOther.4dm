@@ -76,7 +76,6 @@ Form.tipBgColorOther.ArrowOffset(10)
   // ----------------------
 Form.tipBgColorOther.CloseBoxDisplay(False)
 Form.tipBgColorOther.CloseBoxSize(5)
-Form.tipBgColorOther.ActivateOnClickCB(False)
 
 
   // ----------------------
