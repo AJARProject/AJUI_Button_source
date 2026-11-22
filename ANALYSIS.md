@@ -22,8 +22,9 @@ L'hôte crée une instance avec la classe `cs.AJUI.Button` (renvoyée par `AJUI_
 | `Settings/buildApp.4DSettings` | **Nouveau.** Construction du composant (`BuildComponent` True, nom `AJUI_Button`). Le `.gitignore` excluait `/Settings/*` et `*.4DSettings` ; ces lignes sont retirées. |
 | `Resources/AJUI_btn_Constants.xlf` | Constantes d'état `AJUI_btn_default`, `AJUI_btn_hover`, `AJUI_btn_active`, `AJUI_btn_disable`, `AJUI_btn_focus`. |
 | `Documentation/Methods` | Fiches markdown des 4 méthodes partagées. |
+| `AJUI_ButtonLab/` | **Nouveau.** Projet de démonstration et de test (voir « AJUI_ButtonLab » plus bas). Hors du composant construit. |
 
-Pas de formulaire dans ce dépôt : le formulaire de test est dans AJUI_ButtonLab (voir les étapes suivantes).
+Pas de formulaire dans le composant : les formulaires de test sont dans `AJUI_ButtonLab/`.
 
 ## API partagée
 
@@ -60,7 +61,7 @@ Sur un export `git archive` de la branche :
 
 ## Risques et points non testés
 
-1. **Affichage non testé.** Le test tourne sans interface (`--headless`) : `draw`, les états au survol et au clic, les FAB et leur animation, les callbacks, l'import et l'export de modèles n'ont pas été exécutés. La compilation garantit les types et les appels, pas le rendu. AJUI_ButtonLab servira à ces tests.
+1. **Affichage non testé.** Le test tourne sans interface (`--headless`) : `draw`, les états au survol et au clic, les FAB et leur animation, les callbacks, l'import et l'export de modèles n'ont pas été exécutés. La compilation garantit les types et les appels, pas le rendu. AJUI_ButtonLab (maintenant dans ce dépôt) sert à ces tests ; son interface n'a pas non plus été testée.
 2. **Release GitHub non testée** : le chargement par le gestionnaire de dépendances depuis une release sera vérifié avec la release 2.2.0.
 
 Défauts relevés, déjà présents avant la migration et **non corrigés** ici (comportement conservé) :
@@ -76,8 +77,9 @@ Chacune dans une PR séparée, après accord de Maurice :
 
 1. ~~Fusion de la migration, puis Release 2.2.0~~ : fait (PR #7, Release 2.2.0).
 2. ~~**Nettoyage**~~ : fait, voir la section « Nettoyage » ci-dessous.
-3. **Import d'AJUI_ButtonLab.** Le Lab (`AJUI_ButtonLab/` de l'ancien dépôt `AJARProject/AJUI_Button`, sous licence propriétaire AJAR) passera dans ce dépôt, dans `AJUI_ButtonLab/`, sous licence MIT : Maurice l'a approuvé au nom d'AJAR. Ses copies compilées de 2022 d'AJUI_Button, AJUI_Tip et AJUI_Banner seront remplacées par des dépendances déclarées (AJUI_Button vers les sources de ce dépôt, AJUI_Tip 1.8.1, AJUI_Banner 1.9.0 une fois publié).
+3. ~~**Import d'AJUI_ButtonLab**~~ : fait, voir la section « AJUI_ButtonLab » ci-dessous.
 4. Corrections éventuelles des défauts 3 à 5.
+5. Tri des ressources du Lab non utilisées (liste dans « AJUI_ButtonLab », après accord de Maurice).
 
 ## Nettoyage
 
@@ -100,3 +102,50 @@ Après le nettoyage : compilation 4D 21 R4 sans erreur ni avertissement, `BUILD 
 ### Cleanup (EN)
 
 Removed: `zz_test.4dm` (manual test method, never called, and broken: `CornerRadius` instead of `cornerRadius`) and the `extended round button/` folder (4 design files: `.graffle`, `.svg`, two `.pdf`), none of which is used by code, forms, menus or the build. No `.DS_Store` or conflict copies were tracked. `AJUI_Btn_buildComponent` and `AJUI_BuildComponent` are kept: they are the documented build path (README) and were fixed in the migration. After cleanup: 4D 21 R4 compilation with no error and no warning, build OK, `codesign -v` valid.
+
+## AJUI_ButtonLab
+
+**Import.** `AJUI_ButtonLab/` de [AJARProject/AJUI_Button](https://github.com/AJARProject/AJUI_Button) (master 9aec507, 10 juin 2022) importé par `git subtree add --prefix=AJUI_ButtonLab` : les 20 commits qui touchent ce dossier sont conservés (le commit de fusion porte le message « Import d'AJUI_ButtonLab… historique conservé »). Contrepartie : l'historique importé contient les anciennes copies compilées des composants, environ 7 Mo d'objets git.
+
+**Retiré du Lab :**
+
+| Élément | Raison |
+| --- | --- |
+| `AJUI_ButtonLab/Components/` (AJUI_Banner, AJUI_Button, AJUI_Tip `.4dbase`, compilés en 2022, 3 Mo) | Remplacés par `Project/Sources/dependencies.json`. |
+| `AJUI_ButtonLab/AJUI_ButtonLab.Match` | Fichier de correspondance des tables, vide (`<DataTableMatching/>`) ; le Lab n'a ni table ni données. |
+
+**Dépendances.** `Project/Sources/dependencies.json` : 4D SVG (`4d/4D-SVG`), AJUI_Tip `^1.8.1`, AJUI_Banner `^1.9.0`, AJUI_Button `^2.2.0` (dépôts `AJARProject/*_source`). `AJUI_ButtonLab/environment4d.json` (`{"dependencies": {"AJUI_Button": "../"}}`) surcharge AJUI_Button avec les sources de ce dépôt ; emplacement et chemin relatif selon [Components](https://developer.4d.com/docs/21-R4/Project/components) (le fichier se place dans le dossier du projet ou un dossier parent ; les chemins relatifs partent du fichier). Supprimer ce fichier revient à la release GitHub.
+
+**Migration 4D 21 R4.** Avant : 0 erreur, 207 avertissements (ancien fichier projet, composants GitHub). Même méthode que le composant : jetons retirés, `var`, `#DECLARE`, types tirés des symboles du compilateur, dans les 70 méthodes, la méthode de formulaire et les méthodes objet (134 fichiers sous `Forms`). `compatibilityVersion` 2140, `tokenizedText` false. Corrections propres au Lab :
+
+1. **`_O_OBJECT SET COLOR`** (3 appels, obsolète) remplacé par [`OBJECT SET RGB COLORS`](https://developer.4d.com/docs/21-R4/commands/object-set-rgb-colors). L'ancienne commande prenait des numéros de palette (`-(avant-plan+256*fond)`, `White`=0, `Black`=15) ; la nouvelle prend des valeurs RGB. `Lab_SetBgColorWhite` : zone de test blanc sur blanc (`0x00FFFFFF`), textes `bgz_@` en noir (`0x0000`) sans fond. `Lab_setBgColor_btn` : textes `bgz_@` en blanc (`0x00FFFFFF`) sans fond ; dans la même méthode, `Black` (numéro de palette 15, passé par erreur comme valeur RGB, soit `0x00000F`) devient `0x0000`. Choix à confirmer à l'écran : l'ancien code mettait un fond noir aux textes `bgz_@` dans `Lab_SetBgColorWhite`, le nouveau n'en met pas, comme `Lab_setBgColor_btn`.
+2. **Indice de tableau (533.3, 45 avertissements).** `$p->{$p->}` utilise le tableau lui-même comme indice (élément sélectionné). L'élément sélectionné est lu avant la ligne dans un entier (`$templates_pos:=$templates_ptr->`), puis `$p->{$templates_pos}` ; avant un `Case of` quand le test est dans une condition. 37 lignes ajoutées dans 17 fichiers ; même comportement.
+3. **Pointeur dans une déclaration de tableau (518.5, 3 avertissements).** Dans la méthode du formulaire `Lab`, les colonnes `category_col`, `property_col` et `value_col` n'ont pas de source de données : ce sont des variables dynamiques, qu'on ne peut typer que par leur pointeur (`ARRAY TEXT($category_ptr->;0)`). Ces trois lignes gardent leur forme, entre `//%W-518.5` et `//%W+518.5`, avec un commentaire.
+4. **Retypage (550.10).** Les `C_POINTER` en double disparaissent avec `var`.
+5. **Version.** `AJUI_Btn_InfoLab` renvoie `AJUI Button Lab 2.2.0 (v21 R4)` (avant : `AJUI Button Lab 1.3.2 (v18)`). `AJUI_Tip_getSubFormSize` (méthode partagée, appelée par AJUI_Tip) est conservée.
+
+Les méthodes de callback (`onClick_cb`…) gardent l'attribut `shared` : le composant les appelle par leur nom.
+
+**Vérifications (Mac mini, 4D 21 R4, copies de la branche) :**
+
+- Lab avec la surcharge locale : compilation **0 erreur, 0 avertissement** ; composants chargés 4D SVG, AJUI_Banner, AJUI_Button, AJUI_Tip (et 4D Labels, 4D Report, fournis par 4D). Avec une copie où `AJUI_Btn_info` renvoyait un marqueur, le Lab affichait ce marqueur : la surcharge est bien utilisée. Cela marche aussi quand le composant n'a pas été compilé avant (Lab interprété).
+- Lab sans `environment4d.json` (releases GitHub seules) : **0 erreur, 0 avertissement** ; `AJUI_Btn_info` = `AJUI_Button (v21 R4) : 2.2.0` (release).
+- Test sans interface du Lab : `AJUI_Btn_InfoLab` = `AJUI Button Lab 2.2.0 (v21 R4)`, `AJUI_Btn_info` = `AJUI_Button (v21 R4) : 2.2.0`, `AJUI_Tip_info` = `AJUI_Tip (v21 R4) : 1.8.1`, `New AJUI_Button` : `Name`, `Label`, `FontSize` et `Type` fonctionnent.
+- Composant (racine) : 0 erreur, 0 avertissement, `BUILD APPLICATION` OK, `codesign -v` valide ; le `.4dbase` construit ne contient rien du Lab ; ses dépendances restent 4D SVG seul.
+- **Non testé : l'interface** (formulaires `Lab` et `HDI_*`, dessin des boutons, couleurs, modèles).
+
+**Ressources du Lab non référencées** (conservées ; à trier plus tard) :
+
+| Ressource | Constat |
+| --- | --- |
+| `Resources/svg/tableIcons/` (8 dossiers, environ 340 fichiers, 1,4 Mo) | Aucune référence dans le code, les formulaires ni les modèles. `actions 2/` ressemble à une ancienne copie partielle d'`actions/`. Origine et licence inconnues. |
+| `Resources/4D_v16_596px.png` | Aucune référence (seul `4D_v16_60px.png` est utilisé, par `HDI_PictureBtn`). |
+| `Resources/Maurice_portrait2.png` | Aucune référence. |
+
+**Licence.** Le Lab passe sous la licence MIT du dépôt (accord de Maurice Inzirillo pour AJAR SA, 22 novembre 2026 ; l'ancien dépôt était sous licence AJAR). Les icônes tierces gardent leur licence : `Resources/svg/Deemak_Daksina/` (« Free for commercial use (Include link to authors website) » d'après son `README.txt` ; lien dans le README) et `Resources/svg/si-glyph-*.svg` (licence non vérifiée).
+
+**`.gitignore`.** Ajout de `/AJUI_ButtonLab/Project/DerivedData/`, `Logs/`, `userPreferences.*/`, `Libraries/`, `Data/`, `Resources/en.lproj/` et `Components/` (sous `AJUI_ButtonLab/`).
+
+### AJUI_ButtonLab (EN)
+
+`AJUI_ButtonLab/` was imported from AJARProject/AJUI_Button (9aec507) with `git subtree add`, keeping its 20 commits (about 7 MB of old compiled components in that history). Removed: `AJUI_ButtonLab/Components/` (2022 compiled AJUI_Banner, AJUI_Button, AJUI_Tip) and `AJUI_ButtonLab.Match`. Added `Project/Sources/dependencies.json` (4D SVG, AJUI_Tip `^1.8.1`, AJUI_Banner `^1.9.0`, AJUI_Button `^2.2.0`) and a committed `AJUI_ButtonLab/environment4d.json` that points AJUI_Button to the repository sources (`"../"`); delete it to use the GitHub release. Migrated to 4D 21 R4 (`compatibilityVersion` 2140, `var`/`#DECLARE` in methods, form and object methods). `_O_OBJECT SET COLOR` replaced with `OBJECT SET RGB COLORS` (palette numbers converted to RGB). Array-index warnings fixed by reading the selected element into an integer first. The three pointer-based array declarations of list box columns without a data source are kept, with a local `//%W-518.5`. `AJUI_Btn_InfoLab` returns `AJUI Button Lab 2.2.0 (v21 R4)`. Results: the Lab compiles with 0 errors and 0 warnings with the local override (verified with a marker build) and with GitHub releases only; headless test OK; the component still compiles 0/0, builds and signs, and its build contains nothing from the Lab. The UI was not tested. Unreferenced resources kept as candidates: `svg/tableIcons/`, `4D_v16_596px.png`, `Maurice_portrait2.png`. Licence: the Lab is now MIT (approved by Maurice Inzirillo for AJAR SA, 22 Nov 2026); the Deemak Daksina and si-glyph icons keep their own licences.
