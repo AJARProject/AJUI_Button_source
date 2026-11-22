@@ -15,14 +15,13 @@ L'hôte crée une instance avec la classe `cs.AJUI.Button` (renvoyée par `AJUI_
 | Emplacement | Rôle |
 | --- | --- |
 | `Project/AJUI_Button.4DProject` | Projet du composant. Avant migration : seulement le commentaire 4D. Maintenant `compatibilityVersion` 2140 et `tokenizedText` false. |
-| `Project/Sources/Methods` | 77 méthodes projet, dont `zz_test` (essai manuel). |
+| `Project/Sources/Methods` | 76 méthodes projet (77 à la migration ; `zz_test` retirée par le nettoyage). |
 | `Project/Sources/Classes/Button.4dm` | Classe `Button` : constructeur et 56 fonctions (getters/setters, FAB, `draw`, `show`, `hide`, `enable`, `export`…). |
 | `Project/Sources/settings.4DSettings` | Réglages du projet, dont `component_classStore_name="AJUI"`. Inchangé. |
 | `Project/Sources/dependencies.json` | **Nouveau.** Déclare 4D SVG (`github: 4d/4D-SVG`). |
 | `Settings/buildApp.4DSettings` | **Nouveau.** Construction du composant (`BuildComponent` True, nom `AJUI_Button`). Le `.gitignore` excluait `/Settings/*` et `*.4DSettings` ; ces lignes sont retirées. |
 | `Resources/AJUI_btn_Constants.xlf` | Constantes d'état `AJUI_btn_default`, `AJUI_btn_hover`, `AJUI_btn_active`, `AJUI_btn_disable`, `AJUI_btn_focus`. |
 | `Documentation/Methods` | Fiches markdown des 4 méthodes partagées. |
-| `extended round button/` | Maquettes (`.graffle`, `.svg`, `.pdf`), sans rôle dans le code. |
 
 Pas de formulaire dans ce dépôt : le formulaire de test est dans AJUI_ButtonLab (voir les étapes suivantes).
 
@@ -69,13 +68,35 @@ Défauts relevés, déjà présents avant la migration et **non corrigés** ici 
 3. **`failImport` du constructeur.** Comme dans AJUI_Tip avant la 1.8.1, `Class constructor` teste `This.btn.failImport`, qui n'est jamais renseigné, alors que le résultat de l'import est dans `$template_obj.failImport`. Un modèle introuvable n'est donc pas détecté par la classe (`New AJUI_Button` le détecte bien).
 4. **`AJUI_Btn_addFab`** ignore le paramètre de position : `$2` est déclaré mais jamais lu, et la condition semble inversée (`push` quand la collection n'est pas vide, `insert` à la position 0 sinon).
 5. **Callbacks créés automatiquement.** Quand la méthode de callback n'existe pas, `AJUI_Btn_GetSetOnClickCB`, `AJUI_Btn_GetSetOnDoubleClickCB` et `AJUI_Btn_checkValidCallback` proposent de la créer dans l'hôte avec le code `C_OBJECT($1)`, une directive obsolète en 4D 21 R4 (avertissement chez l'hôte). À remplacer par `#DECLARE($param : Object)` dans une PR dédiée.
-6. **`zz_test`** appelle `CornerRadius`, alors que la fonction de la classe s'appelle `cornerRadius` (les noms de membres sont sensibles à la casse) ; la méthode d'essai ne fonctionne donc pas.
+6. **`zz_test`** appelait `CornerRadius`, alors que la fonction de la classe s'appelle `cornerRadius` (les noms de membres sont sensibles à la casse) ; cette méthode d'essai ne fonctionnait pas. Elle est retirée par le nettoyage (voir plus bas).
 
 ## Étapes suivantes
 
 Chacune dans une PR séparée, après accord de Maurice :
 
-1. Fusion de cette PR, puis Release 2.2.0 (archive `AJUI_Button_source.zip` du composant compilé et signé) et test depuis un hôte qui la déclare depuis GitHub.
-2. **Nettoyage** : `zz_test`, le dossier de maquettes `extended round button/`, le `.gitignore`.
+1. ~~Fusion de la migration, puis Release 2.2.0~~ : fait (PR #7, Release 2.2.0).
+2. ~~**Nettoyage**~~ : fait, voir la section « Nettoyage » ci-dessous.
 3. **Import d'AJUI_ButtonLab.** Le Lab (`AJUI_ButtonLab/` de l'ancien dépôt `AJARProject/AJUI_Button`, sous licence propriétaire AJAR) passera dans ce dépôt, dans `AJUI_ButtonLab/`, sous licence MIT : Maurice l'a approuvé au nom d'AJAR. Ses copies compilées de 2022 d'AJUI_Button, AJUI_Tip et AJUI_Banner seront remplacées par des dépendances déclarées (AJUI_Button vers les sources de ce dépôt, AJUI_Tip 1.8.1, AJUI_Banner 1.9.0 une fois publié).
 4. Corrections éventuelles des défauts 3 à 5.
+
+## Nettoyage
+
+Fichiers retirés (aucun n'est utilisé par le code, les formulaires, `menus.json`, `folders.json` ni la construction) :
+
+| Fichier | Raison |
+| --- | --- |
+| `Project/Sources/Methods/zz_test.4dm` | Méthode d'essai manuelle, appelée nulle part (vérifié dans les méthodes, la classe, `menus.json` et `folders.json`) ; elle ne fonctionnait pas (`CornerRadius` au lieu de `cornerRadius`). |
+| `extended round button/examples.graffle` | Maquette OmniGraffle, sans rôle dans le composant. |
+| `extended round button/examples/Canvas 1.svg` | Maquette. |
+| `extended round button/examples/image2.pdf` | Maquette. |
+| `extended round button/examples/image3.pdf` | Maquette. |
+
+Aucun `.DS_Store` ni copie de conflit n'était versionné.
+
+**Conservés : `AJUI_Btn_buildComponent` et `AJUI_BuildComponent`.** C'est la façon documentée de construire le composant (README, « Installation rapide ») : `AJUI_Btn_buildComponent` appelle `AJUI_BuildComponent("AJUI_Btn_info")`, qui appelle `BUILD APPLICATION` sur `Settings/buildApp.4DSettings`. La migration a corrigé `AJUI_BuildComponent` pour qu'il ne réécrive plus la version ; rien ne le remplace.
+
+Après le nettoyage : compilation 4D 21 R4 sans erreur ni avertissement, `BUILD APPLICATION` OK, `codesign -v` valide.
+
+### Cleanup (EN)
+
+Removed: `zz_test.4dm` (manual test method, never called, and broken: `CornerRadius` instead of `cornerRadius`) and the `extended round button/` folder (4 design files: `.graffle`, `.svg`, two `.pdf`), none of which is used by code, forms, menus or the build. No `.DS_Store` or conflict copies were tracked. `AJUI_Btn_buildComponent` and `AJUI_BuildComponent` are kept: they are the documented build path (README) and were fixed in the migration. After cleanup: 4D 21 R4 compilation with no error and no warning, build OK, `codesign -v` valid.
