@@ -6,7 +6,9 @@
   //
   // Getter and setter to activate the use of the second color with a composite button
 
-If (False:C215)
+#DECLARE($param1 : Boolean) -> $result : Boolean
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 19.07.19, 10:20:09
@@ -18,11 +20,11 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_BOOLEAN:C305($0;$1;$active)
+var $active : Boolean
 
-If (Count parameters:C259=0)
-	$0:=This:C1470.btn.composite.activeSecondColor
+If (Count parameters=0)
+	$result:=This.btn.composite.activeSecondColor
 Else 
-	$active:=$1
-	This:C1470.btn.composite.activeSecondColor:=$active
+	$active:=$param1
+	This.btn.composite.activeSecondColor:=$active
 End if 

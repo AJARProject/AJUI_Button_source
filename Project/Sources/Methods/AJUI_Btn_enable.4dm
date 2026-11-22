@@ -5,7 +5,9 @@
   //
   // Method to set the disable state. Will relaunch the draw button
 
-If (False:C215)
+#DECLARE($param1 : Boolean)
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 25.07.19, 10:08:15
@@ -17,10 +19,10 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_BOOLEAN:C305($1;$enable)
+var $enable : Boolean
 
-$enable:=$1
+$enable:=$param1
 
-OBJECT SET ENABLED:C1123(*;This:C1470.btn.global.name;$enable)
+OBJECT SET ENABLED(*;This.btn.global.name;$enable)
 
-This:C1470.Draw()
+This.Draw()

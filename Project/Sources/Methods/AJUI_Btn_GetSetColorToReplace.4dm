@@ -7,7 +7,9 @@
   //
   // Getter and setter to specify the old color of a SVG, it will be replaced by the new color
 
-If (False:C215)
+#DECLARE($param1 : Text; $param2 : Text) -> $result : Text
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 05.08.19, 13:44:14
@@ -21,27 +23,26 @@ End if
 
 
 
-C_TEXT:C284($1;$state)
-C_TEXT:C284($0;$2;$color)
-C_OBJECT:C1216($current_obj)
+var $state; $color : Text
+var $current_obj : Object
 
-$state:=$1
+$state:=$param1
 
 If ($state="default")
-	$current_obj:=This:C1470.btn
+	$current_obj:=This.btn
 Else 
-	$current_obj:=This:C1470.btn[$state]
+	$current_obj:=This.btn[$state]
 End if 
 
-If (Count parameters:C259=1)
+If (Count parameters=1)
 	
-	If ($current_obj.picture.colorToReplace#Null:C1517)
-		$0:=$current_obj.picture.colorToReplace
+	If ($current_obj.picture.colorToReplace#Null)
+		$result:=$current_obj.picture.colorToReplace
 	Else 
-		$0:=This:C1470.btn.picture.colorToReplace
+		$result:=This.btn.picture.colorToReplace
 	End if 
 	
 Else 
-	$color:=$2
+	$color:=$param2
 	$current_obj.picture.colorToReplace:=$color
 End if 

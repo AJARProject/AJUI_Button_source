@@ -7,7 +7,9 @@
 //
 // Getter and setter for the text margin horizontal
 
-If (False:C215)
+#DECLARE($param1 : Text; $param2 : Integer) -> $result : Integer
+
+If (False)
 	// ----------------------------------------------------
 	// User name (OS): Gary Criblez
 	// Date and time: 26.08.19, 11:36:23
@@ -20,28 +22,28 @@ If (False:C215)
 End if 
 
 
-C_TEXT:C284($1;$state)
-C_LONGINT:C283($0;$2;$margin)
-C_OBJECT:C1216($current_obj)
+var $state : Text
+var $margin : Integer
+var $current_obj : Object
 
-$state:=$1
+$state:=$param1
 
 If ($state="default")
-	$current_obj:=This:C1470.btn
+	$current_obj:=This.btn
 Else 
-	$current_obj:=This:C1470.btn[$state]
+	$current_obj:=This.btn[$state]
 End if 
 
-If (Count parameters:C259=1)
+If (Count parameters=1)
 	
-	If ($current_obj.text.horizontalMargin#Null:C1517)
-		$0:=$current_obj.text.horizontalMargin
+	If ($current_obj.text.horizontalMargin#Null)
+		$result:=$current_obj.text.horizontalMargin
 	Else 
-		$0:=This:C1470.btn.text.horizontalMargin
+		$result:=This.btn.text.horizontalMargin
 	End if 
 	
 Else 
-	$margin:=$2
+	$margin:=$param2
 	If ($margin>=0)
 		$current_obj.text.horizontalMargin:=$margin
 	End if 

@@ -7,7 +7,9 @@
   //
   // Getter and setter for the font name of the button
 
-If (False:C215)
+#DECLARE($param1 : Text; $param2 : Text) -> $result : Text
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 19.07.19, 11:01:45
@@ -20,27 +22,26 @@ If (False:C215)
 End if 
 
 
-C_TEXT:C284($1;$state)
-C_TEXT:C284($0;$2;$fontName)
-C_OBJECT:C1216($current_obj)
+var $state; $fontName : Text
+var $current_obj : Object
 
-$state:=$1
+$state:=$param1
 
 If ($state="default")
-	$current_obj:=This:C1470.btn
+	$current_obj:=This.btn
 Else 
-	$current_obj:=This:C1470.btn[$state]
+	$current_obj:=This.btn[$state]
 End if 
 
-If (Count parameters:C259=1)
+If (Count parameters=1)
 	
-	If ($current_obj.text.fontName#Null:C1517)
-		$0:=$current_obj.text.fontName
+	If ($current_obj.text.fontName#Null)
+		$result:=$current_obj.text.fontName
 	Else 
-		$0:=This:C1470.btn.text.fontName
+		$result:=This.btn.text.fontName
 	End if 
 	
 Else 
-	$fontName:=$2
+	$fontName:=$param2
 	$current_obj.text.fontName:=$fontName
 End if 

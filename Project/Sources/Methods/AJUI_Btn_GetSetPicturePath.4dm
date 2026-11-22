@@ -7,7 +7,9 @@
   //
   // Getter and setter for the picture path
 
-If (False:C215)
+#DECLARE($param1 : Text; $param2 : Text) -> $result : Text
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Maurice Inzirillo
 	  // Date and time: 19.07.19, 11:51:23
@@ -21,25 +23,24 @@ End if
 
 
 
-C_TEXT:C284($1;$state)
-C_TEXT:C284($0;$2;$path)
-C_OBJECT:C1216($current_obj)
+var $state; $path : Text
+var $current_obj : Object
 
-$state:=$1
+$state:=$param1
 
 If ($state="default")
-	$current_obj:=This:C1470.btn
+	$current_obj:=This.btn
 Else 
-	$current_obj:=This:C1470.btn[$state]
+	$current_obj:=This.btn[$state]
 End if 
 
-If (Count parameters:C259=1)
-	If ($current_obj.picture.path#Null:C1517)
-		$0:=$current_obj.picture.path
+If (Count parameters=1)
+	If ($current_obj.picture.path#Null)
+		$result:=$current_obj.picture.path
 	Else 
-		$0:=This:C1470.btn.picture.path
+		$result:=This.btn.picture.path
 	End if 
 Else 
-	$path:=$2
+	$path:=$param2
 	$current_obj.picture.path:=$path
 End if 

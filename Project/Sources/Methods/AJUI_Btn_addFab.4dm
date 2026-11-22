@@ -6,7 +6,9 @@
   //
   // Add an item in the FAB collection
 
-If (False:C215)
+#DECLARE($param1 : Text; $param2 : Integer)
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 16.12.19, 09:36:16
@@ -18,27 +20,27 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_TEXT:C284($1;$btnName)
-C_LONGINT:C283($2;$position;$pos)
-C_BOOLEAN:C305($valid)
+var $btnName : Text
+var $position; $pos : Integer
+var $valid : Boolean
 
-$btnName:=$1
+$btnName:=$param1
 If ($btnName#"")
-	If (Count parameters:C259=1)
-		$position:=This:C1470.btn.fab.btnCol.length
+	If (Count parameters=1)
+		$position:=This.btn.fab.btnCol.length
 	End if 
 	
-	If (This:C1470.btn.fab.btnCol.length>0)
-		This:C1470.btn.fab.btnCol.push($btnName)
+	If (This.btn.fab.btnCol.length>0)
+		This.btn.fab.btnCol.push($btnName)
 	Else 
-		$pos:=This:C1470.btn.fab.btnCol.indexOf($btnName)
+		$pos:=This.btn.fab.btnCol.indexOf($btnName)
 		If ($pos#-1)
-			This:C1470.btn.fab.btnCol.remove($pos)
+			This.btn.fab.btnCol.remove($pos)
 		End if 
 		
-		This:C1470.btn.fab.btnCol.insert($position;$btnName)
+		This.btn.fab.btnCol.insert($position;$btnName)
 	End if 
 	
 Else 
-	ALERT:C41("You must enter an AJUI Button form object name")
+	ALERT("You must enter an AJUI Button form object name")
 End if 

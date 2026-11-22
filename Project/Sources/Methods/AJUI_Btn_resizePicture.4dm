@@ -9,7 +9,9 @@
   //
   // this method will return the height and width to be applied so that the image is correctly sized
 
-If (False:C215)
+#DECLARE($param1 : Real; $param2 : Real; $param3 : Real; $param4 : Real) -> $return : Object
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 19.07.19, 14:06:25
@@ -21,19 +23,15 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_REAL:C285($1;$boxWidth)
-C_REAL:C285($2;$boxHeight)
-C_REAL:C285($3;$pictScaleWidth)
-C_REAL:C285($4;$pictScaleHeight)
-C_REAL:C285($ratioWidth;$ratioHeight;$scaleToApply)
-C_OBJECT:C1216($0;$result)
+var $boxWidth; $boxHeight; $pictScaleWidth; $pictScaleHeight; $ratioWidth; $ratioHeight; $scaleToApply : Real
+var $result : Object
 
-$result:=New object:C1471
+$result:=New object
 
-$boxWidth:=$1
-$boxHeight:=$2
-$pictScaleWidth:=$3
-$pictScaleHeight:=$4
+$boxWidth:=$param1
+$boxHeight:=$param2
+$pictScaleWidth:=$param3
+$pictScaleHeight:=$param4
 
 
 
@@ -55,4 +53,4 @@ Else
 	$result.height:=$pictScaleHeight
 End if 
 
-$0:=$result
+$return:=$result

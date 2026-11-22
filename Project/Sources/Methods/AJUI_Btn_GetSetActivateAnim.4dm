@@ -6,7 +6,9 @@
   //
   // Getter and setter to activate/inactivate the FAB animation
 
-If (False:C215)
+#DECLARE($param1 : Boolean) -> $result : Boolean
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 16.01.20, 11:11:03
@@ -18,11 +20,11 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_BOOLEAN:C305($0;$1;$animation)
+var $animation : Boolean
 
-If (Count parameters:C259=0)
-	$0:=This:C1470.btn.fab.animation
+If (Count parameters=0)
+	$result:=This.btn.fab.animation
 Else 
-	$animation:=$1
-	This:C1470.btn.fab.animation:=$animation
+	$animation:=$param1
+	This.btn.fab.animation:=$animation
 End if 

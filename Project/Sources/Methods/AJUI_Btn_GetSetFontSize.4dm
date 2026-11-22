@@ -7,7 +7,9 @@
   //
   // Getter and setter for the font size of the button
 
-If (False:C215)
+#DECLARE($param1 : Text; $param2 : Integer) -> $result : Integer
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 19.07.19, 11:02:51
@@ -21,28 +23,28 @@ End if
 
 
 
-C_TEXT:C284($1;$state)
-C_LONGINT:C283($0;$2;$size)
-C_OBJECT:C1216($current_obj)
+var $state : Text
+var $size : Integer
+var $current_obj : Object
 
-$state:=$1
+$state:=$param1
 
 If ($state="default")
-	$current_obj:=This:C1470.btn
+	$current_obj:=This.btn
 Else 
-	$current_obj:=This:C1470.btn[$state]
+	$current_obj:=This.btn[$state]
 End if 
 
-If (Count parameters:C259=1)
+If (Count parameters=1)
 	
-	If ($current_obj.text.fontSize#Null:C1517)
-		$0:=$current_obj.text.fontSize
+	If ($current_obj.text.fontSize#Null)
+		$result:=$current_obj.text.fontSize
 	Else 
-		$0:=This:C1470.btn.text.fontSize
+		$result:=This.btn.text.fontSize
 	End if 
 	
 Else 
-	$size:=$2
+	$size:=$param2
 	If ($size>0)
 		$current_obj.text.fontSize:=$size
 	End if 

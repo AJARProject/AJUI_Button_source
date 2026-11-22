@@ -5,7 +5,9 @@
   //
   // Display and place the secondary buttons based on the FAB properties and the position of the main button
 
-If (False:C215)
+#DECLARE($param1 : Object)
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 16.12.19, 11:02:34
@@ -17,11 +19,13 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_OBJECT:C1216($1;$instance_obj)
-C_LONGINT:C283($radius;$startAngle;$angleToTravel;$nbSecButtons;$angleBetweenSec;$x;$y)
-C_BOOLEAN:C305($clockwise)
+var $instance_obj : Object
+var $radius; $startAngle; $angleToTravel; $nbSecButtons; $angleBetweenSec; $x; $y : Integer
+var $clockwise : Boolean
+var $mainLeft; $mainTop; $mainRight; $mainBottom; $centerX; $centerY; $secLeft; $secTop; $secRight; $secBottom; $halfSizeX; $halfSizeY : Real
+var $secondaryBtn : Text
 
-$instance_obj:=$1
+$instance_obj:=$param1
 
 $radius:=$instance_obj.btn.fab.radius
 $startAngle:=$instance_obj.btn.fab.startAngle
@@ -33,26 +37,26 @@ If ($angleToTravel<360)
 	$nbSecButtons:=$nbSecButtons-1
 End if 
 
-If (Not:C34($clockwise))
+If (Not($clockwise))
 	$startAngle:=$startAngle+$angleToTravel
 End if 
 
 $angleBetweenSec:=$angleToTravel/$nbSecButtons
 
-OBJECT GET COORDINATES:C663(*;$instance_obj.btn.global.name;$mainLeft;$mainTop;$mainRight;$mainBottom)
+OBJECT GET COORDINATES(*;$instance_obj.btn.global.name;$mainLeft;$mainTop;$mainRight;$mainBottom)
 $centerX:=$mainLeft+(($mainRight-$mainLeft)/2)
 $centerY:=$mainTop+(($mainBottom-$mainTop)/2)
 
 For each ($secondaryBtn;$instance_obj.btn.fab.btnCol)
-	OBJECT SET VISIBLE:C603(*;$secondaryBtn;True:C214)
-	OBJECT GET COORDINATES:C663(*;$secondaryBtn;$secLeft;$secTop;$secRight;$secBottom)
+	OBJECT SET VISIBLE(*;$secondaryBtn;True)
+	OBJECT GET COORDINATES(*;$secondaryBtn;$secLeft;$secTop;$secRight;$secBottom)
 	$halfSizeX:=($secRight-$secLeft)/2
 	$halfSizeY:=($secBottom-$secTop)/2
 	
-	$x:=$centerX+($radius*Cos:C18(Degree:K30:2*($startAngle+270)))
-	$y:=$centerY+($radius*Sin:C17(Degree:K30:2*($startAngle+270)))
+	$x:=$centerX+($radius*Cos(Degree*($startAngle+270)))
+	$y:=$centerY+($radius*Sin(Degree*($startAngle+270)))
 	
-	OBJECT SET COORDINATES:C1248(*;$secondaryBtn;$x-$halfSizeX;$y-$halfSizeY;$x+$halfSizeX;$y+$halfSizeY)
+	OBJECT SET COORDINATES(*;$secondaryBtn;$x-$halfSizeX;$y-$halfSizeY;$x+$halfSizeX;$y+$halfSizeY)
 	
 	If ($clockwise)
 		$startAngle:=$startAngle+$angleBetweenSec

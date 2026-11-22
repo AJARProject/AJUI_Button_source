@@ -7,7 +7,9 @@
   //
   // Getter and setter for the picture width of the button
 
-If (False:C215)
+#DECLARE($param1 : Text; $param2 : Integer) -> $result : Integer
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Maurice Inzirillo
 	  // Date and time: 19.07.19, 11:55:36
@@ -21,28 +23,28 @@ End if
 
 
 
-C_TEXT:C284($1;$state)
-C_LONGINT:C283($0;$2;$width)
-C_OBJECT:C1216($current_obj)
+var $state : Text
+var $width : Integer
+var $current_obj : Object
 
-$state:=$1
+$state:=$param1
 
 If ($state="default")
-	$current_obj:=This:C1470.btn
+	$current_obj:=This.btn
 Else 
-	$current_obj:=This:C1470.btn[$state]
+	$current_obj:=This.btn[$state]
 End if 
 
-If (Count parameters:C259=1)
+If (Count parameters=1)
 	
-	If ($current_obj.picture.width#Null:C1517)
-		$0:=$current_obj.picture.width
+	If ($current_obj.picture.width#Null)
+		$result:=$current_obj.picture.width
 	Else 
-		$0:=This:C1470.btn.picture.width
+		$result:=This.btn.picture.width
 	End if 
 	
 Else 
-	$width:=$2
+	$width:=$param2
 	If ($width>=0)
 		$current_obj.picture.width:=$width
 	Else 

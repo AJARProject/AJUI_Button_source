@@ -5,7 +5,9 @@
 //
 // This method return the current version of AJUI Button
 
-If (False:C215)
+#DECLARE() -> $result : Text
+
+If (False)
 	// ----------------------------------------------------
 	// User name (OS): Gary Criblez
 	// Date and time: 19.07.19, 12:02:07
@@ -18,8 +20,8 @@ If (False:C215)
 End if 
 
 
-C_TEXT:C284($0)
+var $version_t : Text
 
-$version_t:="2.1.0+Build188"  // Fri, 11 Feb 2022 12:38:47 GMT
+$version_t:="2.2.0"  // 22 Nov 2026 (4D 21 R4)
 
-$0:="AJUI Button(Builded on v19 R4): "+$version_t
+$result:="AJUI_Button (v21 R4) : "+$version_t

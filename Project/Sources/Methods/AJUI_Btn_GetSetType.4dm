@@ -6,7 +6,9 @@
   //
   // Getter and setter for the type of the button
 
-If (False:C215)
+#DECLARE($param1 : Text) -> $result : Text
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Maurice Inzirillo
 	  // Date and time: 19.07.19, 11:59:21
@@ -19,14 +21,14 @@ If (False:C215)
 End if 
 
 
-C_TEXT:C284($0;$1;$type)
+var $type : Text
 
-If (Count parameters:C259=0)
-	$0:=This:C1470.btn.global.type
+If (Count parameters=0)
+	$result:=This.btn.global.type
 Else 
-	$type:=$1
+	$type:=$param1
 	If ($type#"")
-		This:C1470.btn.global.type:=$type
+		This.btn.global.type:=$type
 	End if 
 End if 
 

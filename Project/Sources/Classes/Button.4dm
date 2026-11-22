@@ -1,26 +1,31 @@
-Class constructor
-	C_OBJECT:C1216($1; $template_obj)
+// Declared so the 21 R4 compiler knows the properties set on This (4D 21 R4 classes).
+// https://developer.4d.com/docs/21-R4/Concepts/classes
+property btn : Object
+property templateName; templatePath : Text
+
+Class constructor($param1 : Object)
 	
-	If (Count parameters:C259=1)
-		$template_obj:=$1
-		If ($template_obj.templatePath=Null:C1517)
+	var $template_obj : Object
+	If (Count parameters=1)
+		$template_obj:=$param1
+		If ($template_obj.templatePath=Null)
 			$template_obj:=AJUI_Btn_templateImport($template_obj.templateName)
 		Else 
 			$template_obj:=AJUI_Btn_templateImport($template_obj.templateName; $template_obj.templatePath)
 		End if 
 		
-		If (This:C1470.btn.failImport)
-			$template_obj:=New object:C1471()
+		If (This.btn.failImport)
+			$template_obj:=New object()
 		Else 
-			This:C1470.btn:=$template_obj.btn
-			This:C1470.templateName:=String:C10($template_obj.templateName)
-			This:C1470.templatePath:=String:C10($template_obj.templatePath)
+			This.btn:=$template_obj.btn
+			This.templateName:=String($template_obj.templateName)
+			This.templatePath:=String($template_obj.templatePath)
 		End if 
 	End if 
 	
-	AJUI_Btn_initAttributes(This:C1470)
+	AJUI_Btn_initAttributes(This)
 	
-Function onClick
+Function onClick($param1 : Variant; $param2 : Object) -> $result : Variant
 	// ----------------------
 	// EventCallback
 	// ----------------------
@@ -30,19 +35,17 @@ Function onClick
 	// $params : (object) (optional) params
 	// return : (variant) (return) current callback
 	
-	C_VARIANT:C1683($0; $1)
-	C_OBJECT:C1216($2)
 	
 	Case of 
-		: (Count parameters:C259=0)
-			$0:=AJUI_Btn_GetSetOnClickCB
-		: (Count parameters:C259=1)
-			AJUI_Btn_GetSetOnClickCB($1)
-		: (Count parameters:C259=2)
-			AJUI_Btn_GetSetOnClickCB($1; $2)
+		: (Count parameters=0)
+			$result:=AJUI_Btn_GetSetOnClickCB
+		: (Count parameters=1)
+			AJUI_Btn_GetSetOnClickCB($param1)
+		: (Count parameters=2)
+			AJUI_Btn_GetSetOnClickCB($param1; $param2)
 	End case 
 	
-Function onDoubleClick
+Function onDoubleClick($param1 : Variant; $param2 : Object) -> $result : Variant
 	// ----------------------
 	// EventCallback
 	// ----------------------
@@ -52,19 +55,17 @@ Function onDoubleClick
 	// $params : (object) (optional) params
 	// return : (variant) (return) current callback
 	
-	C_VARIANT:C1683($0; $1)
-	C_OBJECT:C1216($2)
 	
 	Case of 
-		: (Count parameters:C259=0)
-			$0:=AJUI_Btn_GetSetOnDoubleClickCB
-		: (Count parameters:C259=1)
-			AJUI_Btn_GetSetOnDoubleClickCB($1)
-		: (Count parameters:C259=2)
-			AJUI_Btn_GetSetOnDoubleClickCB($1; $2)
+		: (Count parameters=0)
+			$result:=AJUI_Btn_GetSetOnDoubleClickCB
+		: (Count parameters=1)
+			AJUI_Btn_GetSetOnDoubleClickCB($param1)
+		: (Count parameters=2)
+			AJUI_Btn_GetSetOnDoubleClickCB($param1; $param2)
 	End case 
 	
-Function composition
+Function composition($param1 : Text) -> $result : Text
 	// ----------------------
 	// Button Definition
 	// ----------------------
@@ -73,15 +74,14 @@ Function composition
 	// $1 : (text) (optional) button composition
 	// $2 : (text) (return) current composition
 	
-	C_TEXT:C284($0; $1)
 	
-	If (Count parameters:C259=0)
-		$0:=AJUI_Btn_GetSetComposition
+	If (Count parameters=0)
+		$result:=AJUI_Btn_GetSetComposition
 	Else 
-		AJUI_Btn_GetSetComposition($1)
+		AJUI_Btn_GetSetComposition($param1)
 	End if 
 	
-Function name
+Function name($param1 : Text) -> $result : Text
 	// ----------------------
 	// Button Definition
 	// ----------------------
@@ -90,15 +90,14 @@ Function name
 	// $1 : (text) (optional) name 
 	// $0 : (text) (return) value
 	
-	C_TEXT:C284($0; $1)
 	
-	If (Count parameters:C259=0)
-		$0:=AJUI_Btn_GetSetName
+	If (Count parameters=0)
+		$result:=AJUI_Btn_GetSetName
 	Else 
-		AJUI_Btn_GetSetName($1)
+		AJUI_Btn_GetSetName($param1)
 	End if 
 	
-Function type
+Function type($param1 : Text) -> $result : Text
 	// ----------------------
 	// Button Definition
 	// ----------------------
@@ -107,15 +106,14 @@ Function type
 	// $1 : (text) (optional) type 
 	// $0 : (text) (return) current type
 	
-	C_TEXT:C284($0; $1)
 	
-	If (Count parameters:C259=0)
-		$0:=AJUI_Btn_GetSetType
+	If (Count parameters=0)
+		$result:=AJUI_Btn_GetSetType
 	Else 
-		AJUI_Btn_GetSetType($1)
+		AJUI_Btn_GetSetType($param1)
 	End if 
 	
-Function backgroundColor
+Function backgroundColor($param1 : Text; $param2 : Text) -> $result : Text
 	// ----------------------
 	// Button Box
 	// ----------------------
@@ -125,26 +123,24 @@ Function backgroundColor
 	// $2 : (text) (optional) color
 	// $0 : (text) (return) current BG primary color
 	
-	C_TEXT:C284($0; $1; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetBGPrimaColor($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetBGPrimaColor($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetBGPrimaColor($1)
+		$result:=AJUI_Btn_GetSetBGPrimaColor($param1)
 	End if 
 	
-Function bgColor
+Function bgColor($param1 : Text; $param2 : Text) -> $result : Text
 	// ALIAS for backgroundColor
 	
-	C_TEXT:C284($0; $1; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetBGPrimaColor($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetBGPrimaColor($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetBGPrimaColor($1)
+		$result:=AJUI_Btn_GetSetBGPrimaColor($param1)
 	End if 
 	
-Function cornerRadius
+Function cornerRadius($param1 : Text; $param2 : Integer) -> $result : Integer
 	// ----------------------
 	// Button Box
 	// ----------------------
@@ -154,16 +150,14 @@ Function cornerRadius
 	// $2 : (longint) (optional) radius size
 	// $0 : (longint) (return) current radius size
 	
-	C_TEXT:C284($1)
-	C_LONGINT:C283($0; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetCornerRadius($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetCornerRadius($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetCornerRadius($1)
+		$result:=AJUI_Btn_GetSetCornerRadius($param1)
 	End if 
 	
-Function height
+Function height($param1 : Text; $param2 : Integer) -> $result : Integer
 	// ----------------------
 	// Button Box
 	// ----------------------
@@ -173,16 +167,14 @@ Function height
 	// $2 : (longint) (optional) box height
 	// $0 : (longint) (return) current box height
 	
-	C_TEXT:C284($1)
-	C_LONGINT:C283($0; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetBoxHeight($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetBoxHeight($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetBoxHeight($1)
+		$result:=AJUI_Btn_GetSetBoxHeight($param1)
 	End if 
 	
-Function resizable
+Function resizable($param1 : Boolean) -> $result : Boolean
 	// ----------------------
 	// Button Box
 	// ----------------------
@@ -191,15 +183,14 @@ Function resizable
 	// $1 : (boolean) (optional) resize box
 	// $0 : (boolean) (return) return resized box?
 	
-	C_BOOLEAN:C305($0; $1)
 	
-	If (Count parameters:C259=0)
-		$0:=AJUI_Btn_GetSetResizeBox
+	If (Count parameters=0)
+		$result:=AJUI_Btn_GetSetResizeBox
 	Else 
-		AJUI_Btn_GetSetResizeBox($1)
+		AJUI_Btn_GetSetResizeBox($param1)
 	End if 
 	
-Function width
+Function width($param1 : Text; $param2 : Integer) -> $result : Integer
 	// ----------------------
 	// Button Box
 	// ----------------------
@@ -209,16 +200,14 @@ Function width
 	// $2 : (longint) (optional) box width
 	// $0 : (longint) (return) current box width
 	
-	C_TEXT:C284($1)
-	C_LONGINT:C283($0; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetBoxWidth($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetBoxWidth($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetBoxWidth($1)
+		$result:=AJUI_Btn_GetSetBoxWidth($param1)
 	End if 
 	
-Function padding
+Function padding($param1 : Text; $param2 : Integer) -> $result : Integer
 	// ----------------------
 	// Button Box
 	// ----------------------
@@ -228,16 +217,14 @@ Function padding
 	// $2 : (longint) (optional) box padding
 	// $0 : (longint) (return) current padding
 	
-	C_TEXT:C284($1)
-	C_LONGINT:C283($0; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetBoxPadding($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetBoxPadding($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetBoxPadding($1)
+		$result:=AJUI_Btn_GetSetBoxPadding($param1)
 	End if 
 	
-Function borderColor
+Function borderColor($param1 : Text; $param2 : Text) -> $result : Text
 	// ----------------------
 	// Border
 	// ----------------------
@@ -247,15 +234,14 @@ Function borderColor
 	// $2 : (text) (optional) color
 	// $0 : (text) (return) current border color
 	
-	C_TEXT:C284($0; $1; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetBorderColor($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetBorderColor($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetBorderColor($1)
+		$result:=AJUI_Btn_GetSetBorderColor($param1)
 	End if 
 	
-Function borderSize
+Function borderSize($param1 : Text; $param2 : Integer) -> $result : Integer
 	// ----------------------
 	// Border
 	// ----------------------
@@ -265,16 +251,14 @@ Function borderSize
 	// $2 : (longint) (optional) size
 	// $0 : (longint) (return) current border size
 	
-	C_TEXT:C284($1)
-	C_LONGINT:C283($0; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetBorderSize($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetBorderSize($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetBorderSize($1)
+		$result:=AJUI_Btn_GetSetBorderSize($param1)
 	End if 
 	
-Function fontColor
+Function fontColor($param1 : Text; $param2 : Text) -> $result : Text
 	// ----------------------
 	// Text
 	// ----------------------
@@ -284,15 +268,14 @@ Function fontColor
 	// $2 : (text) (optional) font color
 	// $0 : (text) (return) current font color
 	
-	C_TEXT:C284($0; $1; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetFontColor($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetFontColor($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetFontColor($1)
+		$result:=AJUI_Btn_GetSetFontColor($param1)
 	End if 
 	
-Function fontName
+Function fontName($param1 : Text; $param2 : Text) -> $result : Text
 	// ----------------------
 	// Text
 	// ----------------------
@@ -302,15 +285,14 @@ Function fontName
 	// $2 : (text) (optional) font name
 	// $0 : (text) (return) current font name
 	
-	C_TEXT:C284($0; $1; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetFontName($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetFontName($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetFontName($1)
+		$result:=AJUI_Btn_GetSetFontName($param1)
 	End if 
 	
-Function fontSize
+Function fontSize($param1 : Text; $param2 : Integer) -> $result : Integer
 	// ----------------------
 	// Text
 	// ----------------------
@@ -320,16 +302,14 @@ Function fontSize
 	// $2 : (longint) (optional) font size
 	// $0 : (longint) (return) current font size
 	
-	C_TEXT:C284($1)
-	C_LONGINT:C283($0; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetFontSize($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetFontSize($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetFontSize($1)
+		$result:=AJUI_Btn_GetSetFontSize($param1)
 	End if 
 	
-Function fontStyle
+Function fontStyle($param1 : Text; $param2 : Text) -> $result : Text
 	// ----------------------
 	// Text
 	// ----------------------
@@ -339,15 +319,14 @@ Function fontStyle
 	// $2 : (text) (optional) font style
 	// $0 : (text) (return) current font style
 	
-	C_TEXT:C284($0; $1; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetFontStyle($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetFontStyle($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetFontStyle($1)
+		$result:=AJUI_Btn_GetSetFontStyle($param1)
 	End if 
 	
-Function textAlign
+Function textAlign($param1 : Text; $param2 : Text) -> $result : Text
 	// ----------------------
 	// Text
 	// ----------------------
@@ -356,15 +335,14 @@ Function textAlign
 	// return : (longint) (return) current font size
 	//
 	// Getter and setter for the text align of a button
-	C_TEXT:C284($0; $1; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetTextAlign($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetTextAlign($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetTextAlign($1)
+		$result:=AJUI_Btn_GetSetTextAlign($param1)
 	End if 
 	
-Function label
+Function label($param1 : Text; $param2 : Text) -> $result : Text
 	// ----------------------
 	// Text
 	// ----------------------
@@ -374,15 +352,14 @@ Function label
 	// $2 : (text) (optional) label
 	// $0 : (text) (return) current label
 	
-	C_TEXT:C284($0; $1; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetLabel($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetLabel($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetLabel($1)
+		$result:=AJUI_Btn_GetSetLabel($param1)
 	End if 
 	
-Function horizontalMargin
+Function horizontalMargin($param1 : Text; $param2 : Integer) -> $result : Integer
 	// ----------------------
 	// Text
 	// ----------------------
@@ -392,16 +369,14 @@ Function horizontalMargin
 	// $2 : (longint) (optional) margin horizontal
 	// $0 : (longint) (return) current margin horizontal
 	
-	C_TEXT:C284($1)
-	C_LONGINT:C283($0; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetHorizontalMargin($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetHorizontalMargin($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetHorizontalMargin($1)
+		$result:=AJUI_Btn_GetSetHorizontalMargin($param1)
 	End if 
 	
-Function colorToReplace
+Function colorToReplace($param1 : Text; $param2 : Text) -> $result : Text
 	// ----------------------
 	// Picture
 	// ----------------------
@@ -411,15 +386,14 @@ Function colorToReplace
 	// $2 : (text) (optional) color
 	// $0 : (text) (return) current old color
 	
-	C_TEXT:C284($0; $1; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetColorToReplace($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetColorToReplace($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetColorToReplace($1)
+		$result:=AJUI_Btn_GetSetColorToReplace($param1)
 	End if 
 	
-Function pictureHeight
+Function pictureHeight($param1 : Text; $param2 : Integer) -> $result : Integer
 	// ----------------------
 	// Picture
 	// ----------------------
@@ -429,16 +403,14 @@ Function pictureHeight
 	// $2 : (longint) (optional) picture height
 	// $0 : (longint) (return) current picture height
 	
-	C_TEXT:C284($1)
-	C_LONGINT:C283($0; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetPictureHeight($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetPictureHeight($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetPictureHeight($1)
+		$result:=AJUI_Btn_GetSetPictureHeight($param1)
 	End if 
 	
-Function picturePath
+Function picturePath($param1 : Text; $param2 : Text) -> $result : Text
 	// ----------------------
 	// Picture
 	// ----------------------
@@ -448,12 +420,11 @@ Function picturePath
 	// $2 : (text) (optional) picture path
 	// $0 : (text) (return) current picture path
 	
-	C_TEXT:C284($0; $1; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetPicturePath($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetPicturePath($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetPicturePath($1)
+		$result:=AJUI_Btn_GetSetPicturePath($param1)
 	End if 
 	
 /*
@@ -463,22 +434,22 @@ Function picture($state : Text; $picture : Picture) : Picture
 	var $current_obj : Object
 	
 	If ($state="default")
-		$current_obj:=This:C1470.btn
+		$current_obj:=This.btn
 	Else 
-		$current_obj:=This:C1470.btn[$state]
+		$current_obj:=This.btn[$state]
 	End if 
 	
-	If (Count parameters:C259=1)
-		If ($current_obj.picture.picture#Null:C1517)
+	If (Count parameters=1)
+		If ($current_obj.picture.picture#Null)
 			return $current_obj.picture.picture
 		Else 
-			return This:C1470.btn.picture.picture
+			return This.btn.picture.picture
 		End if 
 	Else 
 		$current_obj.picture.picture:=$picture
 	End if 
 	
-Function pictureOpacity
+Function pictureOpacity($param1 : Text; $param2 : Integer) -> $result : Integer
 	// ----------------------
 	// Picture
 	// ----------------------
@@ -488,16 +459,14 @@ Function pictureOpacity
 	// $2 : (longint) (optional) picture opacity in percent
 	// $0 : (longint) (return) current opacity
 	
-	C_TEXT:C284($1)
-	C_LONGINT:C283($0; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetPictureOpacity($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetPictureOpacity($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetPictureOpacity($1)
+		$result:=AJUI_Btn_GetSetPictureOpacity($param1)
 	End if 
 	
-Function pictureRatio
+Function pictureRatio($param1 : Text; $param2 : Real) -> $result : Real
 	// ----------------------
 	// Picture
 	// ----------------------
@@ -507,16 +476,14 @@ Function pictureRatio
 	// $2 : (real) (optional) ratio to resize picture
 	// $0 : (real) (return) current ratio
 	
-	C_TEXT:C284($1)
-	C_REAL:C285($0; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetPictureRatio($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetPictureRatio($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetPictureRatio($1)
+		$result:=AJUI_Btn_GetSetPictureRatio($param1)
 	End if 
 	
-Function pictureScale
+Function pictureScale($param1 : Text; $param2 : Integer) -> $result : Integer
 	// ----------------------
 	// Picture
 	// ----------------------
@@ -526,16 +493,14 @@ Function pictureScale
 	// $2 : (longint) (optional) scale in percent
 	// $0 : (longint) (return) current scale
 	
-	C_TEXT:C284($1)
-	C_LONGINT:C283($0; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetPictureScale($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetPictureScale($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetPictureScale($1)
+		$result:=AJUI_Btn_GetSetPictureScale($param1)
 	End if 
 	
-Function pictureWidth
+Function pictureWidth($param1 : Text; $param2 : Integer) -> $result : Integer
 	// ----------------------
 	// Picture
 	// ----------------------
@@ -545,16 +510,14 @@ Function pictureWidth
 	// $2 : (longint) (optional) picture width
 	// $0 : (longint) (return) current picture width
 	
-	C_TEXT:C284($1)
-	C_LONGINT:C283($0; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetPictureWidth($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetPictureWidth($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetPictureWidth($1)
+		$result:=AJUI_Btn_GetSetPictureWidth($param1)
 	End if 
 	
-Function replacingColor
+Function replacingColor($param1 : Text; $param2 : Text) -> $result : Text
 	// ----------------------
 	// Picture
 	// ----------------------
@@ -564,15 +527,14 @@ Function replacingColor
 	// $2 : (text) (optional) new color
 	// $0 : (text) (return) current new color
 	
-	C_TEXT:C284($0; $1; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetReplacingColor($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetReplacingColor($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetReplacingColor($1)
+		$result:=AJUI_Btn_GetSetReplacingColor($param1)
 	End if 
 	
-Function backgroundSecondaryColor
+Function backgroundSecondaryColor($param1 : Text; $param2 : Text) -> $result : Text
 	// ----------------------
 	// Composite
 	// ----------------------
@@ -582,26 +544,24 @@ Function backgroundSecondaryColor
 	// $2 : (text) (optional) color
 	// $0 : (text) (return) current BG secondary color
 	
-	C_TEXT:C284($0; $1; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetBGSecondColor($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetBGSecondColor($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetBGSecondColor($1)
+		$result:=AJUI_Btn_GetSetBGSecondColor($param1)
 	End if 
 	
-Function bgSecondaryColor
+Function bgSecondaryColor($param1 : Text; $param2 : Text) -> $result : Text
 	// ALIAS for backgroundSecondaryColor
 	
-	C_TEXT:C284($0; $1; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetBGSecondColor($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetBGSecondColor($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetBGSecondColor($1)
+		$result:=AJUI_Btn_GetSetBGSecondColor($param1)
 	End if 
 	
-Function activateSecondaryColor
+Function activateSecondaryColor($param1 : Boolean) -> $result : Boolean
 	// ----------------------
 	// Composite
 	// ----------------------
@@ -610,15 +570,14 @@ Function activateSecondaryColor
 	// $1 : (boolean) (optionnal) activate
 	// $0 : (boolean) (return) activation state
 	
-	C_BOOLEAN:C305($0; $1)
 	
-	If (Count parameters:C259=0)
-		$0:=AJUI_Btn_GetSetActiveSecColor
+	If (Count parameters=0)
+		$result:=AJUI_Btn_GetSetActiveSecColor
 	Else 
-		AJUI_Btn_GetSetActiveSecColor($1)
+		AJUI_Btn_GetSetActiveSecColor($param1)
 	End if 
 	
-Function linkTextToPicture
+Function linkTextToPicture($param1 : Boolean) -> $result : Boolean
 	// ----------------------
 	// Composite
 	// ----------------------
@@ -627,15 +586,14 @@ Function linkTextToPicture
 	// $1 : (boolean) (optionnal) linked composite
 	// $0 : (boolean) (return) current composite linked option
 	
-	C_BOOLEAN:C305($0; $1)
 	
-	If (Count parameters:C259=0)
-		$0:=AJUI_Btn_GetSetCompositeLinked
+	If (Count parameters=0)
+		$result:=AJUI_Btn_GetSetCompositeLinked
 	Else 
-		AJUI_Btn_GetSetCompositeLinked($1)
+		AJUI_Btn_GetSetCompositeLinked($param1)
 	End if 
 	
-Function spaceBetween
+Function spaceBetween($param1 : Text; $param2 : Integer) -> $result : Integer
 	// ----------------------
 	// Composite
 	// ----------------------
@@ -645,16 +603,14 @@ Function spaceBetween
 	// $2 : (longint) (optional) padding size
 	// $0 : (longint) (return) current padding
 	
-	C_TEXT:C284($1)
-	C_LONGINT:C283($0; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetCompositePadding($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetCompositePadding($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetCompositePadding($1)
+		$result:=AJUI_Btn_GetSetCompositePadding($param1)
 	End if 
 	
-Function pictureAllocation
+Function pictureAllocation($param1 : Text; $param2 : Integer) -> $result : Integer
 	// ----------------------
 	// Composite
 	// ----------------------
@@ -664,16 +620,14 @@ Function pictureAllocation
 	// $2 : (longint) (optional) percent
 	// $0 : (longint) (return) current percent
 	
-	C_TEXT:C284($1)
-	C_LONGINT:C283($0; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetPictSizeAlloc($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetPictSizeAlloc($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetPictSizeAlloc($1)
+		$result:=AJUI_Btn_GetSetPictSizeAlloc($param1)
 	End if 
 	
-Function picturePosition
+Function picturePosition($param1 : Text; $param2 : Text) -> $result : Text
 	// ----------------------
 	// Composite
 	// ----------------------
@@ -683,15 +637,14 @@ Function picturePosition
 	// $2 : (text) (optional) position
 	// $0 : (text) (return) current picture position
 	
-	C_TEXT:C284($0; $1; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_GetSetPicturePosition($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_GetSetPicturePosition($param1; $param2)
 	Else 
-		$0:=AJUI_Btn_GetSetPicturePosition($1)
+		$result:=AJUI_Btn_GetSetPicturePosition($param1)
 	End if 
 	
-Function FAB_add
+Function FAB_add($param1 : Text; $param2 : Integer)
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -700,16 +653,14 @@ Function FAB_add
 	// $1 : (text) name form object
 	// $2 : (longint) (optional) position
 	
-	C_TEXT:C284($1)
-	C_LONGINT:C283($2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_addFab($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_addFab($param1; $param2)
 	Else 
-		AJUI_Btn_addFab($1)
+		AJUI_Btn_addFab($param1)
 	End if 
 	
-Function FAB_angle
+Function FAB_angle($param1 : Integer) -> $result : Integer
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -718,12 +669,11 @@ Function FAB_angle
 	// $1 : (longint) (optional) angle to travel
 	// $0 : (longint) (return) current angle to travel
 	
-	C_LONGINT:C283($0; $1)
 	
-	If (Count parameters:C259=0)
-		$0:=AJUI_Btn_GetSetAngleToTravelFAB
+	If (Count parameters=0)
+		$result:=AJUI_Btn_GetSetAngleToTravelFAB
 	Else 
-		AJUI_Btn_GetSetAngleToTravelFAB($1)
+		AJUI_Btn_GetSetAngleToTravelFAB($param1)
 	End if 
 	
 Function FAB_clearCollection
@@ -734,7 +684,7 @@ Function FAB_clearCollection
 	
 	AJUI_Btn_clearFabCollection
 	
-Function FAB_animated
+Function FAB_animated($param1 : Boolean) -> $result : Boolean
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -743,15 +693,14 @@ Function FAB_animated
 	// $1 : (boolean) (optional) activate/inactivate
 	// $0 : (boolean) (return) animation executed ?
 	
-	C_BOOLEAN:C305($0; $1)
 	
-	If (Count parameters:C259=0)
-		$0:=AJUI_Btn_GetSetActivateAnim
+	If (Count parameters=0)
+		$result:=AJUI_Btn_GetSetActivateAnim
 	Else 
-		AJUI_Btn_GetSetActivateAnim($1)
+		AJUI_Btn_GetSetActivateAnim($param1)
 	End if 
 	
-Function FAB_clockwise
+Function FAB_clockwise($param1 : Boolean) -> $result : Boolean
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -760,15 +709,14 @@ Function FAB_clockwise
 	// $1 : (boolean) (optional) isClockwise
 	// $0 : (boolean) (return) current isClockwise
 	
-	C_BOOLEAN:C305($0; $1)
 	
-	If (Count parameters:C259=0)
-		$0:=AJUI_Btn_GetSetClockwiseFAB
+	If (Count parameters=0)
+		$result:=AJUI_Btn_GetSetClockwiseFAB
 	Else 
-		AJUI_Btn_GetSetClockwiseFAB($1)
+		AJUI_Btn_GetSetClockwiseFAB($param1)
 	End if 
 	
-Function FAB_main
+Function FAB_main($param1 : Boolean) -> $result : Boolean
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -777,15 +725,14 @@ Function FAB_main
 	// $1 : (boolean) (optional) isMain
 	// $0 : (boolean) (return) value isMain
 	
-	C_BOOLEAN:C305($0; $1)
 	
-	If (Count parameters:C259=0)
-		$0:=AJUI_Btn_GetSetMainFab
+	If (Count parameters=0)
+		$result:=AJUI_Btn_GetSetMainFab
 	Else 
-		AJUI_Btn_GetSetMainFab($1)
+		AJUI_Btn_GetSetMainFab($param1)
 	End if 
 	
-Function FAB_position
+Function FAB_position($param1 : Text) -> $result : Text
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -794,15 +741,14 @@ Function FAB_position
 	// $1 : (text) (optional) main position
 	// $0 : (text) (return) current main position
 	
-	C_TEXT:C284($0; $1)
 	
-	If (Count parameters:C259=0)
-		$0:=AJUI_Btn_GetSetMainPositionFAB
+	If (Count parameters=0)
+		$result:=AJUI_Btn_GetSetMainPositionFAB
 	Else 
-		AJUI_Btn_GetSetMainPositionFAB($1)
+		AJUI_Btn_GetSetMainPositionFAB($param1)
 	End if 
 	
-Function FAB_radius
+Function FAB_radius($param1 : Integer) -> $result : Integer
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -811,15 +757,14 @@ Function FAB_radius
 	// $1 : (longint) (optional) radius
 	// $0 : (longint) (return) current radius
 	
-	C_LONGINT:C283($0; $1)
 	
-	If (Count parameters:C259=0)
-		$0:=AJUI_Btn_GetSetRadiusFab
+	If (Count parameters=0)
+		$result:=AJUI_Btn_GetSetRadiusFab
 	Else 
-		AJUI_Btn_GetSetRadiusFab($1)
+		AJUI_Btn_GetSetRadiusFab($param1)
 	End if 
 	
-Function FAB_remove
+Function FAB_remove($param1 : Text)
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -827,11 +772,10 @@ Function FAB_remove
 	
 	// $1 : (text) name form object
 	
-	C_TEXT:C284($1)
 	
-	AJUI_Btn_removeFAB($1)
+	AJUI_Btn_removeFAB($param1)
 	
-Function FAB_startAngle
+Function FAB_startAngle($param1 : Integer) -> $result : Integer
 	// ----------------------
 	// FAB
 	// ----------------------
@@ -840,12 +784,11 @@ Function FAB_startAngle
 	// $1 : (longint) (optional) start angle
 	// $0 : (longint) (return) current start angle
 	
-	C_LONGINT:C283($0; $1)
 	
-	If (Count parameters:C259=0)
-		$0:=AJUI_Btn_GetSetStartAngleFab
+	If (Count parameters=0)
+		$result:=AJUI_Btn_GetSetStartAngleFab
 	Else 
-		AJUI_Btn_GetSetStartAngleFab($1)
+		AJUI_Btn_GetSetStartAngleFab($param1)
 	End if 
 	
 Function draw
@@ -856,7 +799,7 @@ Function draw
 	
 	AJUI_Btn_draw
 	
-Function enable
+Function enable($param1 : Boolean)
 	// ----------------------
 	// FUNCTION
 	// ----------------------
@@ -864,11 +807,10 @@ Function enable
 	
 	// $1 : (boolean) description
 	
-	C_BOOLEAN:C305($1)
 	
-	AJUI_Btn_enable($1)
+	AJUI_Btn_enable($param1)
 	
-Function export
+Function export($param1 : Text; $param2 : Text)
 	// ----------------------
 	// FUNCTION
 	// ----------------------
@@ -877,12 +819,11 @@ Function export
 	// $1 : (text) AJUI Button template name
 	// $2 : (text) (optional) Path to export
 	
-	C_TEXT:C284($1; $2)
 	
-	If (Count parameters:C259=2)
-		AJUI_Btn_templateExport($1; $2)
+	If (Count parameters=2)
+		AJUI_Btn_templateExport($param1; $param2)
 	Else 
-		AJUI_Btn_templateExport($1)
+		AJUI_Btn_templateExport($param1)
 	End if 
 	
 Function hide
@@ -893,7 +834,7 @@ Function hide
 	
 	AJUI_Btn_hide
 	
-Function removePropertyException
+Function removePropertyException($param1 : Text; $param2 : Text)
 	// ----------------------
 	// FUNCTION
 	// ----------------------
@@ -902,11 +843,10 @@ Function removePropertyException
 	// $1 : (text) formula name
 	// $2 : (text) state to target
 	
-	C_TEXT:C284($1; $2)
 	
-	AJUI_Btn_removePropException($1; $2)
+	AJUI_Btn_removePropException($param1; $param2)
 	
-Function removePropertyExceptions
+Function removePropertyExceptions($param1 : Text)
 	// ----------------------
 	// FUNCTION
 	// ----------------------
@@ -914,9 +854,8 @@ Function removePropertyExceptions
 	
 	// $1 : (text) formula name
 	
-	C_TEXT:C284($1)
 	
-	AJUI_Btn_removePropExceptions($1)
+	AJUI_Btn_removePropExceptions($param1)
 	
 Function resetAllStates
 	// ----------------------
@@ -926,7 +865,7 @@ Function resetAllStates
 	
 	AJUI_Btn_resetAllStates
 	
-Function resetState
+Function resetState($param1 : Text)
 	// ----------------------
 	// FUNCTION
 	// ----------------------
@@ -934,9 +873,8 @@ Function resetState
 	
 	// $1 : (text) button state
 	
-	C_TEXT:C284($1)
 	
-	AJUI_Btn_resetState($1)
+	AJUI_Btn_resetState($param1)
 	
 Function show
 	// ----------------------

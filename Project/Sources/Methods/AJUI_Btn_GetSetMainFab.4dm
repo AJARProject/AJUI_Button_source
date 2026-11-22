@@ -6,7 +6,9 @@
   //
   // Getter and setter to define this instace as a main FAB button
 
-If (False:C215)
+#DECLARE($param1 : Boolean) -> $result : Boolean
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 16.12.19, 10:05:38
@@ -18,11 +20,11 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_BOOLEAN:C305($0;$1;$main)
+var $main : Boolean
 
-If (Count parameters:C259=0)
-	$0:=This:C1470.btn.fab.mainBtn
+If (Count parameters=0)
+	$result:=This.btn.fab.mainBtn
 Else 
-	$main:=$1
-	This:C1470.btn.fab.mainBtn:=$main
+	$main:=$param1
+	This.btn.fab.mainBtn:=$main
 End if 

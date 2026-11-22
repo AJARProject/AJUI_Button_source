@@ -6,7 +6,9 @@
   //
   // Getter and setter for the radius of the FAB
 
-If (False:C215)
+#DECLARE($param1 : Integer) -> $result : Integer
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 16.12.19, 10:07:46
@@ -18,13 +20,13 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_LONGINT:C283($0;$1;$radius)
+var $radius : Integer
 
-If (Count parameters:C259=0)
-	$0:=This:C1470.btn.fab.radius
+If (Count parameters=0)
+	$result:=This.btn.fab.radius
 Else 
-	$radius:=$1
+	$radius:=$param1
 	If ($radius>0)
-		This:C1470.btn.fab.radius:=$radius
+		This.btn.fab.radius:=$radius
 	End if 
 End if 
