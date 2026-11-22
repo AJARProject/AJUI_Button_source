@@ -75,7 +75,6 @@ Form.tipNewTemplate.ArrowOffset(10)
   // ----------------------
 Form.tipNewTemplate.CloseBoxDisplay(False)
 Form.tipNewTemplate.CloseBoxSize(5)
-Form.tipNewTemplate.ActivateOnClickCB(False)
 
 
   // ----------------------

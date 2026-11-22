@@ -76,7 +76,6 @@ Form.tipSaveTemplateSubform.ArrowOffset(10)
   // ----------------------
 Form.tipSaveTemplateSubform.CloseBoxDisplay(False)
 Form.tipSaveTemplateSubform.CloseBoxSize(5)
-Form.tipSaveTemplateSubform.ActivateOnClickCB(False)
 
 
   // ----------------------
