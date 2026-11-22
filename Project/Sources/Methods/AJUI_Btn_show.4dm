@@ -4,7 +4,7 @@
 //
 //  Wrapper for the object set visible (true)
 
-If (False:C215)
+If (False)
 	// ----------------------------------------------------
 	// User name (OS): Gary Criblez
 	// Date and time: 25.07.19, 10:07:37
@@ -16,4 +16,4 @@ If (False:C215)
 	// ----------------------------------------------------
 End if 
 
-OBJECT SET VISIBLE:C603(*;This:C1470.btn.global.name;True:C214)
+OBJECT SET VISIBLE(*;This.btn.global.name;True)

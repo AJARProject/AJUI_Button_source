@@ -6,7 +6,9 @@
 //
 // Convert a font style into the corresponding constant
 
-If (False:C215)
+#DECLARE($param1 : Text) -> $result : Integer
+
+If (False)
 	// ----------------------------------------------------
 	// User name (OS): Gary Criblez
 	// Date and time: 19.07.19, 14:21:46
@@ -20,13 +22,13 @@ End if
 
 
 
-C_TEXT:C284($1; $fontStyle)
-C_LONGINT:C283($0; $svgStyle)
-C_COLLECTION:C1488($styles)
-$fontStyle:=$1
+var $fontStyle; $style : Text
+var $svgStyle : Integer
+var $styles : Collection
+$fontStyle:=$param1
 $svgStyle:=0
 
-$styles:=Split string:C1554($fontStyle; ","; sk ignore empty strings:K86:1+sk trim spaces:K86:2)
+$styles:=Split string($fontStyle; ","; sk ignore empty strings+sk trim spaces)
 
 For each ($style; $styles)
 	Case of 
@@ -41,4 +43,4 @@ For each ($style; $styles)
 	End case 
 End for each 
 
-$0:=$svgStyle
+$result:=$svgStyle

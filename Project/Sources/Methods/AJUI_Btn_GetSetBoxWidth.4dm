@@ -7,7 +7,9 @@
   //
   // Getter and setter for the box width of the button
 
-If (False:C215)
+#DECLARE($param1 : Text; $param2 : Integer) -> $result : Integer
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 19.07.19, 11:07:16
@@ -20,28 +22,28 @@ If (False:C215)
 End if 
 
 
-C_TEXT:C284($1;$state)
-C_LONGINT:C283($0;$2;$width)
-C_OBJECT:C1216($current_obj)
+var $state : Text
+var $width : Integer
+var $current_obj : Object
 
-$state:=$1
+$state:=$param1
 
 If ($state="default")
-	$current_obj:=This:C1470.btn
+	$current_obj:=This.btn
 Else 
-	$current_obj:=This:C1470.btn[$state]
+	$current_obj:=This.btn[$state]
 End if 
 
-If (Count parameters:C259=1)
+If (Count parameters=1)
 	
-	If ($current_obj.box.width#Null:C1517)
-		$0:=$current_obj.box.width
+	If ($current_obj.box.width#Null)
+		$result:=$current_obj.box.width
 	Else 
-		$0:=This:C1470.btn.box.width
+		$result:=This.btn.box.width
 	End if 
 	
 Else 
-	$width:=$2
+	$width:=$param2
 	If ($width>=0)
 		$current_obj.box.width:=$width
 	Else 

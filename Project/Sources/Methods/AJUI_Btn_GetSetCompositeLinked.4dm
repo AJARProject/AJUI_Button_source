@@ -6,7 +6,9 @@
   //
   // Getter and setter to switch the linked option for the composite button
 
-If (False:C215)
+#DECLARE($param1 : Boolean) -> $result : Boolean
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 19.07.19, 10:46:11
@@ -19,11 +21,11 @@ If (False:C215)
 End if 
 
 
-C_BOOLEAN:C305($0;$1;$linked)
+var $linked : Boolean
 
-If (Count parameters:C259=0)
-	$0:=This:C1470.btn.composite.linked
+If (Count parameters=0)
+	$result:=This.btn.composite.linked
 Else 
-	$linked:=$1
-	This:C1470.btn.composite.linked:=$linked
+	$linked:=$param1
+	This.btn.composite.linked:=$linked
 End if 

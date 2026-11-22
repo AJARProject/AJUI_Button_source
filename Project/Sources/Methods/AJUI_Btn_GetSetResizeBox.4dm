@@ -6,7 +6,9 @@
   //
   // Getter and setter method to activate the resizing of the box
 
-If (False:C215)
+#DECLARE($param1 : Boolean) -> $result : Boolean
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 25.07.19, 14:23:40
@@ -18,11 +20,11 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_BOOLEAN:C305($0;$1;$resize)
+var $resize : Boolean
 
-If (Count parameters:C259=0)
-	$0:=This:C1470.btn.box.resize
+If (Count parameters=0)
+	$result:=This.btn.box.resize
 Else 
-	$resize:=$1
-	This:C1470.btn.box.resize:=$resize
+	$resize:=$param1
+	This.btn.box.resize:=$resize
 End if 

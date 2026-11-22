@@ -5,7 +5,9 @@
   //
   // Clean/Reset state exceptions
 
-If (False:C215)
+#DECLARE($param1 : Text)
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 19.07.19, 14:03:37
@@ -18,58 +20,58 @@ If (False:C215)
 End if 
 
 
-C_TEXT:C284($1;$state)
+var $state : Text
 
-$state:=$1
+$state:=$param1
 
 
 Case of 
 	: ($state="hover")
-		OB REMOVE:C1226(This:C1470.btn;"hover")
+		OB REMOVE(This.btn;"hover")
 		
-		If (This:C1470.btn.hover=Null:C1517)
-			This:C1470.btn.hover:=New object:C1471
-			This:C1470.btn.hover.box:=New object:C1471
-			This:C1470.btn.hover.border:=New object:C1471
-			This:C1470.btn.hover.text:=New object:C1471
-			This:C1470.btn.hover.picture:=New object:C1471
-			This:C1470.btn.hover.composite:=New object:C1471
+		If (This.btn.hover=Null)
+			This.btn.hover:=New object
+			This.btn.hover.box:=New object
+			This.btn.hover.border:=New object
+			This.btn.hover.text:=New object
+			This.btn.hover.picture:=New object
+			This.btn.hover.composite:=New object
 		End if 
 		
 	: ($state="active")
-		OB REMOVE:C1226(This:C1470.btn;"active")
+		OB REMOVE(This.btn;"active")
 		
-		If (This:C1470.btn.activ=Null:C1517)
-			This:C1470.btn.active:=New object:C1471
-			This:C1470.btn.active.box:=New object:C1471
-			This:C1470.btn.active.border:=New object:C1471
-			This:C1470.btn.active.text:=New object:C1471
-			This:C1470.btn.active.picture:=New object:C1471
-			This:C1470.btn.active.composite:=New object:C1471
+		If (This.btn.activ=Null)
+			This.btn.active:=New object
+			This.btn.active.box:=New object
+			This.btn.active.border:=New object
+			This.btn.active.text:=New object
+			This.btn.active.picture:=New object
+			This.btn.active.composite:=New object
 		End if 
 		
 	: ($state="disable")
-		OB REMOVE:C1226(This:C1470.btn;"disable")
+		OB REMOVE(This.btn;"disable")
 		
-		If (This:C1470.btn.disable=Null:C1517)
-			This:C1470.btn.disable:=New object:C1471
-			This:C1470.btn.disable.box:=New object:C1471
-			This:C1470.btn.disable.border:=New object:C1471
-			This:C1470.btn.disable.text:=New object:C1471
-			This:C1470.btn.disable.picture:=New object:C1471
-			This:C1470.btn.disable.composite:=New object:C1471
+		If (This.btn.disable=Null)
+			This.btn.disable:=New object
+			This.btn.disable.box:=New object
+			This.btn.disable.border:=New object
+			This.btn.disable.text:=New object
+			This.btn.disable.picture:=New object
+			This.btn.disable.composite:=New object
 		End if 
 		
 	: ($state="focus")
-		OB REMOVE:C1226(This:C1470.btn;"focus")
+		OB REMOVE(This.btn;"focus")
 		
-		If (This:C1470.btn.focus=Null:C1517)
-			This:C1470.btn.focus:=New object:C1471
-			This:C1470.btn.focus.box:=New object:C1471
-			This:C1470.btn.focus.border:=New object:C1471
-			This:C1470.btn.focus.text:=New object:C1471
-			This:C1470.btn.focus.picture:=New object:C1471
-			This:C1470.btn.focus.composite:=New object:C1471
+		If (This.btn.focus=Null)
+			This.btn.focus:=New object
+			This.btn.focus.box:=New object
+			This.btn.focus.border:=New object
+			This.btn.focus.text:=New object
+			This.btn.focus.picture:=New object
+			This.btn.focus.composite:=New object
 		End if 
 		
 End case 

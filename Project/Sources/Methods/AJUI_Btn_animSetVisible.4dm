@@ -6,7 +6,9 @@
   //
   // Used with a call form to show/hide the form object with the FAB animation
 
-If (False:C215)
+#DECLARE($param1 : Text; $param2 : Boolean)
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 16.01.20, 11:36:40
@@ -18,10 +20,10 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_TEXT:C284($1;$name)
-C_BOOLEAN:C305($2;$visible)
+var $name : Text
+var $visible : Boolean
 
-$name:=$1
-$visible:=$2
+$name:=$param1
+$visible:=$param2
 
-OBJECT SET VISIBLE:C603(*;$name;$visible)
+OBJECT SET VISIBLE(*;$name;$visible)

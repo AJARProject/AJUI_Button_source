@@ -17,7 +17,7 @@ Show the version info of the component.
 ## Example
 
 ```4d
-  C_String($version)
+  var $version : Text
 
-  $version:= AJUI_Btn_info () //AJUI Button(v18): 1.3.2-Build170
+  $version:=AJUI_Btn_info()  // AJUI_Button (v21 R4) : 2.2.0
 ```

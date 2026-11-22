@@ -4,7 +4,7 @@
   //
   // this method handles exceptions related to the button state and also events before giving the appropriate object to draw the SVG
 
-If (False:C215)
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 19.07.19, 10:30:29
@@ -16,69 +16,71 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_OBJECT:C1216($instance_obj;$toDraw_obj)
-C_TEXT:C284($name)
-C_VARIANT:C1683($callback)
-C_PICTURE:C286($pict)
+var $instance_obj; $toDraw_obj : Object
+var $name; $currentFormObj; $currentFocus : Text
+var $callback : Variant
+var $pict : Picture
+var $event; $mouseX; $mouseY; $state; $left; $top; $right; $bottom; $boxHeight; $boxWidth : Real
+var $buttonEnabled : Boolean
 
-$instance_obj:=This:C1470
-$toDraw_obj:=OB Copy:C1225($instance_obj)
+$instance_obj:=This
+$toDraw_obj:=OB Copy($instance_obj)
 $name:=$instance_obj.btn.global.name
-$event:=Form event code:C388
+$event:=Form event code
 
 
 
   //CHECK STATE DISABLE
-$buttonEnabled:=OBJECT Get enabled:C1079(*;$name)
-$currentFormObj:=OBJECT Get name:C1087(Object current:K67:2)
+$buttonEnabled:=OBJECT Get enabled(*;$name)
+$currentFormObj:=OBJECT Get name(Object current)
 
-If (Not:C34($buttonEnabled))
-	If (Not:C34(OB Is empty:C1297($instance_obj.btn.disable)))
+If (Not($buttonEnabled))
+	If (Not(OB Is empty($instance_obj.btn.disable)))
 		AJUI_Btn_mergeObject ($toDraw_obj;$instance_obj.btn.disable)
 	End if 
 Else 
 	  //HANDLE STATES
 	If ($currentFormObj=$name)
 		Case of 
-			: ($event=On Mouse Enter:K2:33)  //state hover
-				If (Not:C34(OB Is empty:C1297($instance_obj.btn.hover)))
+			: ($event=On Mouse Enter)  //state hover
+				If (Not(OB Is empty($instance_obj.btn.hover)))
 					AJUI_Btn_mergeObject ($toDraw_obj;$instance_obj.btn.hover)
 				End if 
 				
-			: ($event=On Clicked:K2:4)  //state active
-				If (Not:C34(OB Is empty:C1297($instance_obj.btn.active)))
+			: ($event=On Clicked)  //state active
+				If (Not(OB Is empty($instance_obj.btn.active)))
 					AJUI_Btn_mergeObject ($toDraw_obj;$instance_obj.btn.active)
 				End if 
 				
 				
-			: ($event=On Double Clicked:K2:5)  //state active
-				If (Not:C34(OB Is empty:C1297($instance_obj.btn.active)))
+			: ($event=On Double Clicked)  //state active
+				If (Not(OB Is empty($instance_obj.btn.active)))
 					AJUI_Btn_mergeObject ($toDraw_obj;$instance_obj.btn.active)
 				End if 
 				
-			: ($event=On Mouse Leave:K2:34)  //state default or focus
+			: ($event=On Mouse Leave)  //state default or focus
 				
-				$currentFocus:=OBJECT Get name:C1087(Object with focus:K67:3)
+				$currentFocus:=OBJECT Get name(Object with focus)
 				If ($currentFocus=$name)
-					If (Not:C34(OB Is empty:C1297($instance_obj.btn.focus)))
+					If (Not(OB Is empty($instance_obj.btn.focus)))
 						AJUI_Btn_mergeObject ($toDraw_obj;$instance_obj.btn.focus)
 					End if 
 				End if 
 				
-			: ($event=On Mouse Up:K2:58)  //state default or hover
-				GET MOUSE:C468($mouseX;$mouseY;$state)
-				CONVERT COORDINATES:C1365($mouseX;$mouseY;XY Current window:K27:6;XY Current form:K27:5)
+			: ($event=On Mouse Up)  //state default or hover
+				MOUSE POSITION($mouseX;$mouseY;$state)
+				CONVERT COORDINATES($mouseX;$mouseY;XY Current window;XY Current form)
 				
-				OBJECT GET COORDINATES:C663(*;$name;$left;$top;$right;$bottom)
+				OBJECT GET COORDINATES(*;$name;$left;$top;$right;$bottom)
 				
 				If ($mouseX>=$left) & ($mouseX<=$right) & ($mouseY>=$top) & ($mouseY<=$bottom)
-					If (Not:C34(OB Is empty:C1297($instance_obj.btn.hover)))
+					If (Not(OB Is empty($instance_obj.btn.hover)))
 						AJUI_Btn_mergeObject ($toDraw_obj;$instance_obj.btn.hover)
 					End if 
 				Else 
-					$currentFocus:=OBJECT Get name:C1087(Object with focus:K67:3)
+					$currentFocus:=OBJECT Get name(Object with focus)
 					If ($currentFocus=$name)
-						If (Not:C34(OB Is empty:C1297($instance_obj.btn.focus)))
+						If (Not(OB Is empty($instance_obj.btn.focus)))
 							AJUI_Btn_mergeObject ($toDraw_obj;$instance_obj.btn.focus)
 						End if 
 					End if 
@@ -86,22 +88,22 @@ Else
 				
 				
 				
-			: ($event=On Load:K2:1)  //state default
+			: ($event=On Load)  //state default
 				  //nothing to do
 				
-			: ($event=On Getting Focus:K2:7)  //state focus
-				If (Not:C34(OB Is empty:C1297($instance_obj.btn.focus)))
+			: ($event=On Getting Focus)  //state focus
+				If (Not(OB Is empty($instance_obj.btn.focus)))
 					AJUI_Btn_mergeObject ($toDraw_obj;$instance_obj.btn.focus)
 				End if 
 				
-			: ($event=On Losing Focus:K2:8)  //state default or hover
-				GET MOUSE:C468($mouseX;$mouseY;$state)
-				CONVERT COORDINATES:C1365($mouseX;$mouseY;XY Current window:K27:6;XY Current form:K27:5)
+			: ($event=On Losing Focus)  //state default or hover
+				MOUSE POSITION($mouseX;$mouseY;$state)
+				CONVERT COORDINATES($mouseX;$mouseY;XY Current window;XY Current form)
 				
-				OBJECT GET COORDINATES:C663(*;$name;$left;$top;$right;$bottom)
+				OBJECT GET COORDINATES(*;$name;$left;$top;$right;$bottom)
 				
 				If ($mouseX>=$left) & ($mouseX<=$right) & ($mouseY>=$top) & ($mouseY<=$bottom)
-					If (Not:C34(OB Is empty:C1297($instance_obj.btn.hover)))
+					If (Not(OB Is empty($instance_obj.btn.hover)))
 						AJUI_Btn_mergeObject ($toDraw_obj;$instance_obj.btn.hover)
 					End if 
 				Else 
@@ -116,8 +118,8 @@ Else
 End if 
 
   //check if the size is related to the current size of the form object of the button
-OBJECT GET COORDINATES:C663(*;$name;$left;$top;$right;$bottom)
-If ($instance_obj.btn.box.resize=False:C215)
+OBJECT GET COORDINATES(*;$name;$left;$top;$right;$bottom)
+If ($instance_obj.btn.box.resize=False)
 	
 	$toDraw_obj.btn.box.width:=$right-$left
 	$toDraw_obj.btn.box.height:=$bottom-$top
@@ -133,18 +135,18 @@ Else
 		$toDraw_obj.btn.box.width:=$right-$left
 	End if 
 	
-	OBJECT SET COORDINATES:C1248(*;$name;$left;$top;$left+$toDraw_obj.btn.box.width;$top+$toDraw_obj.btn.box.height)
+	OBJECT SET COORDINATES(*;$name;$left;$top;$left+$toDraw_obj.btn.box.width;$top+$toDraw_obj.btn.box.height)
 End if 
 
   //DRAW SVG
 $pict:=AJUI_Btn_drawSVG ($toDraw_obj)
 
-OBJECT SET BORDER STYLE:C1262(*;$name;Border None:K42:27)
-OBJECT Get pointer:C1124(Object named:K67:5;$name)->:=$pict
+OBJECT SET BORDER STYLE(*;$name;Border None)
+OBJECT Get pointer(Object named;$name)->:=$pict
 
   //FAB load case
-If ($toDraw_obj.btn.fab.mainBtn) & ($event=On Load:K2:1)
-	$toDraw_obj.btn.fab.hide:=True:C214
+If ($toDraw_obj.btn.fab.mainBtn) & ($event=On Load)
+	$toDraw_obj.btn.fab.hide:=True
 	If ($instance_obj.btn.fab.btnCol.length>0)
 		AJUI_Btn_hideFABButtons ($instance_obj)
 	End if 
@@ -152,11 +154,11 @@ End if
 
 If ($currentFormObj=$name)
 	Case of 
-		: ($event=On Mouse Up:K2:58)
-			GET MOUSE:C468($mouseX;$mouseY;$state)
-			CONVERT COORDINATES:C1365($mouseX;$mouseY;XY Current window:K27:6;XY Current form:K27:5)
+		: ($event=On Mouse Up)
+			MOUSE POSITION($mouseX;$mouseY;$state)
+			CONVERT COORDINATES($mouseX;$mouseY;XY Current window;XY Current form)
 			
-			OBJECT GET COORDINATES:C663(*;$name;$left;$top;$right;$bottom)
+			OBJECT GET COORDINATES(*;$name;$left;$top;$right;$bottom)
 			
 			If ($mouseX>=$left) & ($mouseX<=$right) & ($mouseY>=$top) & ($mouseY<=$bottom)
 				
@@ -165,59 +167,59 @@ If ($currentFormObj=$name)
 				Else 
 					$callback:=$instance_obj.btn.global.onClickCB
 					Case of 
-						: (Value type:C1509($callback)=Is text:K8:3)  //callback
-							If ($callback#"") & ($instance_obj.btn.global.inCallback=False:C215)
+						: (Value type($callback)=Is text)  //callback
+							If ($callback#"") & ($instance_obj.btn.global.inCallback=False)
 								If (AJUI_Btn_checkValidCallback ($callback))
-									$instance_obj.btn.global.inCallback:=True:C214
-									If ($instance_obj.btn.global.clickCBParams=Null:C1517)
-										EXECUTE METHOD:C1007($callback)
+									$instance_obj.btn.global.inCallback:=True
+									If ($instance_obj.btn.global.clickCBParams=Null)
+										EXECUTE METHOD($callback)
 									Else 
-										EXECUTE METHOD:C1007($callback;*;$instance_obj.btn.global.clickCBParams)
+										EXECUTE METHOD($callback;*;$instance_obj.btn.global.clickCBParams)
 									End if 
-									$instance_obj.btn.global.inCallback:=False:C215
+									$instance_obj.btn.global.inCallback:=False
 								End if 
 							End if 
-						: (Value type:C1509($callback)=Is object:K8:27)  //formula
-							If ($instance_obj.btn.global.inCallback=False:C215)
-								$instance_obj.btn.global.inCallback:=True:C214
-								If ($instance_obj.btn.global.clickCBParams=Null:C1517)
+						: (Value type($callback)=Is object)  //formula
+							If ($instance_obj.btn.global.inCallback=False)
+								$instance_obj.btn.global.inCallback:=True
+								If ($instance_obj.btn.global.clickCBParams=Null)
 									$callback.call()
 								Else 
-									$callback.call(Null:C1517;$instance_obj.btn.global.clickCBParams)
+									$callback.call(Null;$instance_obj.btn.global.clickCBParams)
 								End if 
-								$instance_obj.btn.global.inCallback:=False:C215
+								$instance_obj.btn.global.inCallback:=False
 							End if 
 					End case 
 				End if 
 			End if 
 			
-		: ($event=On Double Clicked:K2:5)
+		: ($event=On Double Clicked)
 			If ($instance_obj.btn.fab.mainBtn)
 				AJUI_Btn_callbackFAB ($instance_obj)
 			Else 
 				$callback:=$instance_obj.btn.global.onDoubleClickCB
 				Case of 
-					: (Value type:C1509($callback)=Is text:K8:3)  //callback
-						If ($callback#"") & ($instance_obj.btn.global.inCallback=False:C215)
+					: (Value type($callback)=Is text)  //callback
+						If ($callback#"") & ($instance_obj.btn.global.inCallback=False)
 							If (AJUI_Btn_checkValidCallback ($callback))
-								$instance_obj.btn.global.inCallback:=True:C214
-								If ($instance_obj.btn.global.doubleClickCBParams=Null:C1517)
-									EXECUTE METHOD:C1007($callback)
+								$instance_obj.btn.global.inCallback:=True
+								If ($instance_obj.btn.global.doubleClickCBParams=Null)
+									EXECUTE METHOD($callback)
 								Else 
-									EXECUTE METHOD:C1007($callback;*;$instance_obj.btn.global.doubleClickCBParams)
+									EXECUTE METHOD($callback;*;$instance_obj.btn.global.doubleClickCBParams)
 								End if 
-								$instance_obj.btn.global.inCallback:=False:C215
+								$instance_obj.btn.global.inCallback:=False
 							End if 
 						End if 
-					: (Value type:C1509($callback)=Is object:K8:27)  //formula
-						If ($instance_obj.btn.global.inCallback=False:C215)
-							$instance_obj.btn.global.inCallback:=True:C214
-							If ($instance_obj.btn.global.doubleClickCBParams=Null:C1517)
+					: (Value type($callback)=Is object)  //formula
+						If ($instance_obj.btn.global.inCallback=False)
+							$instance_obj.btn.global.inCallback:=True
+							If ($instance_obj.btn.global.doubleClickCBParams=Null)
 								$callback.call()
 							Else 
-								$callback.call(Null:C1517;$instance_obj.btn.global.doubleClickCBParams)
+								$callback.call(Null;$instance_obj.btn.global.doubleClickCBParams)
 							End if 
-							$instance_obj.btn.global.inCallback:=False:C215
+							$instance_obj.btn.global.inCallback:=False
 						End if 
 				End case 
 			End if 

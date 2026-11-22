@@ -6,7 +6,9 @@
   //
   // remove an item in the FAB colleciton
 
-If (False:C215)
+#DECLARE($param1 : Text)
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 16.12.19, 09:36:35
@@ -18,11 +20,12 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_TEXT:C284($1;$btnName)
+var $btnName : Text
+var $pos : Real
 
-$btnName:=$1
+$btnName:=$param1
 
-$pos:=This:C1470.btn.fab.btnCol.indexOf($btnName)
+$pos:=This.btn.fab.btnCol.indexOf($btnName)
 If ($pos#-1)
-	This:C1470.btn.fab.btnCol.remove($pos)
+	This.btn.fab.btnCol.remove($pos)
 End if 

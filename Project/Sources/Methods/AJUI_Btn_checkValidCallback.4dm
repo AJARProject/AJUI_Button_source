@@ -6,7 +6,9 @@
   //
   // Check if the callback exist and share the callback if not shared
 
-If (False:C215)
+#DECLARE($param1 : Text) -> $result : Boolean
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 22.11.19, 09:11:32
@@ -20,37 +22,37 @@ End if
 
 
 
-C_TEXT:C284($1;$callback;$method)
-C_BOOLEAN:C305($0;$launchExec)
-C_OBJECT:C1216($section)
+var $callback; $method : Text
+var $launchExec : Boolean
+var $section : Object
 
-$callback:=$1
+$callback:=$param1
 If ($callback="")
-	$launchExec:=False:C215
+	$launchExec:=False
 Else 
-	ARRAY TEXT:C222($_methods;0)
-	METHOD GET NAMES:C1166($_methods;$callback;*)
+	ARRAY TEXT($_methods;0)
+	METHOD GET NAMES($_methods;$callback;*)
 	
 	  //check method exist
-	If (Size of array:C274($_methods)=0)
-		CONFIRM:C162("Callback method: "+$callback+" not found, Do you want to create it ?";"Yes";"No")
+	If (Size of array($_methods)=0)
+		CONFIRM("Callback method: "+$callback+" not found, Do you want to create it ?";"Yes";"No")
 		If (OK=1)
-			$launchExec:=True:C214
+			$launchExec:=True
 			$method:="C_OBJECT($1)"
-			METHOD SET CODE:C1194($callback;$method;*)
+			METHOD SET CODE($callback;$method;*)
 		Else 
-			$launchExec:=False:C215
+			$launchExec:=False
 		End if 
 	Else 
-		$launchExec:=True:C214
+		$launchExec:=True
 	End if 
 	
 	  //check shared
 	If ($launchExec)
-		If (Not:C34(METHOD Get attribute:C1169($callback;Attribute shared:K72:10;*)))
-			METHOD SET ATTRIBUTE:C1192($callback;Attribute shared:K72:10;True:C214;*)
+		If (Not(METHOD Get attribute($callback;Attribute shared;*)))
+			METHOD SET ATTRIBUTE($callback;Attribute shared;True;*)
 		End if 
 	End if 
 End if 
 
-$0:=$launchExec
+$result:=$launchExec

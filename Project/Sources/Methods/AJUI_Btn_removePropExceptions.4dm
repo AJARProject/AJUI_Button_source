@@ -6,7 +6,9 @@
   // This method remove all the exceptions for a property
   // short_description
 
-If (False:C215)
+#DECLARE($param1 : Text)
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 20.11.19, 15:06:12
@@ -18,13 +20,11 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_TEXT:C284($1;$formula)
-C_LONGINT:C283($pos)
-C_TEXT:C284($category;$property)
-C_LONGINT:C283($separator_pos)
-C_COLLECTION:C1488($properties_col)
+var $formula; $category; $property : Text
+var $pos; $separator_pos : Integer
+var $properties_col : Collection
 
-$formula:=$1
+$formula:=$param1
 
 $properties_col:=AJUI_Btn_PropertyCol 
 
@@ -32,18 +32,18 @@ $pos:=$properties_col.extract("formula").indexOf($formula)
 $category:=$properties_col[$pos].category
 $property:=$properties_col[$pos].property
 
-If (This:C1470.btn.hover[$category]#Null:C1517)
-	OB REMOVE:C1226(This:C1470.btn.hover[$category];$property)
+If (This.btn.hover[$category]#Null)
+	OB REMOVE(This.btn.hover[$category];$property)
 End if 
 
-If (This:C1470.btn.active[$category]#Null:C1517)
-	OB REMOVE:C1226(This:C1470.btn.active[$category];$property)
+If (This.btn.active[$category]#Null)
+	OB REMOVE(This.btn.active[$category];$property)
 End if 
 
-If (This:C1470.btn.disable[$category]#Null:C1517)
-	OB REMOVE:C1226(This:C1470.btn.disable[$category];$property)
+If (This.btn.disable[$category]#Null)
+	OB REMOVE(This.btn.disable[$category];$property)
 End if 
 
-If (This:C1470.btn.focus[$category]#Null:C1517)
-	OB REMOVE:C1226(This:C1470.btn.focus[$category];$property)
+If (This.btn.focus[$category]#Null)
+	OB REMOVE(This.btn.focus[$category];$property)
 End if 

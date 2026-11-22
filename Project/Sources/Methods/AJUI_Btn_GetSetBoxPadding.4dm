@@ -7,7 +7,9 @@
 //
 // Getter and setter for the padding of a button
 
-If (False:C215)
+#DECLARE($param1 : Text; $param2 : Integer) -> $result : Integer
+
+If (False)
 	// ----------------------------------------------------
 	// User name (OS): gabriel inzirillo
 	// Date and time: 27.11.20, 10:55:34
@@ -21,31 +23,31 @@ End if
 
 
 
-C_TEXT:C284($1;$state)
-C_LONGINT:C283($0;$2;$padding)
-C_OBJECT:C1216($current_obj)
+var $state : Text
+var $padding : Integer
+var $current_obj : Object
 
-$state:=$1
+$state:=$param1
 
 If ($state="default")
-	$current_obj:=This:C1470.btn
+	$current_obj:=This.btn
 Else 
-	$current_obj:=This:C1470.btn[$state]
+	$current_obj:=This.btn[$state]
 End if 
 
-If (Count parameters:C259=1)
+If (Count parameters=1)
 	
-	If ($current_obj.box.padding#Null:C1517)
-		$0:=$current_obj.box.padding
+	If ($current_obj.box.padding#Null)
+		$result:=$current_obj.box.padding
 	Else 
-		$0:=This:C1470.btn.box.padding
+		$result:=This.btn.box.padding
 	End if 
 	
 Else 
-	$padding:=$2
+	$padding:=$param2
 	If ($padding>=0)
 		$current_obj.box.padding:=$padding
 	Else 
-		ASSERT:C1129(False:C215;"Padding cannot be negative")
+		ASSERT(False;"Padding cannot be negative")
 	End if 
 End if 

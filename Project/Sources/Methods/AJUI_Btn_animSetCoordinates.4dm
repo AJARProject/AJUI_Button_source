@@ -5,7 +5,9 @@
   //
   // Used with a call form to move the form object with the FAB animation
 
-If (False:C215)
+#DECLARE($param1 : Object)
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 16.01.20, 10:18:52
@@ -17,8 +19,8 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_OBJECT:C1216($1;$coordinates_obj)
+var $coordinates_obj : Object
 
-$coordinates_obj:=$1
+$coordinates_obj:=$param1
 
-OBJECT SET COORDINATES:C1248(*;$coordinates_obj.target;$coordinates_obj.left;$coordinates_obj.top;$coordinates_obj.right;$coordinates_obj.bottom)
+OBJECT SET COORDINATES(*;$coordinates_obj.target;$coordinates_obj.left;$coordinates_obj.top;$coordinates_obj.right;$coordinates_obj.bottom)

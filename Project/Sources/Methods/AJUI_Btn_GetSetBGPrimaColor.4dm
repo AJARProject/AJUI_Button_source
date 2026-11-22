@@ -7,7 +7,9 @@
 //
 // Getter and setter for the background color of the button
 
-If (False:C215)
+#DECLARE($param1 : Text; $param2 : Text) -> $result : Text
+
+If (False)
 	// ----------------------------------------------------
 	// User name (OS): Gary Criblez
 	// Date and time: 19.07.19, 10:40:27
@@ -20,28 +22,27 @@ If (False:C215)
 End if 
 
 
-C_TEXT:C284($1;$state)
-C_TEXT:C284($0;$2;$color)
-C_OBJECT:C1216($current_obj)
+var $state; $color : Text
+var $current_obj : Object
 
-$state:=$1
+$state:=$param1
 
 If ($state="default")
-	$current_obj:=This:C1470.btn
+	$current_obj:=This.btn
 Else 
-	$current_obj:=This:C1470.btn[$state]
+	$current_obj:=This.btn[$state]
 End if 
 
-If (Count parameters:C259=1)
+If (Count parameters=1)
 	
-	If ($current_obj.box.backgroundColor#Null:C1517)
-		$0:=$current_obj.box.backgroundColor
+	If ($current_obj.box.backgroundColor#Null)
+		$result:=$current_obj.box.backgroundColor
 	Else 
-		$0:=This:C1470.btn.box.backgroundColor
+		$result:=This.btn.box.backgroundColor
 	End if 
 	
 Else 
-	$color:=$2
+	$color:=$param2
 	
 	If ($color#"")
 		$current_obj.box.backgroundColor:=$color

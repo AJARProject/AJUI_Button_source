@@ -6,7 +6,9 @@
   //
   // Getter and setter for name of the picture form object who will receive the button
 
-If (False:C215)
+#DECLARE($param1 : Text) -> $result : Text
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 19.07.19, 11:14:58
@@ -19,13 +21,13 @@ If (False:C215)
 End if 
 
 
-C_TEXT:C284($0;$1;$name)
+var $name : Text
 
-If (Count parameters:C259=0)
-	$0:=This:C1470.btn.global.name
+If (Count parameters=0)
+	$result:=This.btn.global.name
 Else 
-	$name:=$1
+	$name:=$param1
 	If ($name#"")
-		This:C1470.btn.global.name:=$name
+		This.btn.global.name:=$name
 	End if 
 End if 

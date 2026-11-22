@@ -7,7 +7,9 @@
   //
   // Getter and setter for the picture position in a composite button
 
-If (False:C215)
+#DECLARE($param1 : Text; $param2 : Text) -> $result : Text
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 19.07.19, 11:55:46
@@ -20,28 +22,27 @@ If (False:C215)
 End if 
 
 
-C_TEXT:C284($1;$state)
-C_TEXT:C284($0;$2;$position)
-C_OBJECT:C1216($current_obj)
+var $state; $position : Text
+var $current_obj : Object
 
-$state:=$1
+$state:=$param1
 
 If ($state="default")
-	$current_obj:=This:C1470.btn
+	$current_obj:=This.btn
 Else 
-	$current_obj:=This:C1470.btn[$state]
+	$current_obj:=This.btn[$state]
 End if 
 
-If (Count parameters:C259=1)
+If (Count parameters=1)
 	
-	If ($current_obj.composite.picturePosition#Null:C1517)
-		$0:=$current_obj.composite.picturePosition
+	If ($current_obj.composite.picturePosition#Null)
+		$result:=$current_obj.composite.picturePosition
 	Else 
-		$0:=This:C1470.btn.composite.picturePosition
+		$result:=This.btn.composite.picturePosition
 	End if 
 	
 Else 
-	$position:=$2
+	$position:=$param2
 	If ($position#"")
 		$current_obj.composite.picturePosition:=$position
 	End if 

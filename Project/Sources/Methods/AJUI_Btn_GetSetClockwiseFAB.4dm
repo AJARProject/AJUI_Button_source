@@ -6,7 +6,9 @@
   //
   // Getter and setter for the isClockwise display of the FAB
 
-If (False:C215)
+#DECLARE($param1 : Boolean) -> $result : Boolean
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 16.12.19, 10:15:42
@@ -18,11 +20,11 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_BOOLEAN:C305($0;$1;$clockwise)
+var $clockwise : Boolean
 
-If (Count parameters:C259=0)
-	$0:=This:C1470.btn.fab.clockwise
+If (Count parameters=0)
+	$result:=This.btn.fab.clockwise
 Else 
-	$clockwise:=$1
-	This:C1470.btn.fab.clockwise:=$clockwise
+	$clockwise:=$param1
+	This.btn.fab.clockwise:=$clockwise
 End if 

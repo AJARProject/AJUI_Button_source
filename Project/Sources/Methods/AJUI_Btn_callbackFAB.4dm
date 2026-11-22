@@ -5,7 +5,9 @@
   //
   // check if FAB collection not empty and the launch the show or hide FAB method
 
-If (False:C215)
+#DECLARE($param1 : Object)
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 16.12.19, 11:06:17
@@ -17,9 +19,9 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_OBJECT:C1216($1;$instance_obj)
+var $instance_obj : Object
 
-$instance_obj:=$1
+$instance_obj:=$param1
 
 If ($instance_obj.btn.fab.btnCol.length>0)
 	If ($instance_obj.btn.fab.animation)
@@ -31,5 +33,5 @@ If ($instance_obj.btn.fab.btnCol.length>0)
 			AJUI_Btn_hideFABButtons ($instance_obj)
 		End if 
 	End if 
-	$instance_obj.btn.fab.hide:=Not:C34($instance_obj.btn.fab.hide)
+	$instance_obj.btn.fab.hide:=Not($instance_obj.btn.fab.hide)
 End if 

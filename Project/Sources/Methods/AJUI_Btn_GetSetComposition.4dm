@@ -6,7 +6,9 @@
   //
   // Getter and setter for the composition of the button
 
-If (False:C215)
+#DECLARE($param1 : Text) -> $result : Text
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Maurice Inzirillo
 	  // Date and time: 19.07.19, 10:50:37
@@ -19,14 +21,14 @@ If (False:C215)
 End if 
 
 
-C_TEXT:C284($0;$1;$composition)
+var $composition : Text
 
-If (Count parameters:C259=0)
-	$0:=This:C1470.btn.global.composition
+If (Count parameters=0)
+	$result:=This.btn.global.composition
 Else 
-	$composition:=$1
+	$composition:=$param1
 	If ($composition#"")
-		This:C1470.btn.global.composition:=$composition
+		This.btn.global.composition:=$composition
 	End if 
 End if 
 

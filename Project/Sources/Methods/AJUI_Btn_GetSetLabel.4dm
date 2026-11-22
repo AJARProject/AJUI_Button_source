@@ -7,7 +7,9 @@
   //
   // Getter and setter for the text area label of the button
 
-If (False:C215)
+#DECLARE($param1 : Text; $param2 : Text) -> $result : Text
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 19.07.19, 11:13:21
@@ -20,27 +22,26 @@ If (False:C215)
 End if 
 
 
-C_TEXT:C284($1;$state)
-C_TEXT:C284($0;$2;$label)
-C_OBJECT:C1216($current_obj)
+var $state; $label : Text
+var $current_obj : Object
 
-$state:=$1
+$state:=$param1
 
 If ($state="default")
-	$current_obj:=This:C1470.btn
+	$current_obj:=This.btn
 Else 
-	$current_obj:=This:C1470.btn[$state]
+	$current_obj:=This.btn[$state]
 End if 
 
-If (Count parameters:C259=1)
+If (Count parameters=1)
 	
-	If ($current_obj.text.label#Null:C1517)
-		$0:=$current_obj.text.label
+	If ($current_obj.text.label#Null)
+		$result:=$current_obj.text.label
 	Else 
-		$0:=This:C1470.btn.text.label
+		$result:=This.btn.text.label
 	End if 
 	
 Else 
-	$label:=$2
+	$label:=$param2
 	$current_obj.text.label:=$label
 End if 
