@@ -1,13 +1,16 @@
-$evt:=Form event code:C388
+var $animation_ptr : Pointer
+var $evt : Integer
+var $animation_pos : Integer
+$evt:=Form event code
 
 Case of 
-	: ($evt=On Data Change:K2:15)
-		C_POINTER:C301($animation_ptr)
-		$animation_ptr:=OBJECT Get pointer:C1124(Object current:K67:2)
-		If ($animation_ptr->{$animation_ptr->}="True")
-			Form:C1466.primary_btn.FABIsAnimated(True:C214)
+	: ($evt=On Data Change)
+		$animation_ptr:=OBJECT Get pointer(Object current)
+		$animation_pos:=$animation_ptr->
+		If ($animation_ptr->{$animation_pos}="True")
+			Form.primary_btn.FABIsAnimated(True)
 		Else 
-			Form:C1466.primary_btn.FABIsAnimated(False:C215)
+			Form.primary_btn.FABIsAnimated(False)
 		End if 
-		Form:C1466.primary_btn.Draw()
+		Form.primary_btn.Draw()
 End case 

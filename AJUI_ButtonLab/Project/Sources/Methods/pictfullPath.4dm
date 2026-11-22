@@ -7,7 +7,9 @@
   //
   // Return the absolute path to get a picture 
 
-If (False:C215)
+#DECLARE($param1 : Text; $param2 : Text) -> $result : Text
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 19.11.19, 13:59:18
@@ -19,18 +21,17 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_TEXT:C284($1;$0;$pictPath)
-C_TEXT:C284($2;$folderTempPath)
+var $pictPath; $folderTempPath : Text
 
-$pictPath:=Replace string:C233($1;"/";Folder separator:K24:12)
-$folderTempPath:=$2
+$pictPath:=Replace string($param1;"/";Folder separator)
+$folderTempPath:=$param2
 
   //template folder case
 If ($pictPath="#@")
-	$pictPath:=Replace string:C233($pictPath;"#";"")
+	$pictPath:=Replace string($pictPath;"#";"")
 	$pictPath:=$folderTempPath+$pictPath
 Else   //resources folder case
 	  //$pictPath:=Get 4D folder(Current resources folder)+$pictPath
 End if 
 
-$0:=$pictPath
+$result:=$pictPath

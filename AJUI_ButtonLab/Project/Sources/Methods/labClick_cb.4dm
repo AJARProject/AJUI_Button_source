@@ -3,7 +3,7 @@
   //
   // Callback on click event for the lab example
 
-If (False:C215)
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 14.08.19, 09:46:25
@@ -16,4 +16,4 @@ If (False:C215)
 End if 
 
 
-ALERT:C41("Callback on click !")
+ALERT("Callback on click !")

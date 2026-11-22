@@ -6,7 +6,9 @@
   //
   // Get the icon to use in the template
 
-If (False:C215)
+#DECLARE($param1 : Text) -> $result : Text
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 15.11.19, 09:23:01
@@ -18,10 +20,12 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_TEXT:C284($0;$1;$icon;$templateName)
+var $icon; $templateName : Text
+var $locationTemp_ptr : Pointer
+var $locationTemp_pos : Integer
 
-If (Count parameters:C259=1)
-	$templateName:=$1
+If (Count parameters=1)
+	$templateName:=$param1
 	
 	Case of 
 		: ($templateName="@ (G)")
@@ -33,18 +37,18 @@ If (Count parameters:C259=1)
 	End case 
 	
 Else 
-	C_POINTER:C301($locationTemp_ptr)
 	
-	$locationTemp_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"locationTemp_list")
+	$locationTemp_ptr:=OBJECT Get pointer(Object named;"locationTemp_list")
 	
+	$locationTemp_pos:=$locationTemp_ptr->
 	Case of 
-		: ($locationTemp_ptr->{$locationTemp_ptr->}="Global")
+		: ($locationTemp_ptr->{$locationTemp_pos}="Global")
 			$icon:=" (G)"
-		: ($locationTemp_ptr->{$locationTemp_ptr->}="Personal")
+		: ($locationTemp_ptr->{$locationTemp_pos}="Personal")
 			$icon:=" (P)"
-		: ($locationTemp_ptr->{$locationTemp_ptr->}="Shared")
+		: ($locationTemp_ptr->{$locationTemp_pos}="Shared")
 			$icon:=" (S)"
 	End case 
 End if 
 
-$0:=$icon
+$result:=$icon

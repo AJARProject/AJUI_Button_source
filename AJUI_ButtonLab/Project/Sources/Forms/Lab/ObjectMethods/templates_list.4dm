@@ -1,100 +1,103 @@
-C_POINTER:C301($templates_ptr)
-C_OBJECT:C1216($template_obj)
-C_TEXT:C284($templateName)
-C_COLLECTION:C1488($templates_col;$templates_col2)
 
 
 
-$templates_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"templates_list")
+var $templates_ptr : Pointer
+var $template_obj; $folder : Object
+var $templateName; $icon : Text
+var $templates_col; $templates_col2 : Collection
+var $i : Integer
+var $templates_pos : Integer
+$templates_ptr:=OBJECT Get pointer(Object named;"templates_list")
 
 Case of 
-	: (Form event code:C388=On Load:K2:1)
+	: (Form event code=On Load)
 		
 		
-		CLEAR VARIABLE:C89($templates_ptr->)
+		CLEAR VARIABLE($templates_ptr->)
 		
-		If (Form:C1466.templateLocPref.path_global#"")
-			$folder:=Folder:C1567(Form:C1466.templateLocPref.path_global;fk platform path:K87:2)
+		If (Form.templateLocPref.path_global#"")
+			$folder:=Folder(Form.templateLocPref.path_global;fk platform path)
 			If ($folder.exists)
 				$templates_col:=AJUI_Btn_LoadTemplates ($folder.platformPath)
 				
 				For ($i;0;$templates_col.length-1)
-					APPEND TO ARRAY:C911($templates_ptr->;$templates_col[$i].templateName+" (G)")
+					APPEND TO ARRAY($templates_ptr->;$templates_col[$i].templateName+" (G)")
 				End for 
 			End if 
 		End if 
 		
-		If (Form:C1466.templateLocPref.path_personal#"")
-			$folder:=Folder:C1567(Form:C1466.templateLocPref.path_personal;fk platform path:K87:2)
-			If ($folder.exists)
-				
-				$templates_col:=AJUI_Btn_LoadTemplates ($folder.platformPath)
-				
-				For ($i;0;$templates_col.length-1)
-					APPEND TO ARRAY:C911($templates_ptr->;$templates_col[$i].templateName+" (P)")
-				End for 
-			End if 
-		End if 
-		
-		If (Form:C1466.templateLocPref.path_shared#"")
-			$folder:=Folder:C1567(Form:C1466.templateLocPref.path_shared;fk platform path:K87:2)
+		If (Form.templateLocPref.path_personal#"")
+			$folder:=Folder(Form.templateLocPref.path_personal;fk platform path)
 			If ($folder.exists)
 				
 				$templates_col:=AJUI_Btn_LoadTemplates ($folder.platformPath)
 				
 				For ($i;0;$templates_col.length-1)
-					APPEND TO ARRAY:C911($templates_ptr->;$templates_col[$i].templateName+" (S)")
+					APPEND TO ARRAY($templates_ptr->;$templates_col[$i].templateName+" (P)")
 				End for 
 			End if 
 		End if 
 		
-		SORT ARRAY:C229($templates_ptr->)
+		If (Form.templateLocPref.path_shared#"")
+			$folder:=Folder(Form.templateLocPref.path_shared;fk platform path)
+			If ($folder.exists)
+				
+				$templates_col:=AJUI_Btn_LoadTemplates ($folder.platformPath)
+				
+				For ($i;0;$templates_col.length-1)
+					APPEND TO ARRAY($templates_ptr->;$templates_col[$i].templateName+" (S)")
+				End for 
+			End if 
+		End if 
+		
+		SORT ARRAY($templates_ptr->)
 		
 		
-	: (Form event code:C388=On After Edit:K2:43)  //after choosing another style
+	: (Form event code=On After Edit)  //after choosing another style
 		
 		
-	: (Form event code:C388=On Data Change:K2:15)
+	: (Form event code=On Data Change)
 		
-		OBJECT SET ENABLED:C1123(*;"save_btn";True:C214)
+		OBJECT SET ENABLED(*;"save_btn";True)
 		
-	: (Form event code:C388=On Clicked:K2:4)  //when the user select an element
+	: (Form event code=On Clicked)  //when the user select an element
 		
-		$templateName:=$templates_ptr->{$templates_ptr->}
-		$icon:=getTLocIcon ($templates_ptr->{$templates_ptr->})
-		$templateName:=Substring:C12($templateName;1;Length:C16($templateName)-4)
-		$template_obj:=New object:C1471("templateName";$templateName;"templatePath";getTlocPath ($templateName+$icon))
-		Form:C1466.btn1:=New AJUI_Button ($template_obj)
-		Form:C1466.btn1.Name("btn1")
-		Form:C1466.btn2:=OB Copy:C1225(Form:C1466.btn1)
-		Form:C1466.btn2.ResetAllStates()
-		Form:C1466.btn2.Name("btn2")
-		Form:C1466.btn3:=OB Copy:C1225(Form:C1466.btn1)
-		Form:C1466.btn3.ResetAllStates()
-		Form:C1466.btn3.Name("btn3")
-		Form:C1466.btn4:=OB Copy:C1225(Form:C1466.btn1)
-		Form:C1466.btn4.ResetAllStates()
-		Form:C1466.btn4.Name("btn4")
-		Form:C1466.btn5:=OB Copy:C1225(Form:C1466.btn1)
-		Form:C1466.btn5.ResetAllStates()
-		Form:C1466.btn5.Name("btn5")
-		Form:C1466.btn6:=OB Copy:C1225(Form:C1466.btn1)
-		Form:C1466.btn6.ResetAllStates()
-		Form:C1466.btn6.Name("btn6")
-		Form:C1466.currentBtn:=OB Copy:C1225(Form:C1466.btn1)
+		$templates_pos:=$templates_ptr->
+		$templateName:=$templates_ptr->{$templates_pos}
+		$icon:=getTLocIcon ($templates_ptr->{$templates_pos})
+		$templateName:=Substring($templateName;1;Length($templateName)-4)
+		$template_obj:=New object("templateName";$templateName;"templatePath";getTlocPath ($templateName+$icon))
+		Form.btn1:=New AJUI_Button ($template_obj)
+		Form.btn1.Name("btn1")
+		Form.btn2:=OB Copy(Form.btn1)
+		Form.btn2.ResetAllStates()
+		Form.btn2.Name("btn2")
+		Form.btn3:=OB Copy(Form.btn1)
+		Form.btn3.ResetAllStates()
+		Form.btn3.Name("btn3")
+		Form.btn4:=OB Copy(Form.btn1)
+		Form.btn4.ResetAllStates()
+		Form.btn4.Name("btn4")
+		Form.btn5:=OB Copy(Form.btn1)
+		Form.btn5.ResetAllStates()
+		Form.btn5.Name("btn5")
+		Form.btn6:=OB Copy(Form.btn1)
+		Form.btn6.ResetAllStates()
+		Form.btn6.Name("btn6")
+		Form.currentBtn:=OB Copy(Form.btn1)
 		  // to do setup Lab bg color
 		
-		GOTO OBJECT:C206(*;"")
+		GOTO OBJECT(*;"")
 		
 		
-		LISTBOX SELECT ROW:C912(*;"StatesLB";1)
-		Form:C1466.currentState:=AJUI_btn_default
+		LISTBOX SELECT ROW(*;"StatesLB";1)
+		Form.currentState:=AJUI_btn_default
 		formulasSetValues 
 		refresh 
-		Form:C1466.btnSave.Enable(False:C215)
-		Form:C1466.btnSave.Draw()
+		Form.btnSave.Enable(False)
+		Form.btnSave.Draw()
 		
-		SET TIMER:C645(-1)
+		SET TIMER(-1)
 		
 		
 		

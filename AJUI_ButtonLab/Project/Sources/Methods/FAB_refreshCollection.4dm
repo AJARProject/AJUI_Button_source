@@ -5,7 +5,9 @@
   //
   // Add the correct number of button in the FAB collection (HDI_FAB)
 
-If (False:C215)
+#DECLARE($param1 : Integer)
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 17.12.19, 14:04:48
@@ -16,21 +18,21 @@ If (False:C215)
 	  //
 	  // ----------------------------------------------------
 End if 
-C_LONGINT:C283($1;$nbBtn)
+var $nbBtn : Integer
 
-$nbBtn:=$1
+$nbBtn:=$param1
 
-Form:C1466.primary_btn.FABClearCollection()
+Form.primary_btn.FABClearCollection()
 
-Form:C1466.primary_btn.FABAdd("btn_1")
-Form:C1466.primary_btn.FABAdd("btn_2")
-Form:C1466.primary_btn.FABAdd("btn_3")
+Form.primary_btn.FABAdd("btn_1")
+Form.primary_btn.FABAdd("btn_2")
+Form.primary_btn.FABAdd("btn_3")
 If ($nbBtn>=4)
-	Form:C1466.primary_btn.FABAdd("btn_4")
+	Form.primary_btn.FABAdd("btn_4")
 End if 
 If ($nbBtn>=5)
-	Form:C1466.primary_btn.FABAdd("btn_5")
+	Form.primary_btn.FABAdd("btn_5")
 End if 
 If ($nbBtn=6)
-	Form:C1466.primary_btn.FABAdd("btn_6")
+	Form.primary_btn.FABAdd("btn_6")
 End if 

@@ -1,8 +1,9 @@
-$evt:=Form event code:C388
+var $evt : Integer
+$evt:=Form event code
 
 Case of 
-	: ($evt=On Data Change:K2:15)
-		Form:C1466.btnSave.Enable(True:C214)
-		Form:C1466.btnSave.Draw()
+	: ($evt=On Data Change)
+		Form.btnSave.Enable(True)
+		Form.btnSave.Draw()
 		
 End case 

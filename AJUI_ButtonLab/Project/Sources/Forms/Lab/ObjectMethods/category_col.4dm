@@ -1,47 +1,54 @@
   //method to set the default value when the user ctrl click a property in the listbox
-$evt:=Form event code:C388
+var $check_ctrl : Boolean
+var $column; $row; $evt : Integer
+var $property_ptr; $value_ptr; $category_ptr : Pointer
+var $properties_col : Collection
+var $property_pos : Integer
+var $category_pos : Integer
+var $value_pos : Integer
+$evt:=Form event code
 
 Case of 
-	: ($evt=On Clicked:K2:4)
-		C_BOOLEAN:C305($check_ctrl)
-		If (Is macOS:C1572)
-			$check_ctrl:=Macintosh control down:C544
+	: ($evt=On Clicked)
+		If (Is macOS)
+			$check_ctrl:=Macintosh control down
 		Else 
-			$check_ctrl:=Macintosh command down:C546
+			$check_ctrl:=Macintosh command down
 		End if 
 		If ($check_ctrl)
-			If (Form:C1466.currentState#AJUI_btn_default)
+			If (Form.currentState#AJUI_btn_default)
 				
-				C_LONGINT:C283($column;$row)
-				LISTBOX GET CELL POSITION:C971(*;"LB_properties";$column;$row)
+				LISTBOX GET CELL POSITION(*;"LB_properties";$column;$row)
 				
 				If ($row>0)
-					$property_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"property_col")
-					$category_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"category_col")
+					$property_ptr:=OBJECT Get pointer(Object named;"property_col")
+					$category_ptr:=OBJECT Get pointer(Object named;"category_col")
 					
-					Form:C1466.btn1.RemovePropertyException(Form:C1466.properties[$property_ptr->-1].formula;Form:C1466.currentState)
+					Form.btn1.RemovePropertyException(Form.properties[$property_ptr->-1].formula;Form.currentState)
 				End if 
 				
-				Form:C1466.btnSave.Enable(True:C214)
-				Form:C1466.btnSave.Draw()
+				Form.btnSave.Enable(True)
+				Form.btnSave.Draw()
 				
 				formulasGetValues 
 				formulasSetValues 
-				REDRAW:C174(OBJECT Get pointer:C1124(Object named:K67:5;"LB_properties")->)
+				REDRAW(OBJECT Get pointer(Object named;"LB_properties")->)
 				redrawBtn 
 				
 			Else 
-				C_POINTER:C301($property_ptr;$value_ptr;$category_ptr)
-				C_COLLECTION:C1488($properties_col)
-				$property_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"property_col")
-				$value_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"value_col")
-				$category_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"category_col")
-				$properties_col:=Form:C1466.properties.query(" property = :1 & category = :2";$property_ptr->{$property_ptr->};$category_ptr->{$category_ptr->})
+				$property_ptr:=OBJECT Get pointer(Object named;"property_col")
+				$value_ptr:=OBJECT Get pointer(Object named;"value_col")
+				$category_ptr:=OBJECT Get pointer(Object named;"category_col")
+				$property_pos:=$property_ptr->
+				$category_pos:=$category_ptr->
+				$properties_col:=Form.properties.query(" property = :1 & category = :2";$property_ptr->{$property_pos};$category_ptr->{$category_pos})
 				
 				If ($properties_col.length>0)
-					If (bgStylesValue{$property_ptr->}>0)
+					$property_pos:=$property_ptr->
+					If (bgStylesValue{$property_pos}>0)
 						
-						$value_ptr->{$value_ptr->}.value:=Form:C1466.defaultValues[$properties_col[0].formula](AJUI_btn_default)
+						$value_pos:=$value_ptr->
+						$value_ptr->{$value_pos}.value:=Form.defaultValues[$properties_col[0].formula](AJUI_btn_default)
 						
 						formulaSetValue 
 						

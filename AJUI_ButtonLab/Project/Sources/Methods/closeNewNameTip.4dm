@@ -5,7 +5,9 @@
   //
   // Add the new template if validate and update the form objects
 
-If (False:C215)
+#DECLARE($param1 : Boolean)
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Maurice Inzirillo
 	  // Date and time: 14.08.19, 09:19:41
@@ -16,19 +18,22 @@ If (False:C215)
 	  //
 	  // ----------------------------------------------------
 End if 
-C_BOOLEAN:C305($1)
-C_TEXT:C284($nameTemplate;$newNameTemplate)
+var $nameTemplate; $newNameTemplate; $icon; $fileName; $pathName : Text
+var $file; $folder : Object
+var $templates_ptr : Pointer
+var $pos : Integer
+var $templates_pos : Integer
 
-If ($1)
-	$templates_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"templates_list")
+If ($param1)
+	$templates_ptr:=OBJECT Get pointer(Object named;"templates_list")
 	
 	  //check it's a rename or a new template
-	If (Form:C1466.tip_sf_details.rename)
-		$icon:=getTLocIcon ($templates_ptr->{$templates_ptr->})
-		$pos:=Find in array:C230($templates_ptr->;Form:C1466.btn1.templateName+$icon)
+	If (Form.tip_sf_details.rename)
+		$templates_pos:=$templates_ptr->
+		$icon:=getTLocIcon ($templates_ptr->{$templates_pos})
+		$pos:=Find in array($templates_ptr->;Form.btn1.templateName+$icon)
 		If ($pos>0)
-			C_OBJECT:C1216($file;$folder)
-			$fileName:=Form:C1466.btn1.templateName
+			$fileName:=Form.btn1.templateName
 			
 			If ($fileName#"")
 				If ($fileName="@.json")
@@ -36,108 +41,109 @@ If ($1)
 				Else 
 					$fileName:=$fileName+".json"
 				End if 
-				$pathName:=getTlocPath (Form:C1466.btn1.templateName+$icon)
-				$file:=File:C1566($pathName+$fileName;fk platform path:K87:2)
+				$pathName:=getTlocPath (Form.btn1.templateName+$icon)
+				$file:=File($pathName+$fileName;fk platform path)
 				
 				  //replace the old template with the new one
 				If ($file.exists)  //check file
-					$newNameTemplate:=Form:C1466.tip_sf_details.templateName
+					$newNameTemplate:=Form.tip_sf_details.templateName
 					$file:=$file.rename($newNameTemplate+".json")
 					If ($file.exists)
 						
-						Form:C1466.btn1.templateName:=$newNameTemplate
-						Form:C1466.btn1.Export($newNameTemplate;$pathName)
+						Form.btn1.templateName:=$newNameTemplate
+						Form.btn1.Export($newNameTemplate;$pathName)
 						
-						$folder:=Folder:C1567($pathName;fk platform path:K87:2)
-						If ($folder.name=(Replace string:C233($fileName;".json";"")))
+						$folder:=Folder($pathName;fk platform path)
+						If ($folder.name=(Replace string($fileName;".json";"")))
 							$folder:=$folder.rename($newNameTemplate)
-							If (Not:C34($folder.exists))
-								ALERT:C41("File renamed correctly, but the renaming of the folder failed")
+							If (Not($folder.exists))
+								ALERT("File renamed correctly, but the renaming of the folder failed")
 							End if 
 						End if 
 						
 						
 						
-						$templates_ptr->{$templates_ptr->}:=$newNameTemplate+$icon
+						$templates_pos:=$templates_ptr->
+						$templates_ptr->{$templates_pos}:=$newNameTemplate+$icon
 						
 						
-						SORT ARRAY:C229($templates_ptr->)
-						$pos:=Find in array:C230($templates_ptr->;Form:C1466.btn1.templateName+$icon)
+						SORT ARRAY($templates_ptr->)
+						$pos:=Find in array($templates_ptr->;Form.btn1.templateName+$icon)
 						$templates_ptr->:=$pos
 					Else 
-						ALERT:C41("Unknow error : can't rename the template")
+						ALERT("Unknow error : can't rename the template")
 					End if 
 				Else 
-					ALERT:C41("File not found"+"\r\r"+$pathName+$fileName)
+					ALERT("File not found"+"\r\r"+$pathName+$fileName)
 				End if 
 			End if 
 		Else 
-			ALERT:C41("No template selected")
+			ALERT("No template selected")
 		End if 
 	Else 
 		
 		  //create new template
-		Form:C1466.btn1:=New AJUI_Button 
-		Form:C1466.btn1.Name("btn1")
-		Form:C1466.btn1.BGColor(AJUI_btn_hover;"#4791C7")
-		Form:C1466.btn1.BGColor(AJUI_btn_active;"#4388BB")
-		Form:C1466.btn1.BGColor(AJUI_btn_disable;"#4d9ad4:50")
-		Form:C1466.btn1.BorderSize(AJUI_btn_focus;3)
-		Form:C1466.btn1.templateName:=Form:C1466.tip_sf_details.templateName
-		Form:C1466.btn2:=New AJUI_Button 
-		Form:C1466.btn2.Name("btn2")
-		Form:C1466.btn3:=New AJUI_Button 
-		Form:C1466.btn3.Name("btn3")
-		Form:C1466.btn3.BGColor(AJUI_btn_default;"#4791C7")
-		Form:C1466.btn4:=New AJUI_Button 
-		Form:C1466.btn4.Name("btn4")
-		Form:C1466.btn4.BGColor(AJUI_btn_default;"#4388BB")
-		Form:C1466.btn5:=New AJUI_Button 
-		Form:C1466.btn5.Name("btn5")
-		Form:C1466.btn5.BGColor(AJUI_btn_disable;"#4d9ad4:50")
-		Form:C1466.btn6:=New AJUI_Button 
-		Form:C1466.btn6.Name("btn6")
-		Form:C1466.btn6.BorderSize(AJUI_btn_default;3)
+		Form.btn1:=New AJUI_Button 
+		Form.btn1.Name("btn1")
+		Form.btn1.BGColor(AJUI_btn_hover;"#4791C7")
+		Form.btn1.BGColor(AJUI_btn_active;"#4388BB")
+		Form.btn1.BGColor(AJUI_btn_disable;"#4d9ad4:50")
+		Form.btn1.BorderSize(AJUI_btn_focus;3)
+		Form.btn1.templateName:=Form.tip_sf_details.templateName
+		Form.btn2:=New AJUI_Button 
+		Form.btn2.Name("btn2")
+		Form.btn3:=New AJUI_Button 
+		Form.btn3.Name("btn3")
+		Form.btn3.BGColor(AJUI_btn_default;"#4791C7")
+		Form.btn4:=New AJUI_Button 
+		Form.btn4.Name("btn4")
+		Form.btn4.BGColor(AJUI_btn_default;"#4388BB")
+		Form.btn5:=New AJUI_Button 
+		Form.btn5.Name("btn5")
+		Form.btn5.BGColor(AJUI_btn_disable;"#4d9ad4:50")
+		Form.btn6:=New AJUI_Button 
+		Form.btn6.Name("btn6")
+		Form.btn6.BorderSize(AJUI_btn_default;3)
 		
 		  //save new template
-		$icon:=Form:C1466.tip_sf_details.tempIcon
-		$nameTemplate:=Form:C1466.btn1.templateName
-		Form:C1466.btn1.Export($nameTemplate;getTlocPath ($icon))
+		$icon:=Form.tip_sf_details.tempIcon
+		$nameTemplate:=Form.btn1.templateName
+		Form.btn1.Export($nameTemplate;getTlocPath ($icon))
 		$nameTemplate:=$nameTemplate+$icon
-		$pos:=Find in array:C230($templates_ptr->;$nameTemplate)
+		$pos:=Find in array($templates_ptr->;$nameTemplate)
 		If ($pos>0)
 			  //nothing to do
 		Else 
-			APPEND TO ARRAY:C911($templates_ptr->;$nameTemplate)
-			SORT ARRAY:C229($templates_ptr->)
-			$pos:=Find in array:C230($templates_ptr->;$nameTemplate)
+			APPEND TO ARRAY($templates_ptr->;$nameTemplate)
+			SORT ARRAY($templates_ptr->)
+			$pos:=Find in array($templates_ptr->;$nameTemplate)
 			$templates_ptr->:=$pos
 		End if 
-		LISTBOX SELECT ROW:C912(*;"StatesLB";1)
-		Form:C1466.currentState:=AJUI_btn_default
+		LISTBOX SELECT ROW(*;"StatesLB";1)
+		Form.currentState:=AJUI_btn_default
 		formulasGetValues 
 		
-		REDRAW:C174(OBJECT Get pointer:C1124(Object named:K67:5;"LB_properties")->)
+		REDRAW(OBJECT Get pointer(Object named;"LB_properties")->)
 		refresh 
 		
-		Form:C1466.btnSave.Enable(False:C215)
-		Form:C1466.btnSave.Draw()
+		Form.btnSave.Enable(False)
+		Form.btnSave.Draw()
 		
 		redrawBtn 
 		
 		
 	End if 
-	Form:C1466.currentBtn:=OB Copy:C1225(Form:C1466.btn1)
+	Form.currentBtn:=OB Copy(Form.btn1)
 	  //enable/disable template buttons
-	templatesButtonsEnable (True:C214;"btnSave")
+	templatesButtonsEnable (True;"btnSave")
 Else 
 	  //enable/disable template buttons
-	If (Form:C1466.btnSaveActive)
-		templatesButtonsEnable (True:C214)
+	If (Form.btnSaveActive)
+		templatesButtonsEnable (True)
 	Else 
-		templatesButtonsEnable (True:C214;"btnSave")
+		templatesButtonsEnable (True;"btnSave")
 	End if 
 End if 
 
-Form:C1466.tipNewTemplate.Hide()
+Form.tipNewTemplate.Hide()
 

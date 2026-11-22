@@ -1,7 +1,8 @@
-$currentValue:=OBJECT Get pointer:C1124(Object current:K67:2)->
+var $currentValue : Integer
+$currentValue:=OBJECT Get pointer(Object current)->
 
 If ($currentValue=1)
-	Form:C1466.btn1.Enable(False:C215)
+	Form.btn1.Enable(False)
 Else 
-	Form:C1466.btn1.Enable(True:C214)
+	Form.btn1.Enable(True)
 End if 

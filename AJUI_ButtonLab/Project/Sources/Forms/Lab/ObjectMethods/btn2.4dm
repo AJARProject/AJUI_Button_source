@@ -1,16 +1,16 @@
 
 Case of 
-	: (Form event code:C388=On Load:K2:1)
-		Form:C1466.btn2:=New AJUI_Button 
-		Form:C1466.btn2.Name("btn2")
+	: (Form event code=On Load)
+		Form.btn2:=New AJUI_Button 
+		Form.btn2.Name("btn2")
 		
 		  //default
-		Form:C1466.btn2.BGColor(AJUI_btn_default;"white")
-		Form:C1466.btn2.Label(AJUI_btn_default;"AJUI Button Lab")
-		Form:C1466.btn2.FontColor(AJUI_btn_default;"#3498DB")
-		Form:C1466.btn2.BorderSize(AJUI_btn_default;1)
-		Form:C1466.btn2.BorderColor(AJUI_btn_default;"#3498DB")
-		Form:C1466.btn2.PicturePath(AJUI_btn_default;"svg/si-glyph-dice-1.svg")
+		Form.btn2.BGColor(AJUI_btn_default;"white")
+		Form.btn2.Label(AJUI_btn_default;"AJUI Button Lab")
+		Form.btn2.FontColor(AJUI_btn_default;"#3498DB")
+		Form.btn2.BorderSize(AJUI_btn_default;1)
+		Form.btn2.BorderColor(AJUI_btn_default;"#3498DB")
+		Form.btn2.PicturePath(AJUI_btn_default;"svg/si-glyph-dice-1.svg")
 		
 		
 		
@@ -18,4 +18,4 @@ Case of
 End case 
 
 
-Form:C1466.btn2.Draw()
+Form.btn2.Draw()

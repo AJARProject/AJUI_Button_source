@@ -4,7 +4,7 @@
   //
   // Set the background style array for the property in the current listbox line
 
-If (False:C215)
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 15.01.20, 10:27:20
@@ -18,23 +18,28 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_TEXT:C284($formula)
-C_POINTER:C301($property_ptr)
+var $formula : Text
+var $property_ptr : Pointer
+var $property_pos : Integer
 
-$property_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"property_col")
-$formula:=Form:C1466.properties[$property_ptr->-1].formula
+$property_ptr:=OBJECT Get pointer(Object named;"property_col")
+$formula:=Form.properties[$property_ptr->-1].formula
 
-If (Form:C1466.currentState#AJUI_btn_default)
-	If (Form:C1466.btn1[$formula](AJUI_btn_default)#Form:C1466.btn1[$formula](Form:C1466.currentState))
-		bgStylesValue{$property_ptr->}:=Bold:K14:2
+If (Form.currentState#AJUI_btn_default)
+	If (Form.btn1[$formula](AJUI_btn_default)#Form.btn1[$formula](Form.currentState))
+		$property_pos:=$property_ptr->
+		bgStylesValue{$property_pos}:=Bold
 	Else 
-		bgStylesValue{$property_ptr->}:=0
+		$property_pos:=$property_ptr->
+		bgStylesValue{$property_pos}:=0
 	End if 
 Else 
-	If (Form:C1466.defaultValues[$formula](AJUI_btn_default)#Form:C1466.btn1[$formula](AJUI_btn_default))
-		bgStylesValue{$property_ptr->}:=Bold:K14:2
+	If (Form.defaultValues[$formula](AJUI_btn_default)#Form.btn1[$formula](AJUI_btn_default))
+		$property_pos:=$property_ptr->
+		bgStylesValue{$property_pos}:=Bold
 	Else 
-		bgStylesValue{$property_ptr->}:=0
+		$property_pos:=$property_ptr->
+		bgStylesValue{$property_pos}:=0
 	End if 
 End if 
 

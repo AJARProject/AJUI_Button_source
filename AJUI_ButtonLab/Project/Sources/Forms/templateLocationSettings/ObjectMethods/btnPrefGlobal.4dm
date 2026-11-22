@@ -1,14 +1,14 @@
 
 Case of 
-	: (Form event code:C388=On Load:K2:1)
+	: (Form event code=On Load)
 		
 		
-		Form:C1466.btnPrefGlobal:=TLoc_btn_pref_init 
-		Form:C1466.btnPrefGlobal.Name("btnPrefGlobal")
-		Form:C1466.btnPrefGlobal.Label(AJUI_btn_default;"Global (G)")
-		Form:C1466.btnPrefGlobal.Enable(False:C215)
+		Form.btnPrefGlobal:=TLoc_btn_pref_init 
+		Form.btnPrefGlobal.Name("btnPrefGlobal")
+		Form.btnPrefGlobal.Label(AJUI_btn_default;"Global (G)")
+		Form.btnPrefGlobal.Enable(False)
 		
 		
 End case 
 
-Form:C1466.btnPrefGlobal.Draw()
+Form.btnPrefGlobal.Draw()

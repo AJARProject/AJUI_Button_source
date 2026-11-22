@@ -7,22 +7,22 @@
 
 
 Case of 
-	: (Form event code:C388=On Load:K2:1)
-		Form:C1466.btn8:=New AJUI_Button 
-		Form:C1466.btn8.Name("btn8")
-		Form:C1466.btn8.Composition("picture")
+	: (Form event code=On Load)
+		Form.btn8:=New AJUI_Button 
+		Form.btn8.Name("btn8")
+		Form.btn8.Composition("picture")
 		
 		  //default
-		Form:C1466.btn8.PicturePath(AJUI_btn_default;"4D_v16_60px.png")
-		Form:C1466.btn8.PictureScale(AJUI_btn_default;30)
-		Form:C1466.btn8.BGColor(AJUI_btn_default;"lightgrey")
+		Form.btn8.PicturePath(AJUI_btn_default;"4D_v16_60px.png")
+		Form.btn8.PictureScale(AJUI_btn_default;30)
+		Form.btn8.BGColor(AJUI_btn_default;"lightgrey")
 		
 		  //hover
-		Form:C1466.btn8.BGColor(AJUI_btn_hover;"darkgrey")
+		Form.btn8.BGColor(AJUI_btn_hover;"darkgrey")
 		
 		  //active
-		Form:C1466.btn8.BGColor(AJUI_btn_active;"gray")
+		Form.btn8.BGColor(AJUI_btn_active;"gray")
 		
 End case 
 
-Form:C1466.btn8.Draw()
+Form.btn8.Draw()

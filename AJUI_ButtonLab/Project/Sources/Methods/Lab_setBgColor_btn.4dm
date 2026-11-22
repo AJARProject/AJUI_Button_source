@@ -5,7 +5,9 @@
   //
   // This method is used to update the background color of the lab
 
-If (False:C215)
+#DECLARE($param1 : Object)
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 14.08.19, 10:16:26
@@ -18,29 +20,30 @@ If (False:C215)
 End if 
 
 
-C_LONGINT:C283($bgcolor_l)
-C_OBJECT:C1216($1;$params)
+var $bgcolor_l : Integer
+var $params : Object
+var $bgcolor_t : Text
 
-$params:=$1
+$params:=$param1
 
 $bgcolor_l:=$params.value
 
 
-OBJECT SET RGB COLORS:C628(*;"bgTestZone@";$bgcolor_l;$bgcolor_l)
+OBJECT SET RGB COLORS(*;"bgTestZone@";$bgcolor_l;$bgcolor_l)
 
   // Switch text comment color 
 If (getLuminance ($bgcolor_l)>150)
-	OBJECT SET RGB COLORS:C628(*;"bgz_@";Black:K11:16;Background color none:K23:10)
+	OBJECT SET RGB COLORS(*;"bgz_@";0x0000;Background color none)  // black text (Black is a palette index, not an RGB value)
 Else 
-	_O_OBJECT SET COLOR:C271(*;"bgz_@";White:K11:1;Background color none:K23:10)
+	OBJECT SET RGB COLORS(*;"bgz_@";0x00FFFFFF;Background color none)  // white text (was _O_OBJECT SET COLOR)
 End if 
 
 If ($params.setColorbtnBgOther)
-	$bgcolor_t:=Replace string:C233(String:C10($bgcolor_l;"&$");"$";"")
-	$bgcolor_t:=(6-Length:C16($bgcolor_t)*"0"+$bgcolor_t)
+	$bgcolor_t:=Replace string(String($bgcolor_l;"&$");"$";"")
+	$bgcolor_t:=(6-Length($bgcolor_t)*"0"+$bgcolor_t)
 	$bgcolor_t:="#"+$bgcolor_t
-	Form:C1466.btnBgOther.BGColor(AJUI_btn_default;$bgcolor_t)
-	Form:C1466.btnBgOther.BorderColor(AJUI_btn_default;"white")
-	Form:C1466.btnBgOther.Draw()
+	Form.btnBgOther.BGColor(AJUI_btn_default;$bgcolor_t)
+	Form.btnBgOther.BorderColor(AJUI_btn_default;"white")
+	Form.btnBgOther.Draw()
 End if 
 

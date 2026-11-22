@@ -1,7 +1,8 @@
-$evt:=Form event code:C388
+var $evt : Integer
+$evt:=Form event code
 
 Case of 
-	: ($evt=On Data Change:K2:15)
-		Form:C1466.primary_btn.FABMainPosition("")
-		Form:C1466.primary_btn.Draw()
+	: ($evt=On Data Change)
+		Form.primary_btn.FABMainPosition("")
+		Form.primary_btn.Draw()
 End case 

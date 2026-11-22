@@ -7,7 +7,9 @@
   //
   // Init Tip for template buttons
 
-If (False:C215)
+#DECLARE($param1 : Text; $param2 : Text) -> $result : Object
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 14.08.19, 15:24:10
@@ -20,13 +22,12 @@ If (False:C215)
 End if 
 
 
-C_OBJECT:C1216($0;$tip_obj)
-C_TEXT:C284($1;$tipTargetName)
-C_TEXT:C284($2;$tipLabel)
+var $tip_obj : Object
+var $tipTargetName; $tipLabel : Text
 
 
-$tipTargetName:=$1
-$tipLabel:=$2
+$tipTargetName:=$param1
+$tipLabel:=$param2
 
 $tip_obj:=New AJUI_Tip 
 
@@ -35,7 +36,7 @@ $tip_obj:=New AJUI_Tip
   // ----------------------
 $tip_obj.TipName("AJUI_Tip_sf")
 $tip_obj.TipDuration(5000)
-$tip_obj.AutoRebuild(False:C215)
+$tip_obj.AutoRebuild(False)
 
 
   // ----------------------
@@ -70,7 +71,7 @@ $tip_obj.BorderColor("#005EA8")
 $tip_obj.BorderOpacity(100)
 $tip_obj.BackgroundColor("#076BFF")
 $tip_obj.BackgroundOpacity(90)
-$tip_obj.ActivateShadow(False:C215)
+$tip_obj.ActivateShadow(False)
 $tip_obj.ShadowOffset(2)
 
 
@@ -85,4 +86,4 @@ $tip_obj.ArrowOffset(10)
 
 
 
-$0:=$tip_obj
+$result:=$tip_obj

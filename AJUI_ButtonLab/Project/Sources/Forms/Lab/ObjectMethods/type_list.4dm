@@ -1,25 +1,28 @@
-C_POINTER:C301($type_ptr)
-C_TEXT:C284($type)
 
-$evt:=Form event code:C388
-$type_ptr:=OBJECT Get pointer:C1124(Object current:K67:2)
+var $type_ptr : Pointer
+var $type : Text
+var $evt : Integer
+var $type_pos : Integer
+$evt:=Form event code
+$type_ptr:=OBJECT Get pointer(Object current)
 Case of 
-	: ($evt=On Load:K2:1)
+	: ($evt=On Load)
 		
-		APPEND TO ARRAY:C911($type_ptr->;"rectangle")
-		APPEND TO ARRAY:C911($type_ptr->;"circle")
+		APPEND TO ARRAY($type_ptr->;"rectangle")
+		APPEND TO ARRAY($type_ptr->;"circle")
 		$type_ptr->:=1
-	: ($evt=On Data Change:K2:15)
-		$type:=$type_ptr->{$type_ptr->}
-		Form:C1466.btn1.Type($type)
-		Form:C1466.btn2.Type($type)
-		Form:C1466.btn3.Type($type)
-		Form:C1466.btn4.Type($type)
-		Form:C1466.btn5.Type($type)
-		Form:C1466.btn6.Type($type)
+	: ($evt=On Data Change)
+		$type_pos:=$type_ptr->
+		$type:=$type_ptr->{$type_pos}
+		Form.btn1.Type($type)
+		Form.btn2.Type($type)
+		Form.btn3.Type($type)
+		Form.btn4.Type($type)
+		Form.btn5.Type($type)
+		Form.btn6.Type($type)
 		
-		Form:C1466.btnSave.Enable(True:C214)
-		Form:C1466.btnSave.Draw()
+		Form.btnSave.Enable(True)
+		Form.btnSave.Draw()
 		
 		redrawBtn 
 End case 

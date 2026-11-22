@@ -3,7 +3,7 @@
   //
   // Callback on click for the form HDI_CalbackBtn
 
-If (False:C215)
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 14.08.19, 10:00:19
@@ -16,4 +16,4 @@ If (False:C215)
 End if 
 
 
-ALERT:C41("Callback On Click executed")
+ALERT("Callback On Click executed")

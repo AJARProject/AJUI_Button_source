@@ -1,6 +1,7 @@
-$evt:=Form event code:C388
+var $evt : Integer
+$evt:=Form event code
 
 Case of 
-	: ($evt=On Clicked:K2:4)
+	: ($evt=On Clicked)
 		FAB_setMainPosition 
 End case 

@@ -1,33 +1,36 @@
-C_POINTER:C301($composition_ptr)
-C_TEXT:C284($composite)
 
-$evt:=Form event code:C388
-$composition_ptr:=OBJECT Get pointer:C1124(Object current:K67:2)
+var $composition_ptr : Pointer
+var $composite : Text
+var $evt : Integer
+var $composition_pos : Integer
+$evt:=Form event code
+$composition_ptr:=OBJECT Get pointer(Object current)
 Case of 
-	: ($evt=On Load:K2:1)
-		APPEND TO ARRAY:C911($composition_ptr->;"text")
-		APPEND TO ARRAY:C911($composition_ptr->;"picture")
-		APPEND TO ARRAY:C911($composition_ptr->;"composite")
+	: ($evt=On Load)
+		APPEND TO ARRAY($composition_ptr->;"text")
+		APPEND TO ARRAY($composition_ptr->;"picture")
+		APPEND TO ARRAY($composition_ptr->;"composite")
 		$composition_ptr->:=1
-	: ($evt=On Data Change:K2:15)
-		$composite:=$composition_ptr->{$composition_ptr->}
+	: ($evt=On Data Change)
+		$composition_pos:=$composition_ptr->
+		$composite:=$composition_ptr->{$composition_pos}
 		If ($composition_ptr->=3)
-			OBJECT SET VISIBLE:C603(*;"linked";True:C214)
-			OBJECT SET VISIBLE:C603(*;"secondColor";True:C214)
+			OBJECT SET VISIBLE(*;"linked";True)
+			OBJECT SET VISIBLE(*;"secondColor";True)
 		Else 
-			OBJECT SET VISIBLE:C603(*;"linked";False:C215)
-			OBJECT SET VISIBLE:C603(*;"secondColor";False:C215)
+			OBJECT SET VISIBLE(*;"linked";False)
+			OBJECT SET VISIBLE(*;"secondColor";False)
 		End if 
 		
-		Form:C1466.btn1.Composition($composite)
-		Form:C1466.btn2.Composition($composite)
-		Form:C1466.btn3.Composition($composite)
-		Form:C1466.btn4.Composition($composite)
-		Form:C1466.btn5.Composition($composite)
-		Form:C1466.btn6.Composition($composite)
+		Form.btn1.Composition($composite)
+		Form.btn2.Composition($composite)
+		Form.btn3.Composition($composite)
+		Form.btn4.Composition($composite)
+		Form.btn5.Composition($composite)
+		Form.btn6.Composition($composite)
 		
-		Form:C1466.btnSave.Enable(True:C214)
-		Form:C1466.btnSave.Draw()
+		Form.btnSave.Enable(True)
+		Form.btnSave.Draw()
 		
 		redrawBtn 
 		

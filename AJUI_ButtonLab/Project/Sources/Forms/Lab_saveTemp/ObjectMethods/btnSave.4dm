@@ -1,22 +1,22 @@
-C_POINTER:C301($templates_ptr)
 
+var $templates_ptr : Pointer
 Case of 
-	: (Form event code:C388=On Load:K2:1)
+	: (Form event code=On Load)
 		
-		Form:C1466.btnSave:=btn_subform 
-		Form:C1466.btnSave.Name("btnSave")
-		Form:C1466.btnSave.Label(AJUI_btn_default;"Validate")
+		Form.btnSave:=btn_subform 
+		Form.btnSave.Name("btnSave")
+		Form.btnSave.Label(AJUI_btn_default;"Validate")
 		
-	: (Form event code:C388=On Clicked:K2:4)
+	: (Form event code=On Clicked)
 		
-		CALL FORM:C1391(Current form window:C827;"closeSaveTempTip";True:C214)
+		CALL FORM(Current form window;"closeSaveTempTip";True)
 		
 		
 		
 End case 
 
 
-Form:C1466.btnSave.Draw()
+Form.btnSave.Draw()
 
 
 

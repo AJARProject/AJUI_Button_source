@@ -8,7 +8,9 @@
   //
   // short_description
 
-If (False:C215)
+#DECLARE($param1 : Text; $param2 : Pointer; $param3 : Pointer)
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Maurice Inzirillo
 	  // Date and time: 14.03.19, 09:39:05
@@ -20,11 +22,10 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_TEXT:C284($1;$formName_t)
-C_POINTER:C301($2;$widthSF_ptr)
-C_POINTER:C301($3;$heightSF_ptr)
-$formName_t:=$1
-$widthSF_ptr:=$2
-$heightSF_ptr:=$3
+var $formName_t : Text
+var $widthSF_ptr; $heightSF_ptr : Pointer
+$formName_t:=$param1
+$widthSF_ptr:=$param2
+$heightSF_ptr:=$param3
 
-FORM GET PROPERTIES:C674($formName_t;$widthSF_ptr->;$heightSF_ptr->)
+FORM GET PROPERTIES($formName_t;$widthSF_ptr->;$heightSF_ptr->)

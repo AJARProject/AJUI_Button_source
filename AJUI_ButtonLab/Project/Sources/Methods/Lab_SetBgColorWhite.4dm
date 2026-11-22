@@ -3,7 +3,7 @@
   //
   // Set background color to white
 
-If (False:C215)
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 14.08.19, 10:18:43
@@ -16,5 +16,7 @@ If (False:C215)
 End if 
 
 
-_O_OBJECT SET COLOR:C271(*;"bgTestZone";-(White:K11:1+(256*White:K11:1)))
-_O_OBJECT SET COLOR:C271(*;"bgz_@";-(Black:K11:16+(256*Black:K11:16)))
+// was _O_OBJECT SET COLOR (palette White/White): white foreground and background
+OBJECT SET RGB COLORS(*;"bgTestZone";0x00FFFFFF;0x00FFFFFF)
+// was _O_OBJECT SET COLOR (palette Black/Black): black text, no background as in Lab_setBgColor_btn
+OBJECT SET RGB COLORS(*;"bgz_@";0x0000;Background color none)

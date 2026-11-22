@@ -6,7 +6,9 @@
   //
   // Get the template location path to use
 
-If (False:C215)
+#DECLARE($param1 : Text) -> $result : Text
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 15.11.19, 09:32:30
@@ -18,30 +20,30 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_TEXT:C284($1;$0;$templateName;$path)
-C_OBJECT:C1216($folder)
+var $templateName; $path : Text
+var $folder : Object
 
-$templateName:=$1
+$templateName:=$param1
 
 Case of 
 	: ($templateName="@ (G)")
-		$path:=Form:C1466.templateLocPref.path_global
-		$templateName:=Replace string:C233($templateName;" (G)";"")
+		$path:=Form.templateLocPref.path_global
+		$templateName:=Replace string($templateName;" (G)";"")
 	: ($templateName="@ (P)")
-		$path:=Form:C1466.templateLocPref.path_personal
-		$templateName:=Replace string:C233($templateName;" (P)";"")
+		$path:=Form.templateLocPref.path_personal
+		$templateName:=Replace string($templateName;" (P)";"")
 	: ($templateName="@ (S)")
-		$path:=Form:C1466.templateLocPref.path_shared
-		$templateName:=Replace string:C233($templateName;" (S)";"")
+		$path:=Form.templateLocPref.path_shared
+		$templateName:=Replace string($templateName;" (S)";"")
 End case 
 
   //check templateName folder
 If ($templateName#"")
-	$folder:=Folder:C1567($path+$templateName+Folder separator:K24:12;fk platform path:K87:2)
+	$folder:=Folder($path+$templateName+Folder separator;fk platform path)
 	If ($folder.exists)
 		$path:=$folder.platformPath
 	End if 
 End if 
 
-$0:=$path
+$result:=$path
 

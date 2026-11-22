@@ -1,12 +1,13 @@
-C_TEXT:C284($callback)
-$evt:=Form event code:C388
+var $callback : Text
+var $evt : Integer
+$evt:=Form event code
 
 
 Case of 
-	: ($evt=On Data Change:K2:15)
-		$callback:=OBJECT Get pointer:C1124(Object current:K67:2)->
-		Form:C1466.btn1.OnDoubleClick($callback)
+	: ($evt=On Data Change)
+		$callback:=OBJECT Get pointer(Object current)->
+		Form.btn1.OnDoubleClick($callback)
 		
-		Form:C1466.btnSave.Enable(True:C214)
-		Form:C1466.btnSave.Draw()
+		Form.btnSave.Enable(True)
+		Form.btnSave.Draw()
 End case 

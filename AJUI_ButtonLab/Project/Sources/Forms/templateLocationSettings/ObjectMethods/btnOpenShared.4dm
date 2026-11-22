@@ -1,27 +1,27 @@
 
 Case of 
-	: (Form event code:C388=On Load:K2:1)
+	: (Form event code=On Load)
 		
 		
-		Form:C1466.btnOpenShared:=TLoc_btn_pref_init 
-		Form:C1466.btnOpenShared.Name("btnOpenShared")
-		Form:C1466.btnOpenShared.Type("circle")
-		Form:C1466.btnOpenShared.Composition("picture")
-		Form:C1466.btnOpenShared.PicturePath(AJUI_btn_default;"svg/Deemak_Daksina/3994406---eye-on-show-view-visible.svg")
+		Form.btnOpenShared:=TLoc_btn_pref_init 
+		Form.btnOpenShared.Name("btnOpenShared")
+		Form.btnOpenShared.Type("circle")
+		Form.btnOpenShared.Composition("picture")
+		Form.btnOpenShared.PicturePath(AJUI_btn_default;"svg/Deemak_Daksina/3994406---eye-on-show-view-visible.svg")
 		
-	: (Form event code:C388=On Mouse Enter:K2:33)
-		Form:C1466.subInfoTip.TextLabel("Open shared folder ")
-		Form:C1466.subInfoTip.Show()
-	: (Form event code:C388=On Mouse Leave:K2:34)
-		Form:C1466.subInfoTip.Hide()
+	: (Form event code=On Mouse Enter)
+		Form.subInfoTip.TextLabel("Open shared folder ")
+		Form.subInfoTip.Show()
+	: (Form event code=On Mouse Leave)
+		Form.subInfoTip.Hide()
 		
-	: (Form event code:C388=On Mouse Up:K2:58)
-		If (Form:C1466.path_shared#"")
-			SHOW ON DISK:C922(Form:C1466.path_shared;*)
+	: (Form event code=On Mouse Up)
+		If (Form.path_shared#"")
+			SHOW ON DISK(Form.path_shared;*)
 		End if 
 		
 		
 		
 End case 
 
-Form:C1466.btnOpenShared.Draw()
+Form.btnOpenShared.Draw()

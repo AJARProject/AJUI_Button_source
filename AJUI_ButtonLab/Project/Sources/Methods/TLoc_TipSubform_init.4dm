@@ -5,7 +5,9 @@
   //
   // Init Tip for the template location settings subform
 
-If (False:C215)
+#DECLARE($param1 : Text)
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 13.11.19, 14:11:19
@@ -17,63 +19,63 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_TEXT:C284($1;$targetName)
+var $targetName : Text
 
-$targetName:=$1
+$targetName:=$param1
 
 
-Form:C1466.tLocTip:=New AJUI_Tip ()
+Form.tLocTip:=New AJUI_Tip ()
 
   // ----------------------
   // Global
   // ----------------------
-Form:C1466.tLocTip.TipName("tLocTip")
-Form:C1466.tLocTip.AutoRebuild(False:C215)
+Form.tLocTip.TipName("tLocTip")
+Form.tLocTip.AutoRebuild(False)
 
 
 
   // ----------------------
   // Target
   // ----------------------
-Form:C1466.tLocTip.TipPosition("right-top")
-Form:C1466.tLocTip.TargetName($targetName)
-Form:C1466.tLocTip.TargetOffset(-18)
-Form:C1466.tLocTip.TargetMargin(0)
+Form.tLocTip.TipPosition("right-top")
+Form.tLocTip.TargetName($targetName)
+Form.tLocTip.TargetOffset(-18)
+Form.tLocTip.TargetMargin(0)
 
   // ----------------------
   // Container
   // ----------------------
-Form:C1466.tLocTip.CornerRadius(5)
-Form:C1466.tLocTip.TipboxMaxWidth(0)
-Form:C1466.tLocTip.TipboxMaxHeight(0)
-Form:C1466.tLocTip.Padding(0)
-Form:C1466.tLocTip.BorderSize(1)
-Form:C1466.tLocTip.BorderColor("gray")
-Form:C1466.tLocTip.BorderOpacity(100)
-Form:C1466.tLocTip.BackgroundColor("lightblue:60")
-Form:C1466.tLocTip.BackgroundOpacity(100)
-Form:C1466.tLocTip.ActivateShadow(False:C215)
-Form:C1466.tLocTip.ShadowOffset(2)
+Form.tLocTip.CornerRadius(5)
+Form.tLocTip.TipboxMaxWidth(0)
+Form.tLocTip.TipboxMaxHeight(0)
+Form.tLocTip.Padding(0)
+Form.tLocTip.BorderSize(1)
+Form.tLocTip.BorderColor("gray")
+Form.tLocTip.BorderOpacity(100)
+Form.tLocTip.BackgroundColor("lightblue:60")
+Form.tLocTip.BackgroundOpacity(100)
+Form.tLocTip.ActivateShadow(False)
+Form.tLocTip.ShadowOffset(2)
 
 
   // ----------------------
   // Arrow
   // ----------------------
-Form:C1466.tLocTip.ArrowWidth(20)
-Form:C1466.tLocTip.ArrowHeight(10)
-Form:C1466.tLocTip.ArrowOffset(10)
+Form.tLocTip.ArrowWidth(20)
+Form.tLocTip.ArrowHeight(10)
+Form.tLocTip.ArrowOffset(10)
 
 
   // ----------------------
   // Close Box
   // ----------------------
-Form:C1466.tLocTip.CloseBoxDisplay(False:C215)
+Form.tLocTip.CloseBoxDisplay(False)
 
 
   // ----------------------
   // SubForm
   // ----------------------
-Form:C1466.tLocTip.SubformName("templateLocationSettings")
+Form.tLocTip.SubformName("templateLocationSettings")
 
 
 

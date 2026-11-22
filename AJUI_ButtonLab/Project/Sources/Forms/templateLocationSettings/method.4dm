@@ -1,31 +1,32 @@
-$evt:=Form event code:C388
+var $evt : Integer
+$evt:=Form event code
 
 Case of 
-	: ($evt=On Load:K2:1)
-		Form:C1466.subInfoTip:=New AJUI_Tip 
+	: ($evt=On Load)
+		Form.subInfoTip:=New AJUI_Tip 
 		
 		  // ----------------------
 		  // Global
 		  // ----------------------
-		Form:C1466.subInfoTip.TipName("AJUI_subInfoTip")
-		Form:C1466.subInfoTip.AutoRebuild(False:C215)
+		Form.subInfoTip.TipName("AJUI_subInfoTip")
+		Form.subInfoTip.AutoRebuild(False)
 		
 		
 		  // ----------------------
 		  //Text
 		  // ----------------------
-		Form:C1466.subInfoTip.TextLabel("")
-		Form:C1466.subInfoTip.TextFontColor("blue")
-		Form:C1466.subInfoTip.TextFontSize(16)
+		Form.subInfoTip.TextLabel("")
+		Form.subInfoTip.TextFontColor("blue")
+		Form.subInfoTip.TextFontSize(16)
 		
 		
 		
 		  // ----------------------
 		  // Target
 		  // ----------------------
-		Form:C1466.subInfoTip.TipPosition("right")
-		Form:C1466.subInfoTip.TargetName("infoTip")
-		Form:C1466.subInfoTip.TargetMargin(0)
+		Form.subInfoTip.TipPosition("right")
+		Form.subInfoTip.TargetName("infoTip")
+		Form.subInfoTip.TargetMargin(0)
 		
 		
 		
@@ -33,21 +34,21 @@ Case of
 		  // ----------------------
 		  // Container
 		  // ----------------------
-		Form:C1466.subInfoTip.CornerRadius(0)
-		Form:C1466.subInfoTip.TipboxMaxWidth(250)
-		Form:C1466.subInfoTip.TipboxMaxHeight(0)
-		Form:C1466.subInfoTip.Padding(10)
-		Form:C1466.subInfoTip.BorderSize(0)
-		Form:C1466.subInfoTip.BorderColor("lightblue")
-		Form:C1466.subInfoTip.BackgroundColor("lightblue:60")
-		Form:C1466.subInfoTip.ActivateShadow(False:C215)
+		Form.subInfoTip.CornerRadius(0)
+		Form.subInfoTip.TipboxMaxWidth(250)
+		Form.subInfoTip.TipboxMaxHeight(0)
+		Form.subInfoTip.Padding(10)
+		Form.subInfoTip.BorderSize(0)
+		Form.subInfoTip.BorderColor("lightblue")
+		Form.subInfoTip.BackgroundColor("lightblue:60")
+		Form.subInfoTip.ActivateShadow(False)
 		
 		
 		  // ----------------------
 		  // Arrow
 		  // ----------------------
-		Form:C1466.subInfoTip.ArrowWidth(0)
-		Form:C1466.subInfoTip.ArrowHeight(0)
+		Form.subInfoTip.ArrowWidth(0)
+		Form.subInfoTip.ArrowHeight(0)
 		
 		
 End case 

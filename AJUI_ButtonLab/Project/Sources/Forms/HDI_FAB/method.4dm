@@ -1,7 +1,8 @@
-$evt:=Form event code:C388
+var $evt : Integer
+$evt:=Form event code
 
 Case of 
-	: ($evt=On Load:K2:1)
-		GOTO OBJECT:C206(*;"btn_1")
+	: ($evt=On Load)
+		GOTO OBJECT(*;"btn_1")
 		
 End case 

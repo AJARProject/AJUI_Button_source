@@ -3,7 +3,7 @@
   //
   // Init an AJUI Tip for the new template button
 
-If (False:C215)
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 14.08.19, 10:07:43
@@ -16,71 +16,71 @@ If (False:C215)
 End if 
 
 
-Form:C1466.tipNewTemplate:=New AJUI_Tip ()
+Form.tipNewTemplate:=New AJUI_Tip ()
 
   // ----------------------
   // Global
   // ----------------------
-Form:C1466.tipNewTemplate.TipName("AJUI_Tip_form")
-Form:C1466.tipNewTemplate.AutoRebuild(False:C215)
+Form.tipNewTemplate.TipName("AJUI_Tip_form")
+Form.tipNewTemplate.AutoRebuild(False)
 
 
   // ----------------------
   //Text
   // ----------------------
-Form:C1466.tipNewTemplate.TextLabel("Lorem ipsum dolor sit amet.")
-Form:C1466.tipNewTemplate.TextRotation("")
-Form:C1466.tipNewTemplate.TextFontSize(11)
-Form:C1466.tipNewTemplate.TextFontName("Arial,Helvetica,MS Sans Serif")
-Form:C1466.tipNewTemplate.TextFontColor("#808080")
-Form:C1466.tipNewTemplate.TextOpacity(100)
+Form.tipNewTemplate.TextLabel("Lorem ipsum dolor sit amet.")
+Form.tipNewTemplate.TextRotation("")
+Form.tipNewTemplate.TextFontSize(11)
+Form.tipNewTemplate.TextFontName("Arial,Helvetica,MS Sans Serif")
+Form.tipNewTemplate.TextFontColor("#808080")
+Form.tipNewTemplate.TextOpacity(100)
 
 
   // ----------------------
   // Target
   // ----------------------
-Form:C1466.tipNewTemplate.TipPosition("bottom-center")
-Form:C1466.tipNewTemplate.TargetName("btnNew")
-Form:C1466.tipNewTemplate.TargetOffset(0)
-Form:C1466.tipNewTemplate.TargetMargin(0)
+Form.tipNewTemplate.TipPosition("bottom-center")
+Form.tipNewTemplate.TargetName("btnNew")
+Form.tipNewTemplate.TargetOffset(0)
+Form.tipNewTemplate.TargetMargin(0)
 
 
   // ----------------------
   // Container
   // ----------------------
-Form:C1466.tipNewTemplate.CornerRadius(5)
-Form:C1466.tipNewTemplate.TipboxMaxWidth(0)
-Form:C1466.tipNewTemplate.TipboxMaxHeight(0)
-Form:C1466.tipNewTemplate.Padding(0)
-Form:C1466.tipNewTemplate.BorderSize(3)
-Form:C1466.tipNewTemplate.BorderColor("#808080")
-Form:C1466.tipNewTemplate.BorderOpacity(100)
-Form:C1466.tipNewTemplate.BackgroundColor("#C0C0C0")
-Form:C1466.tipNewTemplate.BackgroundOpacity(100)
-Form:C1466.tipNewTemplate.ActivateShadow(False:C215)
-Form:C1466.tipNewTemplate.ShadowOffset(2)
+Form.tipNewTemplate.CornerRadius(5)
+Form.tipNewTemplate.TipboxMaxWidth(0)
+Form.tipNewTemplate.TipboxMaxHeight(0)
+Form.tipNewTemplate.Padding(0)
+Form.tipNewTemplate.BorderSize(3)
+Form.tipNewTemplate.BorderColor("#808080")
+Form.tipNewTemplate.BorderOpacity(100)
+Form.tipNewTemplate.BackgroundColor("#C0C0C0")
+Form.tipNewTemplate.BackgroundOpacity(100)
+Form.tipNewTemplate.ActivateShadow(False)
+Form.tipNewTemplate.ShadowOffset(2)
 
 
   // ----------------------
   // Arrow
   // ----------------------
-Form:C1466.tipNewTemplate.ArrowWidth(20)
-Form:C1466.tipNewTemplate.ArrowHeight(10)
-Form:C1466.tipNewTemplate.ArrowPosition("center")
-Form:C1466.tipNewTemplate.ArrowOffset(10)
+Form.tipNewTemplate.ArrowWidth(20)
+Form.tipNewTemplate.ArrowHeight(10)
+Form.tipNewTemplate.ArrowPosition("center")
+Form.tipNewTemplate.ArrowOffset(10)
 
 
   // ----------------------
   // Close Box
   // ----------------------
-Form:C1466.tipNewTemplate.CloseBoxDisplay(False:C215)
-Form:C1466.tipNewTemplate.CloseBoxSize(5)
-Form:C1466.tipNewTemplate.ActivateOnClickCB(False:C215)
+Form.tipNewTemplate.CloseBoxDisplay(False)
+Form.tipNewTemplate.CloseBoxSize(5)
+Form.tipNewTemplate.ActivateOnClickCB(False)
 
 
   // ----------------------
   // SubForm
   // ----------------------
-Form:C1466.tipNewTemplate.SubformName("Lab_newNameInput")
+Form.tipNewTemplate.SubformName("Lab_newNameInput")
 
 

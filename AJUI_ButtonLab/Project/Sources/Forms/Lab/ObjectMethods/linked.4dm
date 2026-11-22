@@ -1,24 +1,25 @@
-$currentValue:=OBJECT Get pointer:C1124(Object current:K67:2)->
+var $currentValue : Integer
+$currentValue:=OBJECT Get pointer(Object current)->
 
 If ($currentValue=1)
-	Form:C1466.btn1.CompLinked(True:C214)
-	Form:C1466.btn2.CompLinked(True:C214)
-	Form:C1466.btn3.CompLinked(True:C214)
-	Form:C1466.btn4.CompLinked(True:C214)
-	Form:C1466.btn5.CompLinked(True:C214)
-	Form:C1466.btn6.CompLinked(True:C214)
+	Form.btn1.CompLinked(True)
+	Form.btn2.CompLinked(True)
+	Form.btn3.CompLinked(True)
+	Form.btn4.CompLinked(True)
+	Form.btn5.CompLinked(True)
+	Form.btn6.CompLinked(True)
 	
 	
 Else 
-	Form:C1466.btn1.CompLinked(False:C215)
-	Form:C1466.btn2.CompLinked(False:C215)
-	Form:C1466.btn3.CompLinked(False:C215)
-	Form:C1466.btn4.CompLinked(False:C215)
-	Form:C1466.btn5.CompLinked(False:C215)
-	Form:C1466.btn6.CompLinked(False:C215)
+	Form.btn1.CompLinked(False)
+	Form.btn2.CompLinked(False)
+	Form.btn3.CompLinked(False)
+	Form.btn4.CompLinked(False)
+	Form.btn5.CompLinked(False)
+	Form.btn6.CompLinked(False)
 	
 End if 
-Form:C1466.btnSave.Enable(True:C214)
-Form:C1466.btnSave.Draw()
+Form.btnSave.Enable(True)
+Form.btnSave.Draw()
 
 redrawBtn 

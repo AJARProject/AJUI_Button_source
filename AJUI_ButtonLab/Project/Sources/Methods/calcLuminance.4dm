@@ -9,7 +9,9 @@
   //
   // Calc the luminance
 
-If (False:C215)
+#DECLARE($param1 : Text; $param2 : Text; $param3 : Text) -> $result : Integer
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Maurice Inzirillo
 	  // Date and time: 30.10.19, 16:46:19
@@ -22,11 +24,10 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_TEXT:C284($1;$2;$3)
-C_LONGINT:C283($Red;$Green;$Blue)
+var $Red; $Green; $Blue : Integer
 
-$Red:=Num:C11($1)
-$Green:=Num:C11($2)
-$Blue:=Num:C11($3)
+$Red:=Num($param1)
+$Green:=Num($param2)
+$Blue:=Num($param3)
 
-$0:=(0.299*$Red)+(0.587*$Green)+(0.114*$Blue)
+$result:=(0.299*$Red)+(0.587*$Green)+(0.114*$Blue)

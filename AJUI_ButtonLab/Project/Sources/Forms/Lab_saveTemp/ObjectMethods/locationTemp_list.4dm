@@ -1,43 +1,43 @@
-C_POINTER:C301($locationTemp_ptr)
 
-$locationTemp_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"locationTemp_list")
+var $locationTemp_ptr : Pointer
+$locationTemp_ptr:=OBJECT Get pointer(Object named;"locationTemp_list")
 
 Case of 
-	: (Form event code:C388=On Load:K2:1)
+	: (Form event code=On Load)
 		
 		
-		OBJECT SET VISIBLE:C603(*;"locationTemp_list";True:C214)
-		CLEAR VARIABLE:C89($locationTemp_ptr->)
-		APPEND TO ARRAY:C911($locationTemp_ptr->;"Global")
+		OBJECT SET VISIBLE(*;"locationTemp_list";True)
+		CLEAR VARIABLE($locationTemp_ptr->)
+		APPEND TO ARRAY($locationTemp_ptr->;"Global")
 		
-		If (Form:C1466.templateLocPref.path_personal#Null:C1517)
-			If (Form:C1466.templateLocPref.path_personal#"")
-				APPEND TO ARRAY:C911($locationTemp_ptr->;"Personal")
+		If (Form.templateLocPref.path_personal#Null)
+			If (Form.templateLocPref.path_personal#"")
+				APPEND TO ARRAY($locationTemp_ptr->;"Personal")
 			End if 
 		End if 
 		
-		If (Form:C1466.templateLocPref.path_shared#Null:C1517)
-			If (Form:C1466.templateLocPref.path_shared#"")
-				APPEND TO ARRAY:C911($locationTemp_ptr->;"Shared")
+		If (Form.templateLocPref.path_shared#Null)
+			If (Form.templateLocPref.path_shared#"")
+				APPEND TO ARRAY($locationTemp_ptr->;"Shared")
 			End if 
 		End if 
 		
 		
 		Case of 
-			: (Form:C1466.tempIcon=" (G)")
+			: (Form.tempIcon=" (G)")
 				$locationTemp_ptr->:=1
 				
-			: (Form:C1466.tempIcon=" (P)")
+			: (Form.tempIcon=" (P)")
 				$locationTemp_ptr->:=2
 				
-			: (Form:C1466.tempIcon=" (S)")
+			: (Form.tempIcon=" (S)")
 				$locationTemp_ptr->:=3
 				
 		End case 
 		
 		
 		
-	: (Form event code:C388=On Data Change:K2:15)
+	: (Form event code=On Data Change)
 		
-		Form:C1466.tempIcon:=getTLocIcon 
+		Form.tempIcon:=getTLocIcon 
 End case 

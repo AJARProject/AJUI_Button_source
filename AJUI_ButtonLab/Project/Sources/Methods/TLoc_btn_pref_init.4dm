@@ -4,7 +4,9 @@
   // $subformButton_obj : (object) (return) AJUI Button instance
   //
   // Init a button (used in subforms location pref of the lab)
-If (False:C215)
+#DECLARE() -> $result : Object
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 13.11.19, 11:19:36
@@ -17,7 +19,7 @@ If (False:C215)
 End if 
 
 
-C_OBJECT:C1216($0;$subformButton_obj)
+var $subformButton_obj : Object
 
 $subformButton_obj:=New AJUI_Button 
 
@@ -26,7 +28,7 @@ $subformButton_obj.Type("rectangle")
 $subformButton_obj.Composition("text")
 
   //box
-$subformButton_obj.Resizable(False:C215)
+$subformButton_obj.Resizable(False)
 $subformButton_obj.BGColor(AJUI_btn_default;"#FFFFFF")
 $subformButton_obj.BGColor(AJUI_btn_hover;"#076BFF")
 $subformButton_obj.BGColor(AJUI_btn_active;"#005EA8")
@@ -55,4 +57,4 @@ $subformButton_obj.ReplacingColor(AJUI_btn_hover;"white")
 $subformButton_obj.ReplacingColor(AJUI_btn_active;"white")
 $subformButton_obj.ReplacingColor(AJUI_btn_disable;"gray")
 
-$0:=$subformButton_obj
+$result:=$subformButton_obj

@@ -1,13 +1,16 @@
-$evt:=Form event code:C388
+var $clockwise_ptr : Pointer
+var $evt : Integer
+var $clockwise_pos : Integer
+$evt:=Form event code
 
 Case of 
-	: ($evt=On Data Change:K2:15)
-		C_POINTER:C301($clockwise_ptr)
-		$clockwise_ptr:=OBJECT Get pointer:C1124(Object current:K67:2)
-		If ($clockwise_ptr->{$clockwise_ptr->}="True")
-			Form:C1466.primary_btn.FABIsClockwise(True:C214)
+	: ($evt=On Data Change)
+		$clockwise_ptr:=OBJECT Get pointer(Object current)
+		$clockwise_pos:=$clockwise_ptr->
+		If ($clockwise_ptr->{$clockwise_pos}="True")
+			Form.primary_btn.FABIsClockwise(True)
 		Else 
-			Form:C1466.primary_btn.FABIsClockwise(False:C215)
+			Form.primary_btn.FABIsClockwise(False)
 		End if 
-		Form:C1466.primary_btn.Draw()
+		Form.primary_btn.Draw()
 End case 

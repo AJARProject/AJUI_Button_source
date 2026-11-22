@@ -4,7 +4,7 @@
   //
   // Updating the lab's listbox values after a state or template change
 
-If (False:C215)
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 14.08.19, 09:29:01
@@ -17,16 +17,17 @@ If (False:C215)
 End if 
 
 
-C_COLLECTION:C1488($current_col)
-C_POINTER:C301($value_ptr)
+var $current_col : Collection
+var $value_ptr : Pointer
+var $i : Integer
 
 
-$value_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"value_col")
+$value_ptr:=OBJECT Get pointer(Object named;"value_col")
 
   //Loop and execute the Getter
-For ($i;0;Form:C1466.properties.length-1)
+For ($i;0;Form.properties.length-1)
 	
-	$value_ptr->{$i+1}.value:=Form:C1466.btn1[Form:C1466.properties[$i].formula](Form:C1466.currentState)
+	$value_ptr->{$i+1}.value:=Form.btn1[Form.properties[$i].formula](Form.currentState)
 	
 End for 
 

@@ -5,7 +5,9 @@
   //
   // This method enable/disable the form objects(HDI_FAB). Enable when the secondary button are hidden.
 
-If (False:C215)
+#DECLARE($param1 : Boolean)
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 18.12.19, 10:33:39
@@ -18,24 +20,24 @@ If (False:C215)
 End if 
 
 
-C_BOOLEAN:C305($1;$enable)
+var $enable : Boolean
 
-$enable:=$1
+$enable:=$param1
 
   //main positions
-OBJECT SET ENABLED:C1123(*;"top";$enable)
-OBJECT SET ENABLED:C1123(*;"top-left";$enable)
-OBJECT SET ENABLED:C1123(*;"top-right";$enable)
-OBJECT SET ENABLED:C1123(*;"center";$enable)
-OBJECT SET ENABLED:C1123(*;"left";$enable)
-OBJECT SET ENABLED:C1123(*;"right";$enable)
-OBJECT SET ENABLED:C1123(*;"bottom-left";$enable)
-OBJECT SET ENABLED:C1123(*;"bottom-right";$enable)
-OBJECT SET ENABLED:C1123(*;"bottom";$enable)
+OBJECT SET ENABLED(*;"top";$enable)
+OBJECT SET ENABLED(*;"top-left";$enable)
+OBJECT SET ENABLED(*;"top-right";$enable)
+OBJECT SET ENABLED(*;"center";$enable)
+OBJECT SET ENABLED(*;"left";$enable)
+OBJECT SET ENABLED(*;"right";$enable)
+OBJECT SET ENABLED(*;"bottom-left";$enable)
+OBJECT SET ENABLED(*;"bottom-right";$enable)
+OBJECT SET ENABLED(*;"bottom";$enable)
 
   //FAB options
-OBJECT SET ENABLED:C1123(*;"btns_fab";$enable)
-OBJECT SET ENABLED:C1123(*;"startAngle";$enable)
-OBJECT SET ENABLED:C1123(*;"angleToTravel";$enable)
-OBJECT SET ENABLED:C1123(*;"radius";$enable)
-OBJECT SET ENABLED:C1123(*;"clockwise";$enable)
+OBJECT SET ENABLED(*;"btns_fab";$enable)
+OBJECT SET ENABLED(*;"startAngle";$enable)
+OBJECT SET ENABLED(*;"angleToTravel";$enable)
+OBJECT SET ENABLED(*;"radius";$enable)
+OBJECT SET ENABLED(*;"clockwise";$enable)

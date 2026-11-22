@@ -6,7 +6,9 @@
   //
   // Init Buttons for the form HDI_CompositePositionBtn
 
-If (False:C215)
+#DECLARE($param1 : Object; $param2 : Text)
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Maurice Inzirillo
 	  // Date and time: 14.08.19, 09:42:28
@@ -19,15 +21,15 @@ If (False:C215)
 End if 
 
 
-C_OBJECT:C1216($1;$btn)
-C_TEXT:C284($2;$btnName)
+var $btn : Object
+var $btnName : Text
 
-$btn:=($1)
-$btnName:=$2
+$btn:=($param1)
+$btnName:=$param2
 
 $btn.Name($btnName)
 $btn.Composition("composite")
-$btn.CompActiveSecondColor(True:C214)
+$btn.CompActiveSecondColor(True)
 $btn.Type("rectangle")
 $btn.ColorToReplace("#434343")
 

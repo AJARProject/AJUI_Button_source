@@ -1,23 +1,24 @@
-$currentValue:=OBJECT Get pointer:C1124(Object current:K67:2)->
+var $currentValue : Integer
+$currentValue:=OBJECT Get pointer(Object current)->
 
 If ($currentValue=1)
-	Form:C1466.btn1.CompActiveSecondColor(True:C214)
-	Form:C1466.btn2.CompActiveSecondColor(True:C214)
-	Form:C1466.btn3.CompActiveSecondColor(True:C214)
-	Form:C1466.btn4.CompActiveSecondColor(True:C214)
-	Form:C1466.btn5.CompActiveSecondColor(True:C214)
-	Form:C1466.btn6.CompActiveSecondColor(True:C214)
+	Form.btn1.CompActiveSecondColor(True)
+	Form.btn2.CompActiveSecondColor(True)
+	Form.btn3.CompActiveSecondColor(True)
+	Form.btn4.CompActiveSecondColor(True)
+	Form.btn5.CompActiveSecondColor(True)
+	Form.btn6.CompActiveSecondColor(True)
 	
 	
 Else 
-	Form:C1466.btn1.CompActiveSecondColor(False:C215)
-	Form:C1466.btn2.CompActiveSecondColor(False:C215)
-	Form:C1466.btn3.CompActiveSecondColor(False:C215)
-	Form:C1466.btn4.CompActiveSecondColor(False:C215)
-	Form:C1466.btn5.CompActiveSecondColor(False:C215)
-	Form:C1466.btn6.CompActiveSecondColor(False:C215)
+	Form.btn1.CompActiveSecondColor(False)
+	Form.btn2.CompActiveSecondColor(False)
+	Form.btn3.CompActiveSecondColor(False)
+	Form.btn4.CompActiveSecondColor(False)
+	Form.btn5.CompActiveSecondColor(False)
+	Form.btn6.CompActiveSecondColor(False)
 End if 
-Form:C1466.btnSave.Enable(True:C214)
-Form:C1466.btnSave.Draw()
+Form.btnSave.Enable(True)
+Form.btnSave.Draw()
 
 redrawBtn 

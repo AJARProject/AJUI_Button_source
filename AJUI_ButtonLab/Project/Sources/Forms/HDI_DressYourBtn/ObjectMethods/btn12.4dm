@@ -1,31 +1,31 @@
 
 Case of 
-	: (Form event code:C388=On Load:K2:1)
-		Form:C1466.btn12:=New AJUI_Button 
-		Form:C1466.btn12.Name("btn12")
-		Form:C1466.btn12.Type("circle")
+	: (Form event code=On Load)
+		Form.btn12:=New AJUI_Button 
+		Form.btn12.Name("btn12")
+		Form.btn12.Type("circle")
 		
 		  //default
-		Form:C1466.btn12.BGColor(AJUI_btn_default;"palegreen")
-		Form:C1466.btn12.Label(AJUI_btn_default;"BTN 9")
-		Form:C1466.btn12.BorderSize(AJUI_btn_default;2)
-		Form:C1466.btn12.FontColor(AJUI_btn_default;"blue")
+		Form.btn12.BGColor(AJUI_btn_default;"palegreen")
+		Form.btn12.Label(AJUI_btn_default;"BTN 9")
+		Form.btn12.BorderSize(AJUI_btn_default;2)
+		Form.btn12.FontColor(AJUI_btn_default;"blue")
 		
 		  //hover
-		Form:C1466.btn12.BGColor(AJUI_btn_hover;"lime")
-		Form:C1466.btn12.Label(AJUI_btn_hover;"On Hover")
-		Form:C1466.btn12.BorderSize(AJUI_btn_hover;4)
-		Form:C1466.btn12.FontSize(AJUI_btn_hover;18)
+		Form.btn12.BGColor(AJUI_btn_hover;"lime")
+		Form.btn12.Label(AJUI_btn_hover;"On Hover")
+		Form.btn12.BorderSize(AJUI_btn_hover;4)
+		Form.btn12.FontSize(AJUI_btn_hover;18)
 		
 		  //active
-		Form:C1466.btn12.BGColor(AJUI_btn_active;"green")
-		Form:C1466.btn12.Label(AJUI_btn_active;"On Click")
-		Form:C1466.btn12.BorderSize(AJUI_btn_active;6)
-		Form:C1466.btn12.FontSize(AJUI_btn_active;24)
-		Form:C1466.btn12.FontColor(AJUI_btn_active;"lightblue")
+		Form.btn12.BGColor(AJUI_btn_active;"green")
+		Form.btn12.Label(AJUI_btn_active;"On Click")
+		Form.btn12.BorderSize(AJUI_btn_active;6)
+		Form.btn12.FontSize(AJUI_btn_active;24)
+		Form.btn12.FontColor(AJUI_btn_active;"lightblue")
 		
 		
 End case 
 
 
-Form:C1466.btn12.Draw()
+Form.btn12.Draw()

@@ -3,7 +3,8 @@
   //
   // open the color picker
 
-If (False:C215)
+var $bgcolor_l : Integer
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 14.08.19, 10:14:30
@@ -16,6 +17,6 @@ If (False:C215)
 End if 
 
 
-$bgcolor_l:=Select RGB color:C956(16777215;"Select the Background Color")
-Form:C1466.btnBgOtherParams.value:=$bgcolor_l
+$bgcolor_l:=Select RGB color(16777215;"Select the Background Color")
+Form.btnBgOtherParams.value:=$bgcolor_l
 

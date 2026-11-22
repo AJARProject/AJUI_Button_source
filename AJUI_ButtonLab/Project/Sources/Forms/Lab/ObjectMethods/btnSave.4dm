@@ -1,55 +1,57 @@
 
-C_TEXT:C284($nameTemplate)
 
+var $nameTemplate : Text
+var $templates_ptr : Pointer
+var $templates_pos : Integer
 Case of 
-	: (Form event code:C388=On Load:K2:1)
-		Form:C1466.btnSave:=newTemplateButton 
-		Form:C1466.btnSave.Name("btnSave")
-		Form:C1466.btnSave.Label(AJUI_btn_default;"Save")
-		Form:C1466.btnSave.PicturePath(AJUI_btn_default;"svg/Deemak_Daksina/3994423---checkmark-complete-correct-done-yes.svg")
-		Form:C1466.btnSave.Enable(False:C215)
+	: (Form event code=On Load)
+		Form.btnSave:=newTemplateButton 
+		Form.btnSave.Name("btnSave")
+		Form.btnSave.Label(AJUI_btn_default;"Save")
+		Form.btnSave.PicturePath(AJUI_btn_default;"svg/Deemak_Daksina/3994423---checkmark-complete-correct-done-yes.svg")
+		Form.btnSave.Enable(False)
 		
 		Tip_SaveTempSubform 
-		Form:C1466.tipSaveTemp:=tip_templatesButtons ("btnSave";"Save template")
+		Form.tipSaveTemp:=tip_templatesButtons ("btnSave";"Save template")
 		
-	: (Form event code:C388=On Mouse Enter:K2:33)
+	: (Form event code=On Mouse Enter)
 		
-		If (OBJECT Get enabled:C1079(*;"btnSave"))
-			Form:C1466.tipSaveTemp.TextLabel("Save template")
-			Form:C1466.tipSaveTemp.Show()
+		If (OBJECT Get enabled(*;"btnSave"))
+			Form.tipSaveTemp.TextLabel("Save template")
+			Form.tipSaveTemp.Show()
 		End if 
 		
-	: (Form event code:C388=On Mouse Leave:K2:34)
+	: (Form event code=On Mouse Leave)
 		
-		Form:C1466.tipSaveTemp.Hide()
+		Form.tipSaveTemp.Hide()
 		
-	: (Form event code:C388=On Clicked:K2:4) & (Macintosh option down:C545)  // alt+clic (Mac) OR Option+clic (Windows)
+	: (Form event code=On Clicked) & (Macintosh option down)  // alt+clic (Mac) OR Option+clic (Windows)
 		
-		If (OBJECT Get enabled:C1079(*;"btnSave"))
-			Form:C1466.tipSaveTemp.Hide()
+		If (OBJECT Get enabled(*;"btnSave"))
+			Form.tipSaveTemp.Hide()
 			
-			templatesButtonsEnable (False:C215)
-			C_POINTER:C301($templates_ptr)
-			$templates_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"templates_list")
-			Form:C1466.tip_sf_details.templateLocPref:=OB Copy:C1225(Form:C1466.templateLocPref)
-			Form:C1466.tip_sf_details.currentTemplatePath:=getTlocPath (getTLocIcon ($templates_ptr->{$templates_ptr->}))
-			Form:C1466.tip_sf_details.tempIcon:=getTLocIcon ($templates_ptr->{$templates_ptr->})
-			closeSaveTempTip (True:C214)
+			templatesButtonsEnable (False)
+			$templates_ptr:=OBJECT Get pointer(Object named;"templates_list")
+			Form.tip_sf_details.templateLocPref:=OB Copy(Form.templateLocPref)
+			$templates_pos:=$templates_ptr->
+			Form.tip_sf_details.currentTemplatePath:=getTlocPath (getTLocIcon ($templates_ptr->{$templates_pos}))
+			Form.tip_sf_details.tempIcon:=getTLocIcon ($templates_ptr->{$templates_pos})
+			closeSaveTempTip (True)
 		End if 
 		
-	: (Form event code:C388=On Clicked:K2:4)
+	: (Form event code=On Clicked)
 		
-		If (OBJECT Get enabled:C1079(*;"btnSave"))
-			Form:C1466.tipSaveTemp.Hide()
+		If (OBJECT Get enabled(*;"btnSave"))
+			Form.tipSaveTemp.Hide()
 			
-			templatesButtonsEnable (False:C215)
-			C_POINTER:C301($templates_ptr)
-			$templates_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"templates_list")
-			Form:C1466.tip_sf_details.templateLocPref:=OB Copy:C1225(Form:C1466.templateLocPref)
-			Form:C1466.tip_sf_details.currentTemplatePath:=getTlocPath (getTLocIcon ($templates_ptr->{$templates_ptr->}))
-			Form:C1466.tip_sf_details.tempIcon:=getTLocIcon ($templates_ptr->{$templates_ptr->})
-			Form:C1466.tipSaveTemplateSubform.TargetName("btnSave")
-			Form:C1466.tipSaveTemplateSubform.Show()
+			templatesButtonsEnable (False)
+			$templates_ptr:=OBJECT Get pointer(Object named;"templates_list")
+			Form.tip_sf_details.templateLocPref:=OB Copy(Form.templateLocPref)
+			$templates_pos:=$templates_ptr->
+			Form.tip_sf_details.currentTemplatePath:=getTlocPath (getTLocIcon ($templates_ptr->{$templates_pos}))
+			Form.tip_sf_details.tempIcon:=getTLocIcon ($templates_ptr->{$templates_pos})
+			Form.tipSaveTemplateSubform.TargetName("btnSave")
+			Form.tipSaveTemplateSubform.Show()
 			
 		End if 
 		
@@ -57,4 +59,4 @@ Case of
 End case 
 
 
-Form:C1466.btnSave.Draw()
+Form.btnSave.Draw()

@@ -5,7 +5,9 @@
   //
   // short_description
 
-If (False:C215)
+#DECLARE() -> $result : Text
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 22.11.19, 14:18:48
@@ -16,6 +18,5 @@ If (False:C215)
 	  //
 	  // ----------------------------------------------------
 End if 
-C_TEXT:C284($0)
 
-$0:="AJUI Button Lab 1.3.2 (v18)"
+$result:="AJUI Button Lab 2.2.0 (v21 R4)"  // 22 Nov 2026 (4D 21 R4)

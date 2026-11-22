@@ -1,10 +1,11 @@
-$evt:=Form event code:C388
+var $evt : Integer
+$evt:=Form event code
 
 
 Case of 
-	: ($evt=On Load:K2:1)
+	: ($evt=On Load)
 		
-	: ($evt=On Clicked:K2:4)
+	: ($evt=On Clicked)
 		
 		
 		

@@ -3,7 +3,7 @@
   //
   //callback deleted Template for the lab
 
-If (False:C215)
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 14.08.19, 09:16:23
@@ -15,4 +15,4 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-ALERT:C41("Template deleted")
+ALERT("Template deleted")

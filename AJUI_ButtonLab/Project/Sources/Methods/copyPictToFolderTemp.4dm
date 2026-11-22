@@ -6,7 +6,9 @@
   //
   // Handle the copy of the picture linked to the instance into the same folder
 
-If (False:C215)
+#DECLARE($param1 : Text; $param2 : Text)
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 19.11.19, 09:43:42
@@ -18,97 +20,94 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_TEXT:C284($1;$folderTemp;$defaultPath)
-C_TEXT:C284($2;$currentTempPath)
-C_TEXT:C284($hoverPath;$activePath;$disablePath;$focusPath)
-C_TEXT:C284($defaultName;$hoverName;$activeName;$disableName;$focusName)
-C_OBJECT:C1216($file)
-C_BOOLEAN:C305($created)
+var $folderTemp; $defaultPath; $currentTempPath; $hoverPath; $activePath; $disablePath; $focusPath; $defaultName; $hoverName; $activeName; $disableName; $focusName : Text
+var $file; $folder : Object
+var $created : Boolean
 
-$folderTemp:=$1
-$currentTempPath:=$2
+$folderTemp:=$param1
+$currentTempPath:=$param2
 
-$folder:=Folder:C1567($folderTemp;fk platform path:K87:2)
+$folder:=Folder($folderTemp;fk platform path)
 
   //create folder if not exist
-If (Not:C34($folder.exists))
+If (Not($folder.exists))
 	$created:=$folder.create()
 End if 
 
   //default picture
-$defaultPath:=Form:C1466.btn1.PicturePath(AJUI_btn_default)
+$defaultPath:=Form.btn1.PicturePath(AJUI_btn_default)
 If ($defaultPath#"")
-	$file:=File:C1566(pictfullPath ($defaultPath;$currentTempPath);fk platform path:K87:2)
+	$file:=File(pictfullPath ($defaultPath;$currentTempPath);fk platform path)
 	
 	If ($file.exists)
 		If ($file.platformPath#($folderTemp+$file.fullName))
-			$file.copyTo($folder;fk overwrite:K87:5)
+			$file.copyTo($folder;fk overwrite)
 		End if 
-		Form:C1466.btn1.PicturePath(AJUI_btn_default;"#"+$file.fullName)
+		Form.btn1.PicturePath(AJUI_btn_default;"#"+$file.fullName)
 		$defaultPath:="#"+$file.fullName
 		$defaultName:="@"+$file.name+"@"
 	Else 
-		ALERT:C41("Picture not found for copying into the template folder (state: default)")
+		ALERT("Picture not found for copying into the template folder (state: default)")
 	End if 
 End if 
 
   //hover picture
-$hoverPath:=Form:C1466.btn1.PicturePath(AJUI_btn_hover)
+$hoverPath:=Form.btn1.PicturePath(AJUI_btn_hover)
 If ($hoverPath#"") & ($hoverPath#$defaultPath)
-	$file:=File:C1566(pictfullPath ($hoverPath;$currentTempPath);fk platform path:K87:2)
+	$file:=File(pictfullPath ($hoverPath;$currentTempPath);fk platform path)
 	If ($file.exists)
 		If ($file.platformPath#($folderTemp+$file.fullName))
-			$file.copyTo($folder;fk overwrite:K87:5)
+			$file.copyTo($folder;fk overwrite)
 		End if 
-		Form:C1466.btn1.PicturePath(AJUI_btn_hover;"#"+$file.fullName)
+		Form.btn1.PicturePath(AJUI_btn_hover;"#"+$file.fullName)
 		$hoverName:="@"+$file.name+"@"
 	Else 
-		ALERT:C41("Picture not found for copying into the template folder (state: hover)")
+		ALERT("Picture not found for copying into the template folder (state: hover)")
 	End if 
 End if 
 
   //active picture
-$activePath:=Form:C1466.btn1.PicturePath(AJUI_btn_active)
+$activePath:=Form.btn1.PicturePath(AJUI_btn_active)
 If ($activePath#"") & ($activePath#$defaultPath) & ($activePath#$hoverPath)
-	$file:=File:C1566(pictfullPath ($activePath;$currentTempPath);fk platform path:K87:2)
+	$file:=File(pictfullPath ($activePath;$currentTempPath);fk platform path)
 	If ($file.exists)
 		If ($file.platformPath#($folderTemp+$file.fullName))
-			$file.copyTo($folder;fk overwrite:K87:5)
+			$file.copyTo($folder;fk overwrite)
 		End if 
-		Form:C1466.btn1.PicturePath(AJUI_btn_active;"#"+$file.fullName)
+		Form.btn1.PicturePath(AJUI_btn_active;"#"+$file.fullName)
 		$activeName:="@"+$file.name+"@"
 	Else 
-		ALERT:C41("Picture not found for copying into the template folder (state: active)")
+		ALERT("Picture not found for copying into the template folder (state: active)")
 	End if 
 End if 
 
   //disable picture
-$disablePath:=Form:C1466.btn1.PicturePath(AJUI_btn_disable)
+$disablePath:=Form.btn1.PicturePath(AJUI_btn_disable)
 If ($disablePath#"") & ($disablePath#$defaultPath) & ($disablePath#$hoverPath) & ($disablePath#$activePath)
-	$file:=File:C1566(pictfullPath ($disablePath;$currentTempPath);fk platform path:K87:2)
+	$file:=File(pictfullPath ($disablePath;$currentTempPath);fk platform path)
 	If ($file.exists)
 		If ($file.platformPath#($folderTemp+$file.fullName))
-			$file.copyTo($folder;fk overwrite:K87:5)
+			$file.copyTo($folder;fk overwrite)
 		End if 
-		Form:C1466.btn1.PicturePath(AJUI_btn_disable;"#"+$file.fullName)
+		Form.btn1.PicturePath(AJUI_btn_disable;"#"+$file.fullName)
 		$disableName:="@"+$file.name+"@"
 	Else 
-		ALERT:C41("Picture not found for copying into the template folder (state: disable)")
+		ALERT("Picture not found for copying into the template folder (state: disable)")
 	End if 
 End if 
 
   //focus picture
-$focusPath:=Form:C1466.btn1.PicturePath(AJUI_btn_focus)
+$focusPath:=Form.btn1.PicturePath(AJUI_btn_focus)
 If ($focusPath#"") & ($focusPath#$defaultPath) & ($focusPath#$hoverPath) & ($focusPath#$activePath) & ($focusPath#$disablePath)
-	$file:=File:C1566(pictfullPath ($focusPath;$currentTempPath);fk platform path:K87:2)
+	$file:=File(pictfullPath ($focusPath;$currentTempPath);fk platform path)
 	If ($file.exists)
 		If ($file.platformPath#($folderTemp+$file.fullName))
-			$file.copyTo($folder;fk overwrite:K87:5)
+			$file.copyTo($folder;fk overwrite)
 		End if 
-		Form:C1466.btn1.PicturePath(AJUI_btn_disable;"#"+$file.fullName)
+		Form.btn1.PicturePath(AJUI_btn_disable;"#"+$file.fullName)
 		$focusName:="@"+$file.name+"@"
 	Else 
-		ALERT:C41("Picture not found for copying into the template folder (state: disable)")
+		ALERT("Picture not found for copying into the template folder (state: disable)")
 	End if 
 End if 
 

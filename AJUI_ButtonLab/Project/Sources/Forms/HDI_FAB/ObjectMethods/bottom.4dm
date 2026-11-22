@@ -1,9 +1,10 @@
-$evt:=Form event code:C388
+var $evt : Integer
+$evt:=Form event code
 
 Case of 
-	: ($evt=On Load:K2:1)
-		OBJECT Get pointer:C1124(Object current:K67:2)->:=1
+	: ($evt=On Load)
+		OBJECT Get pointer(Object current)->:=1
 		
-	: ($evt=On Clicked:K2:4)
+	: ($evt=On Clicked)
 		FAB_setMainPosition 
 End case 

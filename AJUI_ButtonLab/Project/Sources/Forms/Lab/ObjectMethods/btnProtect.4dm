@@ -1,63 +1,63 @@
 
 
 Case of 
-	: (Form event code:C388=On Load:K2:1)
-		Form:C1466.btnProtect:=newTemplateButton 
-		Form:C1466.btnProtect.Name("btnProtect")
-		Form:C1466.btnProtect.Label(AJUI_btn_default;"Protect")
+	: (Form event code=On Load)
+		Form.btnProtect:=newTemplateButton 
+		Form.btnProtect.Name("btnProtect")
+		Form.btnProtect.Label(AJUI_btn_default;"Protect")
 		
 		bannerProtectRibbon 
 		
 		  //check template protect
-		If (Form:C1466.btn1.protect)
-			Form:C1466.btnProtect.Label(AJUI_btn_default;"Unprotect")
-			Form:C1466.btnProtectBanner.DrawBanner()
-			OBJECT SET VISIBLE:C603(*;"RectProtect";True:C214)
-			Form:C1466.btnProtect.PicturePath(AJUI_btn_default;"svg/Deemak_Daksina/3994412---key-lock-open-password-unlock.svg")
+		If (Form.btn1.protect)
+			Form.btnProtect.Label(AJUI_btn_default;"Unprotect")
+			Form.btnProtectBanner.DrawBanner()
+			OBJECT SET VISIBLE(*;"RectProtect";True)
+			Form.btnProtect.PicturePath(AJUI_btn_default;"svg/Deemak_Daksina/3994412---key-lock-open-password-unlock.svg")
 		Else 
-			Form:C1466.btnProtect.Label(AJUI_btn_default;"Protect")
-			Form:C1466.btnProtectBanner.HideBanner()
-			OBJECT SET VISIBLE:C603(*;"RectProtect";False:C215)
-			Form:C1466.btnProtect.PicturePath(AJUI_btn_default;"svg/Deemak_Daksina/3994379---lock-padlock-privacy-protection-security.svg")
+			Form.btnProtect.Label(AJUI_btn_default;"Protect")
+			Form.btnProtectBanner.HideBanner()
+			OBJECT SET VISIBLE(*;"RectProtect";False)
+			Form.btnProtect.PicturePath(AJUI_btn_default;"svg/Deemak_Daksina/3994379---lock-padlock-privacy-protection-security.svg")
 		End if 
 		
-		Form:C1466.tipProtect:=tip_templatesButtons ("btnProtect";"")
+		Form.tipProtect:=tip_templatesButtons ("btnProtect";"")
 		
-	: (Form event code:C388=On Mouse Enter:K2:33)
+	: (Form event code=On Mouse Enter)
 		
-		If (OBJECT Get enabled:C1079(*;"btnProtect"))
-			Form:C1466.tipProtect.TextLabel(Form:C1466.btnProtect.Label(AJUI_btn_default))
-			Form:C1466.tipProtect.Show()
+		If (OBJECT Get enabled(*;"btnProtect"))
+			Form.tipProtect.TextLabel(Form.btnProtect.Label(AJUI_btn_default))
+			Form.tipProtect.Show()
 		End if 
 		
-	: (Form event code:C388=On Mouse Leave:K2:34)
+	: (Form event code=On Mouse Leave)
 		
-		Form:C1466.tipProtect.Hide()
+		Form.tipProtect.Hide()
 		
-	: (Form event code:C388=On Clicked:K2:4) & (Macintosh option down:C545)  // alt+clic (Mac) OR Option+clic (Windows)
+	: (Form event code=On Clicked) & (Macintosh option down)  // alt+clic (Mac) OR Option+clic (Windows)
 		
-	: (Form event code:C388=On Clicked:K2:4)
-		Form:C1466.tipProtect.Hide()
+	: (Form event code=On Clicked)
+		Form.tipProtect.Hide()
 		
 		  //activate/inactive protect
-		If (Form:C1466.btn1.protect)
-			Form:C1466.btnProtect.Label(AJUI_btn_default;"Protect")
-			Form:C1466.btn1.protect:=False:C215
-			Form:C1466.btnProtectBanner.HideBanner()
-			OBJECT SET VISIBLE:C603(*;"RectProtect";False:C215)
-			Form:C1466.btnProtect.PicturePath(AJUI_btn_default;"svg/Deemak_Daksina/3994379---lock-padlock-privacy-protection-security.svg")
+		If (Form.btn1.protect)
+			Form.btnProtect.Label(AJUI_btn_default;"Protect")
+			Form.btn1.protect:=False
+			Form.btnProtectBanner.HideBanner()
+			OBJECT SET VISIBLE(*;"RectProtect";False)
+			Form.btnProtect.PicturePath(AJUI_btn_default;"svg/Deemak_Daksina/3994379---lock-padlock-privacy-protection-security.svg")
 			
 		Else 
-			Form:C1466.btnProtect.Label(AJUI_btn_default;"Unprotect")
-			Form:C1466.btn1.protect:=True:C214
-			Form:C1466.btnProtectBanner.DrawBanner()
-			OBJECT SET VISIBLE:C603(*;"RectProtect";True:C214)
-			Form:C1466.btnProtect.PicturePath(AJUI_btn_default;"svg/Deemak_Daksina/3994412---key-lock-open-password-unlock.svg")
-			GOTO OBJECT:C206(*;"")
+			Form.btnProtect.Label(AJUI_btn_default;"Unprotect")
+			Form.btn1.protect:=True
+			Form.btnProtectBanner.DrawBanner()
+			OBJECT SET VISIBLE(*;"RectProtect";True)
+			Form.btnProtect.PicturePath(AJUI_btn_default;"svg/Deemak_Daksina/3994412---key-lock-open-password-unlock.svg")
+			GOTO OBJECT(*;"")
 		End if 
 		
-		Form:C1466.btnSave.Enable(True:C214)
-		Form:C1466.btnSave.Draw()
+		Form.btnSave.Enable(True)
+		Form.btnSave.Draw()
 End case 
 
-Form:C1466.btnProtect.Draw()
+Form.btnProtect.Draw()

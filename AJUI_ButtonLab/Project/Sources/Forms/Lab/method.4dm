@@ -1,123 +1,132 @@
-$evt:=Form event code:C388
+var $templates_ptr; $property_ptr; $value_ptr; $category_ptr : Pointer
+var $template_obj : Object
+var $templateName; $icon : Text
+var $evt : Integer
+var $left; $top; $right; $bottom : Real
+var $templates_pos : Integer
+$evt:=Form event code
 Case of 
-	: ($evt=On Load:K2:1)
-		C_POINTER:C301($templates_ptr)
-		C_OBJECT:C1216($template_obj)
-		C_TEXT:C284($templateName)
+	: ($evt=On Load)
 		
-		GOTO OBJECT:C206(*;"")
+		GOTO OBJECT(*;"")
 		
-		Form:C1466.btn1.comment:="your comment ..."
-		
-		C_POINTER:C301($property_ptr;$value_ptr;$category_ptr)
-		
-		$category_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"category_col")
-		ARRAY TEXT:C222($category_ptr->;0)
-		COLLECTION TO ARRAY:C1562(Form:C1466.properties;$category_ptr->;"category")
-		
-		$property_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"property_col")
-		ARRAY TEXT:C222($property_ptr->;0)
-		COLLECTION TO ARRAY:C1562(Form:C1466.properties;$property_ptr->;"property")
-		
-		$value_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"value_col")
-		ARRAY OBJECT:C1221($value_ptr->;0)
-		COLLECTION TO ARRAY:C1562(Form:C1466.properties;$value_ptr->;"value_object")
-		
-		OBJECT GET COORDINATES:C663(*;"btn1";$left;$top;$right;$bottom)
-		Form:C1466.originCoordBtn1:=New object:C1471
-		Form:C1466.originCoordBtn1.left:=$left
-		Form:C1466.originCoordBtn1.top:=$top
-		Form:C1466.originCoordBtn1.right:=$right
-		Form:C1466.originCoordBtn1.bottom:=$bottom
-		
-		OBJECT GET COORDINATES:C663(*;"btn2";$left;$top;$right;$bottom)
-		Form:C1466.originCoordBtn2:=New object:C1471
-		Form:C1466.originCoordBtn2.left:=$left
-		Form:C1466.originCoordBtn2.top:=$top
-		Form:C1466.originCoordBtn2.right:=$right
-		Form:C1466.originCoordBtn2.bottom:=$bottom
-		
-		OBJECT GET COORDINATES:C663(*;"btn3";$left;$top;$right;$bottom)
-		Form:C1466.originCoordBtn3:=New object:C1471
-		Form:C1466.originCoordBtn3.left:=$left
-		Form:C1466.originCoordBtn3.top:=$top
-		Form:C1466.originCoordBtn3.right:=$right
-		Form:C1466.originCoordBtn3.bottom:=$bottom
-		
-		OBJECT GET COORDINATES:C663(*;"btn4";$left;$top;$right;$bottom)
-		Form:C1466.originCoordBtn4:=New object:C1471
-		Form:C1466.originCoordBtn4.left:=$left
-		Form:C1466.originCoordBtn4.top:=$top
-		Form:C1466.originCoordBtn4.right:=$right
-		Form:C1466.originCoordBtn4.bottom:=$bottom
-		
-		OBJECT GET COORDINATES:C663(*;"btn5";$left;$top;$right;$bottom)
-		Form:C1466.originCoordBtn5:=New object:C1471
-		Form:C1466.originCoordBtn5.left:=$left
-		Form:C1466.originCoordBtn5.top:=$top
-		Form:C1466.originCoordBtn5.right:=$right
-		Form:C1466.originCoordBtn5.bottom:=$bottom
-		
-		OBJECT GET COORDINATES:C663(*;"btn6";$left;$top;$right;$bottom)
-		Form:C1466.originCoordBtn6:=New object:C1471
-		Form:C1466.originCoordBtn6.left:=$left
-		Form:C1466.originCoordBtn6.top:=$top
-		Form:C1466.originCoordBtn6.right:=$right
-		Form:C1466.originCoordBtn6.bottom:=$bottom
-		
-		ARRAY POINTER:C280($_hierarchy;0)
-		APPEND TO ARRAY:C911($_hierarchy;$category_ptr)
-		APPEND TO ARRAY:C911($_hierarchy;$property_ptr)
+		Form.btn1.comment:="your comment ..."
 		
 		
-		LISTBOX SET HIERARCHY:C1098(*;"LB_properties";True:C214;$_hierarchy)
-		OBJECT SET RGB COLORS:C628(*;"category_col";0x0000;0x00B0B0B0)
-		OBJECT SET FONT STYLE:C166(*;"category_col";Bold:K14:2)
-		OBJECT SET VISIBLE:C603(*;"property_col";False:C215)
+		$category_ptr:=OBJECT Get pointer(Object named;"category_col")
+		//%W-518.5  // column without dataSource (dynamic variable): typed through its pointer
+		ARRAY TEXT($category_ptr->;0)
+		//%W+518.5
+		COLLECTION TO ARRAY(Form.properties;$category_ptr->;"category")
 		
-		$templates_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"templates_list")
-		If (Size of array:C274($templates_ptr->)>0)
+		$property_ptr:=OBJECT Get pointer(Object named;"property_col")
+		//%W-518.5  // column without dataSource (dynamic variable): typed through its pointer
+		ARRAY TEXT($property_ptr->;0)
+		//%W+518.5
+		COLLECTION TO ARRAY(Form.properties;$property_ptr->;"property")
+		
+		$value_ptr:=OBJECT Get pointer(Object named;"value_col")
+		//%W-518.5  // column without dataSource (dynamic variable): typed through its pointer
+		ARRAY OBJECT($value_ptr->;0)
+		//%W+518.5
+		COLLECTION TO ARRAY(Form.properties;$value_ptr->;"value_object")
+		
+		OBJECT GET COORDINATES(*;"btn1";$left;$top;$right;$bottom)
+		Form.originCoordBtn1:=New object
+		Form.originCoordBtn1.left:=$left
+		Form.originCoordBtn1.top:=$top
+		Form.originCoordBtn1.right:=$right
+		Form.originCoordBtn1.bottom:=$bottom
+		
+		OBJECT GET COORDINATES(*;"btn2";$left;$top;$right;$bottom)
+		Form.originCoordBtn2:=New object
+		Form.originCoordBtn2.left:=$left
+		Form.originCoordBtn2.top:=$top
+		Form.originCoordBtn2.right:=$right
+		Form.originCoordBtn2.bottom:=$bottom
+		
+		OBJECT GET COORDINATES(*;"btn3";$left;$top;$right;$bottom)
+		Form.originCoordBtn3:=New object
+		Form.originCoordBtn3.left:=$left
+		Form.originCoordBtn3.top:=$top
+		Form.originCoordBtn3.right:=$right
+		Form.originCoordBtn3.bottom:=$bottom
+		
+		OBJECT GET COORDINATES(*;"btn4";$left;$top;$right;$bottom)
+		Form.originCoordBtn4:=New object
+		Form.originCoordBtn4.left:=$left
+		Form.originCoordBtn4.top:=$top
+		Form.originCoordBtn4.right:=$right
+		Form.originCoordBtn4.bottom:=$bottom
+		
+		OBJECT GET COORDINATES(*;"btn5";$left;$top;$right;$bottom)
+		Form.originCoordBtn5:=New object
+		Form.originCoordBtn5.left:=$left
+		Form.originCoordBtn5.top:=$top
+		Form.originCoordBtn5.right:=$right
+		Form.originCoordBtn5.bottom:=$bottom
+		
+		OBJECT GET COORDINATES(*;"btn6";$left;$top;$right;$bottom)
+		Form.originCoordBtn6:=New object
+		Form.originCoordBtn6.left:=$left
+		Form.originCoordBtn6.top:=$top
+		Form.originCoordBtn6.right:=$right
+		Form.originCoordBtn6.bottom:=$bottom
+		
+		ARRAY POINTER($_hierarchy;0)
+		APPEND TO ARRAY($_hierarchy;$category_ptr)
+		APPEND TO ARRAY($_hierarchy;$property_ptr)
+		
+		
+		LISTBOX SET HIERARCHY(*;"LB_properties";True;$_hierarchy)
+		OBJECT SET RGB COLORS(*;"category_col";0x0000;0x00B0B0B0)
+		OBJECT SET FONT STYLE(*;"category_col";Bold)
+		OBJECT SET VISIBLE(*;"property_col";False)
+		
+		$templates_ptr:=OBJECT Get pointer(Object named;"templates_list")
+		If (Size of array($templates_ptr->)>0)
 			$templates_ptr->:=1
 			$templateName:=$templates_ptr->{1}
-			$icon:=getTLocIcon ($templates_ptr->{$templates_ptr->})
-			$templateName:=Substring:C12($templateName;1;Length:C16($templateName)-4)
-			$template_obj:=New object:C1471("templateName";$templateName;"templatePath";getTlocPath ($templateName+$icon))
-			Form:C1466.btn1:=New AJUI_Button ($template_obj)
-			Form:C1466.btn1.Name("btn1")
-			Form:C1466.btn2:=OB Copy:C1225(Form:C1466.btn1)
-			Form:C1466.btn2.ResetAllStates()
-			Form:C1466.btn2.Name("btn2")
-			Form:C1466.btn3:=OB Copy:C1225(Form:C1466.btn1)
-			Form:C1466.btn3.ResetAllStates()
-			Form:C1466.btn3.Name("btn3")
-			Form:C1466.btn4:=OB Copy:C1225(Form:C1466.btn1)
-			Form:C1466.btn4.ResetAllStates()
-			Form:C1466.btn4.Name("btn4")
-			Form:C1466.btn5:=OB Copy:C1225(Form:C1466.btn1)
-			Form:C1466.btn5.ResetAllStates()
-			Form:C1466.btn5.Name("btn5")
-			Form:C1466.btn6:=OB Copy:C1225(Form:C1466.btn1)
-			Form:C1466.btn6.ResetAllStates()
-			Form:C1466.btn6.Name("btn6")
-			Form:C1466.currentBtn:=OB Copy:C1225(Form:C1466.btn1)
+			$templates_pos:=$templates_ptr->
+			$icon:=getTLocIcon ($templates_ptr->{$templates_pos})
+			$templateName:=Substring($templateName;1;Length($templateName)-4)
+			$template_obj:=New object("templateName";$templateName;"templatePath";getTlocPath ($templateName+$icon))
+			Form.btn1:=New AJUI_Button ($template_obj)
+			Form.btn1.Name("btn1")
+			Form.btn2:=OB Copy(Form.btn1)
+			Form.btn2.ResetAllStates()
+			Form.btn2.Name("btn2")
+			Form.btn3:=OB Copy(Form.btn1)
+			Form.btn3.ResetAllStates()
+			Form.btn3.Name("btn3")
+			Form.btn4:=OB Copy(Form.btn1)
+			Form.btn4.ResetAllStates()
+			Form.btn4.Name("btn4")
+			Form.btn5:=OB Copy(Form.btn1)
+			Form.btn5.ResetAllStates()
+			Form.btn5.Name("btn5")
+			Form.btn6:=OB Copy(Form.btn1)
+			Form.btn6.ResetAllStates()
+			Form.btn6.Name("btn6")
+			Form.currentBtn:=OB Copy(Form.btn1)
 		End if 
 		
-		Form:C1466.currentState:=AJUI_btn_default
+		Form.currentState:=AJUI_btn_default
 		formulasGetValues 
 		formulasSetValues 
-		REDRAW:C174(OBJECT Get pointer:C1124(Object named:K67:5;"LB_properties")->)
+		REDRAW(OBJECT Get pointer(Object named;"LB_properties")->)
 		refresh 
 		redrawBtn 
 		
 		
 		
-	: ($evt=On Data Change:K2:15)
+	: ($evt=On Data Change)
 		redrawBtn 
 		
-	: ($evt=On Timer:K2:25)
+	: ($evt=On Timer)
 		formulasGetValues 
-		REDRAW:C174(OBJECT Get pointer:C1124(Object named:K67:5;"LB_properties")->)
+		REDRAW(OBJECT Get pointer(Object named;"LB_properties")->)
 		redrawBtn 
-		SET TIMER:C645(0)
+		SET TIMER(0)
 End case 
 

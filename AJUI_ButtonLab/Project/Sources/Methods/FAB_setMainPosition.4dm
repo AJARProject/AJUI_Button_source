@@ -4,7 +4,7 @@
   //
   // This method update the mainPosition and the coordinates of the main button (HDI_FAB)
 
-If (False:C215)
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 18.12.19, 15:45:41
@@ -17,11 +17,12 @@ If (False:C215)
 End if 
 
 
-C_TEXT:C284($currentBtnName)
-$currentBtnName:=OBJECT Get name:C1087(Object current:K67:2)
+var $currentBtnName : Text
+var $l; $t : Integer
+$currentBtnName:=OBJECT Get name(Object current)
 
-Form:C1466.primary_btn.FABMainPosition($currentBtnName)
-Form:C1466.primary_btn.Show()
+Form.primary_btn.FABMainPosition($currentBtnName)
+Form.primary_btn.Show()
 
 
 Case of 
@@ -64,5 +65,5 @@ Case of
 		$t:=444
 End case 
 
-OBJECT SET COORDINATES:C1248(*;"primary_btn";$l;$t;$l+60;$t+60)
+OBJECT SET COORDINATES(*;"primary_btn";$l;$t;$l+60;$t+60)
 

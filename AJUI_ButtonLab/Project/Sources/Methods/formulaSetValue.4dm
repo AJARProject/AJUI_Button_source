@@ -4,7 +4,7 @@
   //
   // this method executes the Setter corresponding to the property so its value has been modified in the listbox 
 
-If (False:C215)
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 14.08.19, 09:22:37
@@ -17,44 +17,53 @@ If (False:C215)
 End if 
 
 
-C_POINTER:C301($values_ptr;$properties_ptr)
-$properties_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"property_col")
-$values_ptr:=OBJECT Get pointer:C1124(Object named:K67:5;"value_col")
+var $values_ptr; $properties_ptr : Pointer
+var $values_pos : Integer
+var $properties_pos : Integer
+$properties_ptr:=OBJECT Get pointer(Object named;"property_col")
+$values_ptr:=OBJECT Get pointer(Object named;"value_col")
 
   //Check if a state is selected
-If (Form:C1466.statePosition>0)
+If (Form.statePosition>0)
 	
 	  //call the Setter method for btn1
-	Form:C1466.btn1[Form:C1466.properties[$values_ptr->-1].formula](Form:C1466.currentState;$values_ptr->{$values_ptr->}.value)
+	$values_pos:=$values_ptr->
+	Form.btn1[Form.properties[$values_ptr->-1].formula](Form.currentState;$values_ptr->{$values_pos}.value)
 	
-	If ($properties_ptr->{$properties_ptr->}="@color@")
-		setArrayColor ($values_ptr->{$values_ptr->}.value;$values_ptr->)
+	$properties_pos:=$properties_ptr->
+	If ($properties_ptr->{$properties_pos}="@color@")
+		$values_pos:=$values_ptr->
+		setArrayColor ($values_ptr->{$values_pos}.value;$values_ptr->)
 	End if 
 	
 	  //checks the status and updates the button linked to it with the Setter method
 	Case of 
-		: (Form:C1466.currentState="default")
-			Form:C1466.btn2[Form:C1466.properties[$values_ptr->-1].formula](AJUI_btn_default;Form:C1466.btn1[Form:C1466.properties[$values_ptr->-1].formula](AJUI_btn_default))
-			Form:C1466.btn3[Form:C1466.properties[$values_ptr->-1].formula](AJUI_btn_default;Form:C1466.btn1[Form:C1466.properties[$values_ptr->-1].formula](AJUI_btn_hover))
-			Form:C1466.btn4[Form:C1466.properties[$values_ptr->-1].formula](AJUI_btn_default;Form:C1466.btn1[Form:C1466.properties[$values_ptr->-1].formula](AJUI_btn_active))
-			Form:C1466.btn5[Form:C1466.properties[$values_ptr->-1].formula](AJUI_btn_default;Form:C1466.btn1[Form:C1466.properties[$values_ptr->-1].formula](AJUI_btn_disable))
-			Form:C1466.btn6[Form:C1466.properties[$values_ptr->-1].formula](AJUI_btn_default;Form:C1466.btn1[Form:C1466.properties[$values_ptr->-1].formula](AJUI_btn_focus))
-		: (Form:C1466.currentState="hover")
-			Form:C1466.btn3[Form:C1466.properties[$values_ptr->-1].formula](AJUI_btn_default;$values_ptr->{$values_ptr->}.value)
-		: (Form:C1466.currentState="active")
-			Form:C1466.btn4[Form:C1466.properties[$values_ptr->-1].formula](AJUI_btn_default;$values_ptr->{$values_ptr->}.value)
-		: (Form:C1466.currentState="disable")
-			Form:C1466.btn5[Form:C1466.properties[$values_ptr->-1].formula](AJUI_btn_default;$values_ptr->{$values_ptr->}.value)
-		: (Form:C1466.currentState="focus")
-			Form:C1466.btn6[Form:C1466.properties[$values_ptr->-1].formula](AJUI_btn_default;$values_ptr->{$values_ptr->}.value)
+		: (Form.currentState="default")
+			Form.btn2[Form.properties[$values_ptr->-1].formula](AJUI_btn_default;Form.btn1[Form.properties[$values_ptr->-1].formula](AJUI_btn_default))
+			Form.btn3[Form.properties[$values_ptr->-1].formula](AJUI_btn_default;Form.btn1[Form.properties[$values_ptr->-1].formula](AJUI_btn_hover))
+			Form.btn4[Form.properties[$values_ptr->-1].formula](AJUI_btn_default;Form.btn1[Form.properties[$values_ptr->-1].formula](AJUI_btn_active))
+			Form.btn5[Form.properties[$values_ptr->-1].formula](AJUI_btn_default;Form.btn1[Form.properties[$values_ptr->-1].formula](AJUI_btn_disable))
+			Form.btn6[Form.properties[$values_ptr->-1].formula](AJUI_btn_default;Form.btn1[Form.properties[$values_ptr->-1].formula](AJUI_btn_focus))
+		: (Form.currentState="hover")
+			$values_pos:=$values_ptr->
+			Form.btn3[Form.properties[$values_ptr->-1].formula](AJUI_btn_default;$values_ptr->{$values_pos}.value)
+		: (Form.currentState="active")
+			$values_pos:=$values_ptr->
+			Form.btn4[Form.properties[$values_ptr->-1].formula](AJUI_btn_default;$values_ptr->{$values_pos}.value)
+		: (Form.currentState="disable")
+			$values_pos:=$values_ptr->
+			Form.btn5[Form.properties[$values_ptr->-1].formula](AJUI_btn_default;$values_ptr->{$values_pos}.value)
+		: (Form.currentState="focus")
+			$values_pos:=$values_ptr->
+			Form.btn6[Form.properties[$values_ptr->-1].formula](AJUI_btn_default;$values_ptr->{$values_pos}.value)
 	End case 
 	
 	setPropertyStyle 
-	Form:C1466.btnSave.Enable(True:C214)
-	Form:C1466.btnSave.Draw()
+	Form.btnSave.Enable(True)
+	Form.btnSave.Draw()
 	
 	redrawBtn 
 Else 
-	ALERT:C41("Select a state !")
+	ALERT("Select a state !")
 End if 
 

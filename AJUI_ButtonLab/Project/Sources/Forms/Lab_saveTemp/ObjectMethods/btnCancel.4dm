@@ -1,18 +1,18 @@
 
 Case of 
-	: (Form event code:C388=On Load:K2:1)
+	: (Form event code=On Load)
 		
 		
-		Form:C1466.btnCancel:=btn_subform 
-		Form:C1466.btnCancel.Name("btnCancel")
-		Form:C1466.btnCancel.Label(AJUI_btn_default;"Cancel")
+		Form.btnCancel:=btn_subform 
+		Form.btnCancel.Name("btnCancel")
+		Form.btnCancel.Label(AJUI_btn_default;"Cancel")
 		
 		
 		
-	: (Form event code:C388=On Clicked:K2:4)
+	: (Form event code=On Clicked)
 		
-		CALL FORM:C1391(Current form window:C827;"closeSaveTempTip";False:C215)
+		CALL FORM(Current form window;"closeSaveTempTip";False)
 		
 End case 
 
-Form:C1466.btnCancel.Draw()
+Form.btnCancel.Draw()

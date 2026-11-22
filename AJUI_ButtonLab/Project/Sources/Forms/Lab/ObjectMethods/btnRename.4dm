@@ -1,44 +1,44 @@
 
 
 Case of 
-	: (Form event code:C388=On Load:K2:1)
+	: (Form event code=On Load)
 		
-		Form:C1466.btnRename:=newTemplateButton 
-		Form:C1466.btnRename.Name("btnRename")
-		Form:C1466.btnRename.Label(AJUI_btn_default;"Rename")
-		Form:C1466.btnRename.PicturePath(AJUI_btn_default;"svg/Deemak_Daksina/3994395---edit-pen-pencil-stationery-write.svg")
+		Form.btnRename:=newTemplateButton 
+		Form.btnRename.Name("btnRename")
+		Form.btnRename.Label(AJUI_btn_default;"Rename")
+		Form.btnRename.PicturePath(AJUI_btn_default;"svg/Deemak_Daksina/3994395---edit-pen-pencil-stationery-write.svg")
 		
 		Tip_NewButtonName 
 		
-		Form:C1466.tipRename:=tip_templatesButtons ("btnRename";"Rename template")
+		Form.tipRename:=tip_templatesButtons ("btnRename";"Rename template")
 		
-	: (Form event code:C388=On Mouse Enter:K2:33)
+	: (Form event code=On Mouse Enter)
 		
-		If (OBJECT Get enabled:C1079(*;"btnRename"))
-			Form:C1466.tipRename.TextLabel("Rename template")
-			Form:C1466.tipRename.Show()
+		If (OBJECT Get enabled(*;"btnRename"))
+			Form.tipRename.TextLabel("Rename template")
+			Form.tipRename.Show()
 		End if 
 		
-	: (Form event code:C388=On Mouse Leave:K2:34)
+	: (Form event code=On Mouse Leave)
 		
-		Form:C1466.tipRename.Hide()
+		Form.tipRename.Hide()
 		
-	: (Form event code:C388=On Clicked:K2:4) & (Macintosh option down:C545)  // alt+clic (Mac) OR Option+clic (Windows)
+	: (Form event code=On Clicked) & (Macintosh option down)  // alt+clic (Mac) OR Option+clic (Windows)
 		
-	: (Form event code:C388=On Clicked:K2:4)
+	: (Form event code=On Clicked)
 		
-		If (OBJECT Get enabled:C1079(*;"btnRename"))
-			Form:C1466.tipRename.Hide()
-			Form:C1466.btnSaveActive:=OBJECT Get enabled:C1079(*;"btnSave")
-			templatesButtonsEnable (False:C215;"btnRename")
-			Form:C1466.tip_sf_details.templateName:=Form:C1466.btn1.templateName
-			Form:C1466.tip_sf_details.rename:=True:C214
-			Form:C1466.tipNewTemplate.TargetName("btnRename")
-			Form:C1466.tipNewTemplate.Show()
+		If (OBJECT Get enabled(*;"btnRename"))
+			Form.tipRename.Hide()
+			Form.btnSaveActive:=OBJECT Get enabled(*;"btnSave")
+			templatesButtonsEnable (False;"btnRename")
+			Form.tip_sf_details.templateName:=Form.btn1.templateName
+			Form.tip_sf_details.rename:=True
+			Form.tipNewTemplate.TargetName("btnRename")
+			Form.tipNewTemplate.Show()
 		End if 
 		
 		
 		
 End case 
 
-Form:C1466.btnRename.Draw()
+Form.btnRename.Draw()

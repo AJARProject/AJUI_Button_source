@@ -6,7 +6,9 @@
   //
   // Disable/Enable buttons, you can specify in the second parameter a button that will be in the opposite status
 
-If (False:C215)
+#DECLARE($param1 : Boolean; $param2 : Text)
+
+If (False)
 	  // ----------------------------------------------------
 	  // User name (OS): Gary Criblez
 	  // Date and time: 15.08.19, 13:49:17
@@ -18,30 +20,30 @@ If (False:C215)
 	  // ----------------------------------------------------
 End if 
 
-C_BOOLEAN:C305($1;$enable)
-C_TEXT:C284($2;$name)
+var $enable : Boolean
+var $name : Text
 
-$enable:=$1
+$enable:=$param1
 
-Form:C1466.btnRename.Enable($enable)
-Form:C1466.btnNew.Enable($enable)
-Form:C1466.btnSave.Enable($enable)
-Form:C1466.btnDelete.Enable($enable)
-Form:C1466.btnReload.Enable($enable)
-Form:C1466.btnReset.Enable($enable)
-Form:C1466.btnProtect.Enable($enable)
-Form:C1466.btnDuplicate.Enable($enable)
+Form.btnRename.Enable($enable)
+Form.btnNew.Enable($enable)
+Form.btnSave.Enable($enable)
+Form.btnDelete.Enable($enable)
+Form.btnReload.Enable($enable)
+Form.btnReset.Enable($enable)
+Form.btnProtect.Enable($enable)
+Form.btnDuplicate.Enable($enable)
 
-If (Count parameters:C259=2)
-	$name:=$2
-	Form:C1466[$name].Enable(Not:C34($enable))
+If (Count parameters=2)
+	$name:=$param2
+	Form[$name].Enable(Not($enable))
 End if 
 
-Form:C1466.btnRename.Draw()
-Form:C1466.btnNew.Draw()
-Form:C1466.btnSave.Draw()
-Form:C1466.btnDelete.Draw()
-Form:C1466.btnReload.Draw()
-Form:C1466.btnReset.Draw()
-Form:C1466.btnProtect.Draw()
-Form:C1466.btnDuplicate.Draw()
+Form.btnRename.Draw()
+Form.btnNew.Draw()
+Form.btnSave.Draw()
+Form.btnDelete.Draw()
+Form.btnReload.Draw()
+Form.btnReset.Draw()
+Form.btnProtect.Draw()
+Form.btnDuplicate.Draw()

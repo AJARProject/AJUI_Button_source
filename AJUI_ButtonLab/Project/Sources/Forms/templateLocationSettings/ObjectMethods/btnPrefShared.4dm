@@ -1,29 +1,31 @@
 
+var $folder : Object
+var $newPath : Text
 Case of 
-	: (Form event code:C388=On Load:K2:1)
+	: (Form event code=On Load)
 		
 		
-		Form:C1466.btnPrefShared:=TLoc_btn_pref_init 
-		Form:C1466.btnPrefShared.Name("btnPrefShared")
-		Form:C1466.btnPrefShared.Label(AJUI_btn_default;"Shared (S)")
+		Form.btnPrefShared:=TLoc_btn_pref_init 
+		Form.btnPrefShared.Name("btnPrefShared")
+		Form.btnPrefShared.Label(AJUI_btn_default;"Shared (S)")
 		
-	: (Form event code:C388=On Mouse Enter:K2:33)
-		Form:C1466.subInfoTip.TextLabel("Select a shared folder ")
-		Form:C1466.subInfoTip.Show()
-	: (Form event code:C388=On Mouse Leave:K2:34)
-		Form:C1466.subInfoTip.Hide()
+	: (Form event code=On Mouse Enter)
+		Form.subInfoTip.TextLabel("Select a shared folder ")
+		Form.subInfoTip.Show()
+	: (Form event code=On Mouse Leave)
+		Form.subInfoTip.Hide()
 		
-	: (Form event code:C388=On Mouse Up:K2:58)
-		If (Form:C1466.path_shared="")
-			$folder:=Folder:C1567(fk documents folder:K87:21)
-			$newPath:=Select folder:C670("Select a shared folder Path";Convert path POSIX to system:C1107($folder.path))
+	: (Form event code=On Mouse Up)
+		If (Form.path_shared="")
+			$folder:=Folder(fk documents folder)
+			$newPath:=Select folder("Select a shared folder Path";Convert path POSIX to system($folder.path))
 		Else 
-			$newPath:=Select folder:C670("Select a shared folder Path";Form:C1466.path_shared)
+			$newPath:=Select folder("Select a shared folder Path";Form.path_shared)
 		End if 
 		If ($newPath#"")
-			Form:C1466.path_shared:=$newPath
+			Form.path_shared:=$newPath
 		End if 
 End case 
 
-Form:C1466.btnPrefShared.Draw()
+Form.btnPrefShared.Draw()
 
