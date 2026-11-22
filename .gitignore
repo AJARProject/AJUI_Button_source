@@ -53,3 +53,13 @@ Folder_Reports
 ehthumbs.db
 Thumbs.db
 
+
+# AJUI_ButtonLab (demo project in AJUI_ButtonLab/)
+/AJUI_ButtonLab/Project/DerivedData/
+/AJUI_ButtonLab/Logs/
+/AJUI_ButtonLab/userPreferences.*/
+/AJUI_ButtonLab/Libraries/
+/AJUI_ButtonLab/Data/
+/AJUI_ButtonLab/Resources/en.lproj/
+# components now come from Project/Sources/dependencies.json (no local copies)
+/AJUI_ButtonLab/Components/
