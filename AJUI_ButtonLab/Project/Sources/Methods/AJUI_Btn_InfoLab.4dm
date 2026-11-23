@@ -19,4 +19,4 @@ If (False)
 	  // ----------------------------------------------------
 End if 
 
-$result:="AJUI Button Lab 2.2.0 (v21 R4)"  // 22 Nov 2026 (4D 21 R4)
+$result:="AJUI Button Lab 2.2.1 (v21 R4)"  // 23 Nov 2026 (4D 21 R4)
