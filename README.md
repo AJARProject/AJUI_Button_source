@@ -4,7 +4,7 @@ Composant 4D d'AJAR SA qui dessine des boutons en SVG dans un objet image du for
 
 Sources du composant [AJUI_Button](https://github.com/AJARProject/AJUI_Button). La documentation d'origine reste sur le [wiki](https://github.com/AJARProject/AJUI_Button/wiki/Class-Functions) et dans `Documentation/Methods`. Ce dépôt n'est pas maintenu activement ; une proposition de correction peut passer par une [pull request](https://github.com/AJARProject/AJUI_Button_source/pulls).
 
-**4D 21 R4**, mode projet, `compatibilityVersion` 2140. Version **2.2.0** : `AJUI_Btn_info` renvoie `AJUI_Button (v21 R4) : 2.2.0`. Licence MIT (`LICENSE`).
+**4D 21 R4**, mode projet, `compatibilityVersion` 2140. Version **2.2.1** : `AJUI_Btn_info` renvoie `AJUI_Button (v21 R4) : 2.2.1`. Historique des versions : [CHANGELOG.md](CHANGELOG.md). Licence MIT (`LICENSE`).
 
 Cette nouvelle version a été réalisée avec l'aide de Cursor et de Grok Bot. Analyse du dépôt et détail de la migration : [ANALYSIS.md](ANALYSIS.md).
 
@@ -72,7 +72,7 @@ Réalisé avec Cursor / Grok Bot (Codesky) pour Maurice Inzirillo.
 
 Sources of the [AJUI_Button](https://github.com/AJARProject/AJUI_Button) component. The original documentation is on the [wiki](https://github.com/AJARProject/AJUI_Button/wiki/Class-Functions) and in `Documentation/Methods`. This repository is not actively maintained; fixes can be proposed with a [pull request](https://github.com/AJARProject/AJUI_Button_source/pulls).
 
-**4D 21 R4**, project mode, `compatibilityVersion` 2140. Version **2.2.0**: `AJUI_Btn_info` returns `AJUI_Button (v21 R4) : 2.2.0`. MIT licence (`LICENSE`).
+**4D 21 R4**, project mode, `compatibilityVersion` 2140. Version **2.2.1**: `AJUI_Btn_info` returns `AJUI_Button (v21 R4) : 2.2.1`. Release history: [CHANGELOG.md](CHANGELOG.md). MIT licence (`LICENSE`).
 
 This new version was made with the help of Cursor and Grok Bot. Repository analysis and migration details: [ANALYSIS.md](ANALYSIS.md) (in French).
 

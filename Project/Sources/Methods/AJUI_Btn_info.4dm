@@ -22,6 +22,6 @@ End if
 
 var $version_t : Text
 
-$version_t:="2.2.0"  // 22 Nov 2026 (4D 21 R4)
+$version_t:="2.2.1"  // 23 Nov 2026 (4D 21 R4)
 
 $result:="AJUI_Button (v21 R4) : "+$version_t
